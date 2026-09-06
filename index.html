@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>FITSET — Workout Coach</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&display=swap" rel="stylesheet"/>
+<title>FITSET — Build Your Routine</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
@@ -33,6 +33,8 @@
   --logo-fill:#e9e6e0; --yt-bg:#cc0000; --overlay-bg:rgba(233,230,224,.97);
 }
 
+
+
 body,nav,.rp,.wmain,.scard,.ytcard,.ex-card,.ri,.global-rest,.rsummary,.statbox,.roverlay,
 .routine-card,.modal-inner{transition:background .2s,border-color .2s,color .2s,box-shadow .2s}
 
@@ -43,7 +45,7 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min
 nav{display:flex;align-items:center;justify-content:space-between;padding:13px 36px;
   border-bottom:1px solid var(--border);position:sticky;top:0;z-index:100;
   background:var(--nav-bg);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
-.logo{display:flex;align-items:center;gap:10px;font-family:'DM Serif Display',serif;
+.logo{display:flex;align-items:center;gap:10px;font-family:'DM Sans',sans-serif;
   font-size:1.25rem;color:var(--text);letter-spacing:-.01em;cursor:pointer}
 .logo-mark{width:34px;height:34px;border-radius:8px;
   display:flex;align-items:center;justify-content:center;
@@ -69,7 +71,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .page.active{display:block}
 @keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
 .ph{margin-bottom:24px}
-.ph h1{font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:400;
+.ph h1{font-family:'DM Sans',sans-serif;font-size:1.9rem;font-weight:650;
   color:var(--text);margin-bottom:4px;letter-spacing:-.02em}
 .ph p{color:var(--muted);font-size:.87rem}
 
@@ -104,7 +106,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
    MY ROUTINES PAGE
 ═══════════════════════════════════ */
 #routinesPage .ph-row{display:flex;align-items:center;justify-content:space-between;margin-bottom:24px}
-#routinesPage .ph-row h1{font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:400;
+#routinesPage .ph-row h1{font-family:'DM Sans',sans-serif;font-size:1.9rem;font-weight:650;
   color:var(--text);letter-spacing:-.02em}
 .new-routine-btn{display:flex;align-items:center;gap:7px;padding:9px 18px;border-radius:50px;
   border:none;cursor:pointer;background:var(--accent);color:var(--accent-on);
@@ -119,7 +121,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   box-shadow:0 8px 24px var(--accent-shadow)}
 .routine-card.active-card{border-color:var(--accent);box-shadow:0 4px 18px var(--accent-shadow)}
 .rc-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px}
-.rc-name{font-family:'DM Serif Display',serif;font-size:1.1rem;font-weight:400;color:var(--text)}
+.rc-name{font-family:'DM Sans',sans-serif;font-size:1.1rem;font-weight:650;color:var(--text)}
 .rc-actions{display:flex;gap:5px}
 .rc-action-btn{width:26px;height:26px;border-radius:6px;border:1px solid var(--border);
   background:var(--card);color:var(--muted);cursor:pointer;font-size:.75rem;
@@ -139,7 +141,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   border:1px solid rgba(232,135,90,.2)}
 .rc-start-btn:hover{background:var(--accent);color:var(--accent-on)}
 .empty-routines{text-align:center;padding:60px 20px;color:var(--muted)}
-.empty-routines h3{font-family:'DM Serif Display',serif;font-size:1.4rem;font-weight:400;
+.empty-routines h3{font-family:'DM Sans',sans-serif;font-size:1.4rem;font-weight:650;
   color:var(--text-2);margin-bottom:8px}
 .empty-routines p{font-size:.86rem;margin-bottom:20px}
 
@@ -169,6 +171,46 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   font-family:'DM Sans',sans-serif;transition:all .15s}
 .sub-chip.active{border-color:var(--sage);color:var(--sage);background:var(--sage-dim)}
 
+/* Exercise filters: muscle group / target area / equipment dropdowns,
+   grouped in a distinctly-styled panel so they're never mistaken for
+   exercise cards below. Applies at every screen size. */
+.ex-filters-card{
+  display:flex;flex-direction:column;gap:12px;
+  background:var(--card2);border:1px dashed var(--border-strong);border-radius:14px;
+  padding:14px;margin-bottom:8px;
+}
+.muscle-select-wrap{display:block;position:relative;margin-bottom:0}
+.ex-filter-label{
+  display:flex;align-items:center;gap:6px;
+  font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:6px;
+}
+.ex-filter-label svg{width:12px;height:12px;flex-shrink:0;opacity:.8}
+.muscle-select-btn{
+  width:100%;display:flex;align-items:center;justify-content:space-between;
+  background:var(--card);border:1px solid var(--border);border-radius:9px;
+  padding:10px 12px;color:var(--text);font-family:'DM Sans',sans-serif;
+  font-size:.85rem;font-weight:600;cursor:pointer;transition:border-color .15s;
+}
+.muscle-select-btn:hover,.muscle-select-btn:active{border-color:var(--accent)}
+.muscle-select-btn svg{width:15px;height:15px;color:var(--muted);flex-shrink:0;transition:transform .18s}
+.muscle-select-btn.open svg{transform:rotate(180deg)}
+.muscle-select-btn.open{border-color:var(--accent)}
+.muscle-select-list{
+  position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:60;
+  background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;
+  padding:6px;box-shadow:var(--shadow-md);max-height:320px;overflow-y:auto;
+}
+.muscle-select-item{
+  display:block;width:100%;text-align:left;padding:11px 12px;border-radius:8px;
+  border:none;background:none;color:var(--text-2);font-family:'DM Sans',sans-serif;
+  font-size:.86rem;cursor:pointer;transition:background .15s,color .15s;
+}
+.muscle-select-item:hover{background:var(--card)}
+.muscle-select-item.active{background:var(--accent-dim);color:var(--accent);font-weight:600}
+.muscle-select-item:active{background:var(--card)}
+.ex-list-label{display:block;margin-top:14px}
+
 .ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;max-height:480px;overflow-y:auto;padding-right:4px}
 .ex-grid::-webkit-scrollbar{width:4px}
 .ex-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
@@ -177,7 +219,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   padding:13px 13px 11px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
 .ex-card:hover{border-color:var(--accent);transform:translateY(-2px);
   box-shadow:0 6px 20px var(--accent-shadow)}
-.ex-card .nm{font-family:'DM Serif Display',serif;font-size:.92rem;font-weight:400;
+.ex-card:active{border-color:var(--sage)}
+.ex-card .nm{font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:650;
   margin-bottom:3px;color:var(--text)}
 .ex-card .mt{font-size:.7rem;color:var(--muted)}
 .ex-card .eq{font-size:.67rem;color:var(--accent);margin-top:5px;
@@ -185,9 +228,9 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .grp-dot{display:inline-block;width:6px;height:6px;border-radius:50%;
   background:var(--accent);margin-bottom:8px;opacity:.55}
 .add-badge{position:absolute;top:9px;right:9px;width:20px;height:20px;border-radius:50%;
-  background:var(--accent);color:var(--accent-on);display:flex;align-items:center;justify-content:center;
-  font-size:.7rem;font-weight:700;opacity:0;transition:opacity .18s}
-.ex-card:hover .add-badge{opacity:1}
+  background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;font-weight:700;opacity:1;box-shadow:0 2px 8px rgba(0,0,0,.3);transition:transform .15s}
+.ex-card:hover .add-badge{transform:scale(1.12)}
 .ex-count-badge{font-size:.7rem;color:var(--accent);margin-top:2px}
 
 /* YouTube button on exercise cards */
@@ -218,7 +261,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .rp-title-row{display:flex;align-items:center;gap:8px;margin-bottom:16px;
   border-bottom:1px solid var(--border);padding-bottom:12px}
 .rp-title-input{background:none;border:none;outline:none;
-  font-family:'DM Serif Display',serif;font-size:1.1rem;font-weight:400;color:var(--text);flex:1}
+  font-family:'DM Sans',sans-serif;font-size:1.1rem;font-weight:650;color:var(--text);flex:1}
 .rp-save-btn{padding:5px 12px;border-radius:50px;border:1px solid var(--border);
   background:var(--card);color:var(--muted);font-size:.75rem;font-family:'DM Sans',sans-serif;
   cursor:pointer;transition:all .18s;white-space:nowrap}
@@ -229,7 +272,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .global-rest label{font-size:.8rem;color:var(--text-2);flex:1;line-height:1.5}
 .global-rest label span{color:var(--muted);font-size:.72rem;display:block}
 .rest-ctrl{display:flex;align-items:center;gap:7px}
-.rest-val{font-family:'DM Serif Display',serif;font-size:1rem;
+.rest-val{font-family:'DM Sans',sans-serif;font-size:1rem;
   min-width:36px;text-align:center;color:var(--accent)}
 
 .rlist{min-height:90px;margin-bottom:14px}
@@ -258,7 +301,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .mt-btn.active{background:var(--accent);color:var(--accent-on)}
 .num-ctrl{display:flex;align-items:center;gap:5px}
 .num-val{font-size:.82rem;min-width:36px;text-align:center;
-  color:var(--text);font-weight:600;font-family:'DM Serif Display',serif}
+  color:var(--text);font-weight:600;font-family:'DM Sans',sans-serif}
 .rm-btn{background:none;border:none;color:var(--muted);cursor:pointer;font-size:.8rem;
   padding:4px;border-radius:6px;transition:all .15s;margin-top:1px}
 .rm-btn:hover{color:var(--danger);background:var(--danger-dim)}
@@ -267,7 +310,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .rsummary{display:flex;gap:8px;margin-bottom:14px}
 .ss{flex:1;background:var(--card);border-radius:9px;padding:10px;
   text-align:center;border:1px solid var(--border)}
-.ss .v{font-family:'DM Serif Display',serif;font-size:1.15rem;color:var(--accent)}
+.ss .v{font-family:'DM Sans',sans-serif;font-size:1.15rem;color:var(--accent)}
 .ss .l{font-size:.67rem;color:var(--muted);margin-top:2px}
 
 /* ═══════════════════════════════════
@@ -279,7 +322,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .wpbar{width:100%;height:2px;background:var(--border);border-radius:2px;margin-bottom:28px;overflow:hidden}
 .wpfill{height:100%;background:var(--accent);border-radius:2px;transition:width .5s ease}
 .exdisp{text-align:center;width:100%;margin-bottom:10px}
-.ex-bigname{font-family:'DM Serif Display',serif;font-size:2rem;font-weight:400;
+.ex-bigname{font-family:'DM Sans',sans-serif;font-size:2rem;font-weight:650;
   margin-bottom:4px;color:var(--text);letter-spacing:-.02em}
 .ex-bigmuscle{color:var(--muted);font-size:.85rem;margin-bottom:8px}
 .ex-group-pill{display:inline-block;padding:3px 12px;border-radius:50px;font-size:.71rem;
@@ -297,11 +340,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .trf{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;
   transition:stroke-dashoffset .5s linear,stroke .3s}
 .tcenter{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.tsec{font-family:'DM Serif Display',serif;font-size:2.9rem;font-weight:400;line-height:1;color:var(--text)}
+.tsec{font-family:'DM Sans',sans-serif;font-size:2.9rem;font-weight:650;line-height:1;color:var(--text)}
 .tlbl{font-size:.67rem;color:var(--muted);margin-top:4px;letter-spacing:.07em;text-transform:uppercase}
 
 .rep-zone{width:100%;text-align:center;margin-bottom:16px}
-.rep-big{font-family:'DM Serif Display',serif;font-size:6rem;font-weight:400;
+.rep-big{font-family:'DM Sans',sans-serif;font-size:6rem;font-weight:650;
   line-height:1;color:var(--accent);transition:transform .1s}
 .rep-big.bump{transform:scale(1.1)}
 .rep-target{font-size:.84rem;color:var(--muted);margin-top:5px}
@@ -363,27 +406,27 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 /* REST OVERLAY */
 .roverlay{position:fixed;inset:0;background:var(--overlay-bg);display:flex;flex-direction:column;
   align-items:center;justify-content:center;z-index:200;animation:fadeUp .25s ease}
-.roverlay h2{font-family:'DM Serif Display',serif;font-size:2.4rem;font-weight:400;color:var(--accent);margin-bottom:5px}
+.roverlay h2{font-family:'DM Sans',sans-serif;font-size:2.4rem;font-weight:650;color:var(--accent);margin-bottom:5px}
 .roverlay .rsub{color:var(--muted);font-size:.87rem}
 .rring-wrap{position:relative;width:140px;height:140px;margin:16px auto 12px}
 .rring-wrap svg{transform:rotate(-90deg)}
 .rrb{fill:none;stroke:var(--border);stroke-width:5}
 .rrf{fill:none;stroke:var(--accent);stroke-width:5;stroke-linecap:round;transition:stroke-dashoffset 1s linear}
 .rring-center{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}
-.rring-num{font-family:'DM Serif Display',serif;font-size:2.6rem;font-weight:400;color:var(--text)}
+.rring-num{font-family:'DM Sans',sans-serif;font-size:2.6rem;font-weight:650;color:var(--text)}
 .rring-lbl{font-size:.63rem;color:var(--muted);letter-spacing:.07em;text-transform:uppercase}
 .rnext{color:var(--muted);font-size:.87rem;margin-bottom:24px}
 .rnext strong{color:var(--text-2)}
 
 /* COMPLETE */
 .cpage{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:64vh;text-align:center}
-.cpage h1{font-family:'DM Serif Display',serif;font-size:2.4rem;font-weight:400;
+.cpage h1{font-family:'DM Sans',sans-serif;font-size:2.4rem;font-weight:650;
   color:var(--accent);margin-bottom:8px;letter-spacing:-.02em}
 .cpage p{color:var(--muted);margin-bottom:28px;font-size:.89rem}
 .stats-row{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap;justify-content:center}
 .statbox{background:var(--surface);border:1px solid var(--border);border-radius:14px;
   padding:20px 24px;text-align:center;box-shadow:var(--shadow)}
-.statbox .big{font-family:'DM Serif Display',serif;font-size:2rem;font-weight:400;color:var(--accent)}
+.statbox .big{font-family:'DM Sans',sans-serif;font-size:2rem;font-weight:650;color:var(--accent)}
 .statbox .sm{font-size:.74rem;color:var(--muted);margin-top:3px}
 .btnrow{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
 .secbtn{padding:11px 22px;border-radius:50px;border:1px solid var(--border);background:var(--surface);
@@ -400,7 +443,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .preview-back svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round}
 .preview-header{background:var(--surface);border:1px solid var(--border);border-radius:14px;
   padding:22px 24px;margin-bottom:16px;box-shadow:var(--shadow)}
-.preview-header h1{font-family:'DM Serif Display',serif;font-size:1.7rem;font-weight:400;
+.preview-header h1{font-family:'DM Sans',sans-serif;font-size:1.7rem;font-weight:650;
   color:var(--text);margin-bottom:10px;letter-spacing:-.02em}
 .preview-meta{display:flex;gap:16px;flex-wrap:wrap}
 .preview-meta-item{font-size:.8rem;color:var(--muted)}
@@ -453,7 +496,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .motiv-top{width:48px;height:3px;background:var(--accent);border-radius:2px;margin:0 auto 24px;opacity:.7}
 .motiv-label{font-size:.65rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;
   color:var(--muted);margin-bottom:14px}
-.motiv-quote{font-family:'DM Serif Display',serif;font-size:1.45rem;font-weight:400;
+.motiv-quote{font-family:'DM Sans',sans-serif;font-size:1.45rem;font-weight:650;
   color:var(--text);line-height:1.5;letter-spacing:-.01em;margin-bottom:12px}
 .motiv-author{font-size:.8rem;color:var(--accent);font-weight:500;margin-bottom:28px}
 .motiv-btns{display:flex;gap:10px;justify-content:center}
@@ -476,7 +519,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   display:flex;align-items:center;justify-content:center;animation:fadeUp .2s ease}
 .modal-inner{background:var(--surface);border:1px solid var(--border);border-radius:16px;
   padding:24px;width:90%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
-.modal-title{font-family:'DM Serif Display',serif;font-size:1.3rem;font-weight:400;
+.modal-title{font-family:'DM Sans',sans-serif;font-size:1.3rem;font-weight:650;
   color:var(--text);margin-bottom:16px}
 .modal-input{width:100%;background:var(--card);border:1px solid var(--border);border-radius:9px;
   padding:10px 14px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.9rem;
@@ -504,7 +547,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .sidebar.open{transform:translateX(0)}
 .sidebar-head{display:flex;align-items:center;justify-content:space-between;
   padding:18px 20px;border-bottom:1px solid var(--border)}
-.sidebar-logo{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--text)}
+.sidebar-logo{font-family:'DM Sans',sans-serif;font-size:1.1rem;color:var(--text)}
 .sidebar-close{width:28px;height:28px;border-radius:7px;border:1px solid var(--border);
   background:var(--card);color:var(--muted);cursor:pointer;font-size:.9rem;
   display:flex;align-items:center;justify-content:center;transition:all .15s}
@@ -544,7 +587,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .ai-sidebar{background:var(--surface);border-right:1px solid var(--border);
   display:flex;flex-direction:column;overflow:hidden}
 .ai-sidebar-head{padding:18px 16px 12px;border-bottom:1px solid var(--border)}
-.ai-sidebar-head h3{font-family:'DM Serif Display',serif;font-size:.95rem;font-weight:400;
+.ai-sidebar-head h3{font-family:'DM Sans',sans-serif;font-size:.95rem;font-weight:650;
   color:var(--text);margin-bottom:2px}
 .ai-sidebar-head p{font-size:.7rem;color:var(--muted)}
 .ai-suggestions{flex:1;overflow-y:auto;padding:10px 10px}
@@ -573,7 +616,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   display:flex;align-items:center;justify-content:center;flex-shrink:0;
   box-shadow:0 2px 8px var(--accent-shadow)}
 .ai-avatar svg{width:18px;height:18px;fill:var(--accent-on)}
-.ai-header-text h3{font-family:'DM Serif Display',serif;font-size:1rem;font-weight:400;color:var(--text)}
+.ai-header-text h3{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:650;color:var(--text)}
 .ai-header-text p{font-size:.72rem;color:var(--muted)}
 .ai-status-dot{width:8px;height:8px;border-radius:50%;background:#4caf7d;
   box-shadow:0 0 6px #4caf7d;margin-left:auto;flex-shrink:0}
@@ -592,7 +635,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   display:flex;align-items:center;justify-content:center;margin:0 auto 16px;
   box-shadow:0 4px 20px var(--accent-shadow)}
 .ai-welcome-icon svg{width:30px;height:30px;fill:var(--accent-on)}
-.ai-welcome h2{font-family:'DM Serif Display',serif;font-size:1.5rem;font-weight:400;
+.ai-welcome h2{font-family:'DM Sans',sans-serif;font-size:1.5rem;font-weight:650;
   color:var(--text);margin-bottom:8px;letter-spacing:-.01em}
 .ai-welcome p{color:var(--muted);font-size:.86rem;line-height:1.6;max-width:340px;margin:0 auto}
 
@@ -703,20 +746,20 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .rehab-injury-card:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px var(--accent-shadow)}
 .rehab-injury-card.disabled{cursor:default;opacity:.45}
 .rehab-injury-card.disabled:hover{transform:none;box-shadow:none;border-color:var(--border)}
-.rehab-injury-name{font-family:'DM Serif Display',serif;font-size:1.05rem;font-weight:400;
+.rehab-injury-name{font-family:'DM Sans',sans-serif;font-size:1.05rem;font-weight:650;
   color:var(--text);margin-bottom:6px}
 .rehab-injury-desc{font-size:.78rem;color:var(--muted);line-height:1.5;margin-bottom:12px}
 .rehab-injury-cta{font-size:.78rem;font-weight:600;color:var(--accent)}
 
 .rehab-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:22px}
-.rehab-injury-title{font-family:'DM Serif Display',serif;font-size:1.4rem;font-weight:400;color:var(--text)}
+.rehab-injury-title{font-family:'DM Sans',sans-serif;font-size:1.4rem;font-weight:650;color:var(--text)}
 .rehab-day-count{font-size:.82rem;color:var(--muted);margin-top:3px}
 
 .rehab-phase-track{display:flex;align-items:center;margin-bottom:22px}
 .rehab-phase-step{display:flex;flex-direction:column;align-items:center;gap:6px;flex-shrink:0}
 .rehab-phase-dot{width:30px;height:30px;border-radius:50%;border:1px solid var(--border);
   background:var(--card);color:var(--muted);display:flex;align-items:center;justify-content:center;
-  font-size:.78rem;font-weight:600;font-family:'DM Serif Display',serif}
+  font-size:.78rem;font-weight:600;font-family:'DM Sans',sans-serif}
 .rehab-phase-step.done .rehab-phase-dot{background:var(--sage-dim);border-color:var(--sage-border);color:var(--sage)}
 .rehab-phase-step.current .rehab-phase-dot{background:var(--accent);border-color:var(--accent);color:var(--accent-on)}
 .rehab-phase-label{font-size:.68rem;color:var(--muted);white-space:nowrap}
@@ -726,7 +769,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 
 .rehab-phase-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
   padding:18px 20px;margin-bottom:22px;box-shadow:var(--shadow)}
-.rehab-phase-name{font-family:'DM Serif Display',serif;font-size:1.1rem;font-weight:400;color:var(--text);margin-bottom:6px}
+.rehab-phase-name{font-family:'DM Sans',sans-serif;font-size:1.1rem;font-weight:650;color:var(--text);margin-bottom:6px}
 .rehab-phase-desc{font-size:.84rem;color:var(--text-2);line-height:1.5;margin-bottom:14px}
 .rehab-phase-complete{font-size:.8rem;color:var(--muted);line-height:1.5;
   background:var(--card);border-radius:9px;padding:10px 12px}
@@ -735,7 +778,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .rehab-ex-item{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;
   background:var(--surface);border:1px solid var(--border);border-radius:14px;
   padding:13px 16px;margin-bottom:9px}
-.rehab-ex-name{font-family:'DM Serif Display',serif;font-size:.94rem;font-weight:400;color:var(--text);margin-bottom:4px}
+.rehab-ex-name{font-family:'DM Sans',sans-serif;font-size:.94rem;font-weight:650;color:var(--text);margin-bottom:4px}
 .rehab-ex-cue{font-size:.78rem;color:var(--muted);line-height:1.5}
 .rehab-ex-tag{font-size:.72rem;color:var(--text-2);background:var(--card);border:1px solid var(--border);
   padding:3px 10px;border-radius:50px;white-space:nowrap;flex-shrink:0;margin-top:2px}
@@ -754,6 +797,139 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .rehab-caution-note{display:flex;align-items:flex-start;gap:6px;font-size:.76rem;color:var(--danger);
   background:var(--danger-dim);border:1px solid rgba(217,107,90,.2);border-radius:8px;
   padding:8px 11px;margin:0 auto 18px;max-width:340px;text-align:left;line-height:1.4}
+
+/* ═══════════════════════════════════
+   INTRO / WELCOME PAGE
+═══════════════════════════════════ */
+.intro-page{max-width:760px;margin:0 auto}
+.intro-hero{margin-bottom:36px}
+.intro-hero h1{font-family:'DM Sans',sans-serif;font-size:2.2rem;font-weight:650;
+  color:var(--text);letter-spacing:-.02em;margin-bottom:14px;line-height:1.15}
+.intro-hero p{color:var(--text-2);font-size:.95rem;line-height:1.7;max-width:58ch}
+.intro-hero p+p{margin-top:12px}
+
+.intro-steps{margin-bottom:36px}
+.intro-step{display:flex;gap:16px;background:var(--surface);border:1px solid var(--border);
+  border-radius:14px;padding:18px 20px;margin-bottom:12px;box-shadow:var(--shadow)}
+.intro-step-num{width:34px;height:34px;border-radius:50%;background:var(--accent-dim);
+  border:1px solid rgba(232,135,90,.25);color:var(--accent);display:flex;align-items:center;
+  justify-content:center;font-family:'DM Sans',sans-serif;font-size:1rem;flex-shrink:0}
+.intro-step-body h3{font-family:'DM Sans',sans-serif;font-size:1.05rem;font-weight:650;
+  color:var(--text);margin-bottom:5px}
+.intro-step-body p{color:var(--muted);font-size:.85rem;line-height:1.6}
+
+.intro-cta{display:flex;gap:10px;flex-wrap:wrap}
+.intro-cta-primary{padding:12px 26px;border-radius:50px;border:none;cursor:pointer;
+  background:var(--accent);color:var(--accent-on);font-family:'DM Sans',sans-serif;
+  font-size:.88rem;font-weight:600;transition:all .2s;box-shadow:0 4px 16px var(--accent-shadow)}
+.intro-cta-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}
+.intro-cta-secondary{padding:12px 26px;border-radius:50px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text-2);font-family:'DM Sans',sans-serif;
+  font-size:.88rem;font-weight:500;cursor:pointer;transition:all .18s}
+.intro-cta-secondary:hover{border-color:var(--border-strong);color:var(--text)}
+
+/* Floating bottom dock — hidden by default, only shown on mobile (see media query) */
+.floating-dock{display:none}
+
+/* ═══════════════════════════════════
+   MOBILE (phone) OVERRIDES
+   Only applies at narrow widths — desktop and tablet layouts above
+   680px are untouched by anything in this block.
+═══════════════════════════════════ */
+@media (max-width:680px){
+  .page{overflow-x:hidden}
+  /* Nav: hide the tab pills (redundant with sidebar), shrink padding/logo so
+     hamburger + back/forward + logo + theme toggle all fit on one line */
+  nav{padding:10px 14px;gap:6px}
+  .nav-tabs{display:none}
+  .theme-toggle{display:none}
+  .logo{font-size:1.05rem;gap:7px}
+  .logo-mark{width:28px;height:28px}
+  .logo-mark svg{width:21px;height:21px}
+  .nav-hist-btn{width:26px;height:26px}
+  .hamburger{padding:6px;margin-right:0}
+  .theme-toggle{flex-shrink:0}
+  .tt-btn{padding:5px 9px;font-size:.7rem}
+
+  /* Page padding */
+  .page{padding:18px 14px}
+  .ph h1{font-size:1.5rem}
+  #routinesPage .ph-row h1{font-size:1.5rem}
+  #routinesPage .ph-row{flex-wrap:wrap;gap:10px}
+  .new-routine-btn{font-size:.8rem;padding:8px 14px}
+
+  /* Builder: stack library above routine panel, full width, no fixed 390px column */
+  .builder-grid{grid-template-columns:1fr;gap:16px}
+  .builder-grid>*{min-width:0}
+  .ex-grid{grid-template-columns:1fr;max-height:400px;min-width:0}
+  .ex-card{min-width:0}
+  .rp{position:static;top:auto;min-width:0}
+
+  /* AI Coach: hide the suggestions rail, chat takes the full screen */
+  .ai-layout{grid-template-columns:1fr;margin:-18px -14px}
+  .ai-layout>*{min-width:0}
+  .ai-sidebar{display:none}
+  .ai-messages{padding:16px}
+  .ai-input-area{padding:12px 16px}
+  .msg{max-width:92%}
+
+  /* Workout: stack main card above the queue/YouTube sidebar */
+  .wlayout{grid-template-columns:1fr;gap:14px}
+  .wlayout>*{min-width:0}
+  .wmain{padding:20px 16px}
+  .ex-bigname{font-size:1.5rem}
+  .rep-big{font-size:4.2rem}
+  .tring-wrap{width:150px;height:150px}
+  .tap-btn{width:130px;height:130px}
+
+  /* Complete page */
+  .cpage h1{font-size:1.8rem}
+  .statbox{padding:14px 16px}
+  .statbox .big{font-size:1.5rem}
+
+  /* Routine preview */
+  .preview-header h1{font-size:1.3rem}
+  .preview-actions{flex-wrap:wrap}
+  .preview-edit-btn{flex:1}
+
+  /* Intro page */
+  .intro-hero h1{font-size:1.6rem}
+  .intro-step{padding:14px 16px}
+
+  /* Leave clearance at the bottom of scrollable pages so the floating dock never covers content */
+  .page{padding-bottom:104px}
+
+  /* Floating bottom dock — Dynamic Island style */
+  .floating-dock{
+    display:flex;align-items:center;gap:4px;
+    position:fixed;left:50%;bottom:22px;transform:translateX(-50%);
+    background:rgba(12,12,12,.82);backdrop-filter:blur(22px);-webkit-backdrop-filter:blur(22px);
+    border:1px solid rgba(255,255,255,.09);
+    border-radius:40px;padding:7px;z-index:150;
+    box-shadow:0 10px 34px rgba(0,0,0,.55);
+    transition:background .2s,border-color .2s,box-shadow .2s;
+  }
+  [data-theme="light"] .floating-dock{
+    background:rgba(255,255,255,.82);border-color:rgba(0,0,0,.08);
+    box-shadow:0 10px 30px rgba(0,0,0,.18);
+  }
+  body.hide-floating-dock .floating-dock{display:none}
+  body.hide-floating-dock .page{padding-bottom:18px}
+
+  .fd-btn{
+    width:50px;height:50px;border-radius:50%;border:none;background:none;cursor:pointer;
+    display:flex;align-items:center;justify-content:center;color:var(--text-2);
+    transition:background .15s,color .15s;flex-shrink:0;
+  }
+  .fd-btn svg{width:21px;height:21px}
+  .fd-btn:active{transform:scale(.92)}
+  .fd-btn.active{background:var(--accent-dim);color:var(--accent)}
+  .fd-divider{width:1px;height:26px;background:var(--border);margin:0 2px;flex-shrink:0}
+  .fd-theme .fd-icon-sun,.fd-theme .fd-icon-moon{display:none}
+  [data-theme="dark"] .fd-theme .fd-icon-sun{display:block}
+  [data-theme="light"] .fd-theme .fd-icon-moon{display:block}
+}
+
 </style>
 </head>
 <body>
@@ -826,25 +1002,59 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
         </svg>
         <input type="text" id="searchInput" placeholder="Search exercises…" oninput="filterEx()"/>
       </div>
-      <div class="chips" id="groupChips">
-        <button class="chip active" onclick="setGroup('all',this)">All</button>
-        <button class="chip" onclick="setGroup('chest',this)">Chest</button>
-        <button class="chip" onclick="setGroup('back',this)">Back</button>
-        <button class="chip" onclick="setGroup('legs',this)">Legs</button>
-        <button class="chip" onclick="setGroup('shoulders',this)">Shoulders</button>
-        <button class="chip" onclick="setGroup('arms',this)">Arms</button>
-        <button class="chip" onclick="setGroup('core',this)">Core</button>
-        <button class="chip" onclick="setGroup('cardio',this)">Cardio</button>
+      <div class="ex-filters-card" id="exFiltersCard">
+        <div class="muscle-select-wrap" id="muscleSelectWrap">
+          <div class="ex-filter-label">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h12M4 8h8M6.5 13h3"/></svg>
+            Muscle Group
+          </div>
+          <button class="muscle-select-btn" id="muscleSelectBtn" onclick="toggleSelectList('muscleSelectList','muscleSelectBtn',event)">
+            <span id="muscleSelectLabel">All Muscle Groups</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+          </button>
+          <div class="muscle-select-list hidden" id="muscleSelectList">
+            <button class="muscle-select-item active" data-group="all" onclick="selectMuscleGroup('all',this)">All Muscle Groups</button>
+            <button class="muscle-select-item" data-group="chest" onclick="selectMuscleGroup('chest',this)">Chest</button>
+            <button class="muscle-select-item" data-group="back" onclick="selectMuscleGroup('back',this)">Back</button>
+            <button class="muscle-select-item" data-group="legs" onclick="selectMuscleGroup('legs',this)">Legs</button>
+            <button class="muscle-select-item" data-group="shoulders" onclick="selectMuscleGroup('shoulders',this)">Shoulders</button>
+            <button class="muscle-select-item" data-group="arms" onclick="selectMuscleGroup('arms',this)">Arms</button>
+            <button class="muscle-select-item" data-group="core" onclick="selectMuscleGroup('core',this)">Core</button>
+            <button class="muscle-select-item" data-group="cardio" onclick="selectMuscleGroup('cardio',this)">Cardio</button>
+          </div>
+        </div>
+        <div class="muscle-select-wrap hidden" id="subRegionSelectWrap">
+          <div class="ex-filter-label">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2"/></svg>
+            Target Area
+          </div>
+          <button class="muscle-select-btn" id="subRegionSelectBtn" onclick="toggleSelectList('subRegionSelectList','subRegionSelectBtn',event)">
+            <span id="subRegionSelectLabel">All Areas</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+          </button>
+          <div class="muscle-select-list hidden" id="subRegionSelectList"></div>
+        </div>
+        <div class="muscle-select-wrap" id="equipSelectWrap">
+          <div class="ex-filter-label">
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l4 4M13 13l-4-4M9.5 6.5l-3 3M6 3L3 6M13 3l-3 3M3 13l3-3M10 10l3 3"/></svg>
+            Equipment
+          </div>
+          <button class="muscle-select-btn" id="equipSelectBtn" onclick="toggleSelectList('equipSelectList','equipSelectBtn',event)">
+            <span id="equipSelectLabel">All Equipment</span>
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+          </button>
+          <div class="muscle-select-list hidden" id="equipSelectList">
+            <button class="muscle-select-item active" data-eq="all" onclick="selectEquipMobile('all',this)">All Equipment</button>
+            <button class="muscle-select-item" data-eq="Barbell" onclick="selectEquipMobile('Barbell',this)">Barbell</button>
+            <button class="muscle-select-item" data-eq="Dumbbell" onclick="selectEquipMobile('Dumbbell',this)">Dumbbell</button>
+            <button class="muscle-select-item" data-eq="Cable" onclick="selectEquipMobile('Cable',this)">Cable</button>
+            <button class="muscle-select-item" data-eq="Machine" onclick="selectEquipMobile('Machine',this)">Machine</button>
+            <button class="muscle-select-item" data-eq="Kettlebell" onclick="selectEquipMobile('Kettlebell',this)">Kettlebell</button>
+            <button class="muscle-select-item" data-eq="No Equipment" onclick="selectEquipMobile('No Equipment',this)">No Equipment</button>
+          </div>
+        </div>
       </div>
-      <div class="sub-chips" id="eqChips">
-        <button class="sub-chip active" onclick="setEquip('all',this)">All Equipment</button>
-        <button class="sub-chip" onclick="setEquip('Barbell',this)">Barbell</button>
-        <button class="sub-chip" onclick="setEquip('Dumbbell',this)">Dumbbell</button>
-        <button class="sub-chip" onclick="setEquip('Cable',this)">Cable</button>
-        <button class="sub-chip" onclick="setEquip('Machine',this)">Machine</button>
-        <button class="sub-chip" onclick="setEquip('Kettlebell',this)">Kettlebell</button>
-        <button class="sub-chip" onclick="setEquip('No Equipment',this)">No Equipment</button>
-      </div>
+      <div class="sec-label ex-list-label" id="exListLabel">Exercises</div>
       <div class="ex-grid" id="exGrid"></div>
     </div>
     <div class="rp">
@@ -1116,6 +1326,79 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   <div id="rehabDashboard" class="hidden"></div>
 </div>
 
+<!-- ══════ INTRO / WELCOME ══════ -->
+<div class="page" id="introPage">
+  <div class="intro-page">
+    <div class="intro-hero">
+      <h1>Train on your terms.</h1>
+      <p>FITSET is a personal fitness companion that lives entirely in your browser. Build custom routines from a library of 280+ exercises, run guided workouts with timers and rep tracking, get coaching from an AI trainer, and follow structured rehab programs if you're recovering from an injury.</p>
+      <p>No account, no sign-up, no cloud database — every routine, workout, and rehab log is stored locally on your device.</p>
+    </div>
+
+    <div class="sec-label">How it works</div>
+    <div class="intro-steps">
+      <div class="intro-step">
+        <div class="intro-step-num">1</div>
+        <div class="intro-step-body">
+          <h3>Build a routine</h3>
+          <p>Head to the Builder, search or filter the exercise library by muscle group or equipment, and tap to add exercises. Set reps or timed duration for each, adjust rest between exercises, and choose how many rounds to repeat.</p>
+        </div>
+      </div>
+      <div class="intro-step">
+        <div class="intro-step-num">2</div>
+        <div class="intro-step-body">
+          <h3>Save it to My Routines</h3>
+          <p>Name your routine and save it. It'll show up as a card on the My Routines page — tap it to preview the full exercise list before you start.</p>
+        </div>
+      </div>
+      <div class="intro-step">
+        <div class="intro-step-num">3</div>
+        <div class="intro-step-body">
+          <h3>Start your workout</h3>
+          <p>Hit Start Workout and FITSET guides you through it — countdown timers for timed exercises, a tap or camera-based rep counter for rep exercises, and automatic rest breaks between each.</p>
+        </div>
+      </div>
+      <div class="intro-step">
+        <div class="intro-step-num">4</div>
+        <div class="intro-step-body">
+          <h3>Ask the AI Coach</h3>
+          <p>Not sure where to start? The AI Coach can build a full routine for you, answer form questions, or give nutrition and recovery advice — just ask, or tap a suggested prompt.</p>
+        </div>
+      </div>
+      <div class="intro-step">
+        <div class="intro-step-num">5</div>
+        <div class="intro-step-body">
+          <h3>Recovering from an injury? Try Rehab</h3>
+          <p>Rehab mode offers structured, phase-based recovery programs with guided exercises and pain/swelling check-ins. It's self-guided tracking, not medical advice — always confirm progression with a doctor or physical therapist.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-cta">
+      <button class="intro-cta-primary" onclick="showPage('builder')">Build Your First Routine</button>
+      <button class="intro-cta-secondary" onclick="showPage('routines')">See My Routines</button>
+    </div>
+  </div>
+</div>
+
+<!-- FLOATING BOTTOM DOCK (mobile only) -->
+<div class="floating-dock" id="floatingDock">
+  <button class="fd-btn fd-theme" id="fdTheme" onclick="toggleThemeMobile()" aria-label="Toggle dark or light theme" title="Toggle theme">
+    <svg class="fd-icon-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="10" cy="10" r="3.6"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.5 4.5l1.4 1.4M14.1 14.1l1.4 1.4M4.5 15.5l1.4-1.4M14.1 5.9l1.4-1.4" stroke-linecap="round"/></svg>
+    <svg class="fd-icon-moon" viewBox="0 0 20 20" fill="currentColor"><path d="M15.5 12.3A6.5 6.5 0 017.7 4.5a.6.6 0 00-.8-.7 8 8 0 108.9 8.9.6.6 0 00-.3-.4z"/></svg>
+  </button>
+  <div class="fd-divider"></div>
+  <button class="fd-btn" id="fdRoutines" onclick="showPage('routines')" aria-label="My Routines" title="My Routines">
+    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 4h14v2H3V4zm0 5h14v2H3V9zm0 5h10v2H3v-2z"/></svg>
+  </button>
+  <button class="fd-btn" id="fdBuilder" onclick="showPage('builder')" aria-label="Builder" title="Builder">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="6" height="6" rx="1"/><rect x="11" y="3" width="6" height="6" rx="1"/><rect x="3" y="11" width="6" height="6" rx="1"/><path d="M14 11v6M11 14h6"/></svg>
+  </button>
+  <button class="fd-btn" id="fdAi" onclick="showPage('ai')" aria-label="AI Coach" title="AI Coach">
+    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a4 4 0 00-4 4v1H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2V9a2 2 0 00-2-2h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4z"/></svg>
+  </button>
+</div>
+
 <!-- TOAST -->
 <div class="fitset-toast" id="fitsetToast"><span class="toast-dot"></span><span id="toastMsg"></span></div>
 
@@ -1138,6 +1421,10 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
     <button class="sidebar-close" onclick="closeSidebar()">✕</button>
   </div>
   <div class="sidebar-nav">
+    <button class="sidebar-item" id="sidebarIntro" onclick="showPage('intro');closeSidebar()">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="7.2"/><path d="M10 9v4.5M10 6.5v.01" stroke-linecap="round"/></svg>
+      How It Works
+    </button>
     <button class="sidebar-item" id="sidebarRoutines" onclick="showPage('routines');closeSidebar()">
       <svg viewBox="0 0 20 20" fill="currentColor"><path d="M3 4h14v2H3V4zm0 5h14v2H3V9zm0 5h10v2H3v-2z"/></svg>
       My Routines
@@ -1349,7 +1636,7 @@ const EX = [
 // ══════════════════════════════════════
 // STATE
 // ══════════════════════════════════════
-let curGroup='all', curEquip='all';
+let curGroup='all', curEquip='all', curSubRegion='all';
 let routine=[], globalRest=30, curRounds=1;
 let savedRoutines=[];
 let editingRoutineId=null;
@@ -1617,6 +1904,7 @@ function renderExGrid(){
   const list=EX.filter(e=>
     (curGroup==='all'||e.gk===curGroup)&&
     (curEquip==='all'||e.eq===curEquip)&&
+    (curSubRegion==='all'||normalizeMuscleToken(e.muscle.split('/')[0])===curSubRegion)&&
     (e.name.toLowerCase().includes(q)||e.muscle.toLowerCase().includes(q)||e.eq.toLowerCase().includes(q))
   );
   if(!list.length){
@@ -1645,29 +1933,100 @@ function setGroup(f,el){
   document.querySelectorAll('#groupChips .chip').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');renderExGrid();
 }
+
+// Mobile dropdown lists (alternative to the desktop chip rows).
+// One generic toggle handles all three (muscle group, target area, equipment) —
+// opening one auto-closes the others.
+function toggleSelectList(listId,btnId,e){
+  if(e)e.stopPropagation();
+  document.querySelectorAll('.muscle-select-list').forEach(l=>{if(l.id!==listId)l.classList.add('hidden');});
+  document.querySelectorAll('.muscle-select-btn').forEach(b=>{if(b.id!==btnId)b.classList.remove('open');});
+  document.getElementById(listId).classList.toggle('hidden');
+  document.getElementById(btnId).classList.toggle('open');
+}
+document.addEventListener('click',(e)=>{
+  document.querySelectorAll('.muscle-select-wrap').forEach(wrap=>{
+    if(!wrap.contains(e.target)){
+      wrap.querySelectorAll('.muscle-select-list').forEach(l=>l.classList.add('hidden'));
+      wrap.querySelectorAll('.muscle-select-btn').forEach(b=>b.classList.remove('open'));
+    }
+  });
+});
+
+function selectMuscleGroup(group,el){
+  curGroup=group;
+  curSubRegion='all';
+  document.querySelectorAll('#muscleSelectList .muscle-select-item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('muscleSelectLabel').textContent=el.textContent;
+  document.getElementById('muscleSelectList').classList.add('hidden');
+  document.getElementById('muscleSelectBtn').classList.remove('open');
+  updateSubRegionList(group,el.textContent);
+  renderExGrid();
+}
+
+// Sub-region ("Target Area") list is derived from the exercise data itself —
+// the primary muscle tag already written on each exercise (e.g. "Upper Chest",
+// "Lower Chest") — rather than hand-tagging every exercise a second time.
+function normalizeMuscleToken(t){
+  return t.replace(/\s*\([^)]*\)\s*$/,'').trim();
+}
+function getSubRegionsForGroup(gk){
+  const set=new Set();
+  EX.forEach(e=>{
+    if(e.gk===gk){
+      const first=normalizeMuscleToken(e.muscle.split('/')[0]);
+      if(first)set.add(first);
+    }
+  });
+  return Array.from(set).sort();
+}
+function updateSubRegionList(group,groupLabel){
+  const wrap=document.getElementById('subRegionSelectWrap');
+  const list=document.getElementById('subRegionSelectList');
+  const label=document.getElementById('subRegionSelectLabel');
+  if(group==='all'){
+    wrap.classList.add('hidden');
+    list.innerHTML='';
+    label.textContent='All Areas';
+    return;
+  }
+  const regions=getSubRegionsForGroup(group);
+  const allLabel='All '+groupLabel;
+  let html=`<button class="muscle-select-item active" onclick="selectSubRegion('all',this)">${allLabel}</button>`;
+  regions.forEach(r=>{
+    const escaped=r.replace(/'/g,"\\'");
+    html+=`<button class="muscle-select-item" onclick="selectSubRegion('${escaped}',this)">${r}</button>`;
+  });
+  list.innerHTML=html;
+  label.textContent=allLabel;
+  wrap.classList.remove('hidden');
+}
+function selectSubRegion(region,el){
+  curSubRegion=region;
+  document.querySelectorAll('#subRegionSelectList .muscle-select-item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('subRegionSelectLabel').textContent=el.textContent;
+  document.getElementById('subRegionSelectList').classList.add('hidden');
+  document.getElementById('subRegionSelectBtn').classList.remove('open');
+  renderExGrid();
+}
+
 function setEquip(f,el){
   curEquip=f;
   document.querySelectorAll('#eqChips .sub-chip').forEach(c=>c.classList.remove('active'));
   el.classList.add('active');
   renderExGrid();
 }
+function selectEquipMobile(eq,el){
+  setEquip(eq,el);
+  document.querySelectorAll('#equipSelectList .muscle-select-item').forEach(i=>i.classList.remove('active'));
+  el.classList.add('active');
+  document.getElementById('equipSelectLabel').textContent=el.textContent;
+  document.getElementById('equipSelectList').classList.add('hidden');
+  document.getElementById('equipSelectBtn').classList.remove('open');
+}
 
-// "No Equipment" shortcut also resets group to all
-document.addEventListener('DOMContentLoaded',()=>{
-  document.querySelectorAll('#eqChips .sub-chip').forEach(btn=>{
-    if(btn.textContent==='No Equipment'){
-      btn.onclick=function(){
-        curEquip='No Equipment';
-        document.querySelectorAll('#eqChips .sub-chip').forEach(c=>c.classList.remove('active'));
-        this.classList.add('active');
-        curGroup='all';
-        document.querySelectorAll('#groupChips .chip').forEach(c=>c.classList.remove('active'));
-        document.querySelector('#groupChips .chip').classList.add('active');
-        renderExGrid();
-      };
-    }
-  });
-});
 function filterEx(){renderExGrid();}
 
 function changeGlobalRest(d){
@@ -2093,11 +2452,29 @@ function showPage(name){
       (name==='workout'&&id==='navWorkout'));
   });
   syncSidebarActive(name);
+  syncFloatingDock(name);
   if(name==='routines')renderRoutinesPage();
   if(name==='builder')renderExGrid();
   if(name==='rehab')renderRehabPage();
   if(name==='ai')syncAiRehabSuggestions();
   recordPageHistory(name);
+}
+
+// Floating bottom dock (mobile) — active-state highlight + auto-hide on
+// pages that already have their own bottom-anchored controls (workout
+// end/pause bar, AI chat input) so nothing overlaps.
+function syncFloatingDock(name){
+  const fdRoutines=document.getElementById('fdRoutines');
+  const fdBuilder=document.getElementById('fdBuilder');
+  const fdAi=document.getElementById('fdAi');
+  if(fdRoutines)fdRoutines.classList.toggle('active',name==='routines'||name==='preview');
+  if(fdBuilder)fdBuilder.classList.toggle('active',name==='builder');
+  if(fdAi)fdAi.classList.toggle('active',name==='ai');
+  document.body.classList.toggle('hide-floating-dock',name==='ai'||name==='workout');
+}
+function toggleThemeMobile(){
+  const cur=document.documentElement.getAttribute('data-theme');
+  setTheme(cur==='dark'?'light':'dark');
 }
 
 // ══════════════════════════════════════
@@ -2694,9 +3071,10 @@ function closeSidebar(){
   document.body.style.overflow='';
 }
 function syncSidebarActive(name){
-  ['sidebarRoutines','sidebarBuilder','sidebarAi','sidebarRehab'].forEach(id=>{
+  ['sidebarIntro','sidebarRoutines','sidebarBuilder','sidebarAi','sidebarRehab'].forEach(id=>{
     const el=document.getElementById(id);if(!el)return;
     el.classList.toggle('active',
+      (name==='intro'&&id==='sidebarIntro')||
       (name==='routines'&&id==='sidebarRoutines')||
       (name==='builder'&&id==='sidebarBuilder')||
       (name==='ai'&&id==='sidebarAi')||
@@ -3032,11 +3410,6 @@ document.addEventListener('keydown',e=>{
 // INIT
 // ══════════════════════════════════════
 function ensureDefaultRoutine(){
-  // Only ever inject the sample routine once, on the very first load this
-  // browser has ever seen. Without this flag, deleting it (or every routine)
-  // would just cause it to silently come back on the next reload.
-  if(localStorage.getItem('fitsetInitialized'))return;
-  localStorage.setItem('fitsetInitialized','1');
   loadSavedRoutines();
   if(savedRoutines.length)return;
   const names=['Jumping Jack','Forearm Plank','Bicycle Crunch','Leg Raise','Mountain Climber','Russian Twist','Reverse Crunch'];
@@ -3045,7 +3418,7 @@ function ensureDefaultRoutine(){
     return e?cleanEx({...e,mode:'timed',duration:30,reps:e.defReps}):null;
   }).filter(Boolean);
   if(!exercises.length)return;
-  savedRoutines.push({id:'r_core_circuit',name:'Core Circuit',exercises,rest:15,rounds:3});
+  savedRoutines.push({id:'r_core_circuit',name:'Example Routine (Try Me!)',exercises,rest:15,rounds:3});
   persistRoutines();
 }
 
@@ -3054,6 +3427,7 @@ setTimeout(()=>{ openMotiv(); }, 600);
 ensureDefaultRoutine();
 loadRehabProgram();
 renderRoutinesPage();
+syncFloatingDock('routines');
 </script>
 </body>
 </html>
