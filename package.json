@@ -1,0 +1,6 @@
+{
+  "name": "fitset",
+  "version": "1.0.0",
+  "private": true,
+  "description": "FITSET - vanilla JS fitness app with a Claude-powered AI coach"
+}

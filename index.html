@@ -375,6 +375,38 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .cm-btn.active{background:var(--accent-dim);border-color:var(--accent);color:var(--accent)}
 
 .wctrl{display:flex;gap:9px;margin-top:8px;flex-wrap:wrap;justify-content:center}
+.sound-ctrl-wrap{position:relative;flex-shrink:0}
+.sound-toggle-btn{width:38px;height:38px;border-radius:50%;border:1px solid var(--border);
+  background:var(--card);color:var(--sage);cursor:pointer;display:flex;align-items:center;
+  justify-content:center;transition:all .18s;flex-shrink:0}
+.sound-toggle-btn:hover{border-color:var(--sage);background:var(--sage-dim)}
+.sound-toggle-btn svg{width:18px;height:18px}
+.sound-toggle-btn .snd-off{display:none}
+.sound-toggle-btn.muted{color:var(--muted)}
+.sound-toggle-btn.muted .snd-on{display:none}
+.sound-toggle-btn.muted .snd-off{display:block}
+
+.volume-panel{
+  position:absolute;bottom:calc(100% + 10px);right:0;left:auto;
+  width:220px;background:var(--surface);border:1px solid var(--border);border-radius:14px;
+  padding:14px 16px;box-shadow:var(--shadow-md);z-index:80;
+}
+.volume-panel::after{
+  content:'';position:absolute;top:100%;right:12px;left:auto;
+  border:6px solid transparent;border-top-color:var(--surface);
+}
+.volume-panel-label{font-size:.66rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  color:var(--muted);margin-bottom:10px;text-align:center}
+.volume-row{display:flex;align-items:center;gap:9px}
+.volume-mute-ico,.volume-max-ico{width:14px;height:14px;color:var(--muted);flex-shrink:0}
+.volume-slider{flex:1;-webkit-appearance:none;appearance:none;height:4px;border-radius:2px;
+  background:var(--border);accent-color:var(--sage);cursor:pointer}
+.volume-slider::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;
+  background:var(--sage);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.volume-slider::-moz-range-thumb{width:16px;height:16px;border-radius:50%;border:none;
+  background:var(--sage);cursor:pointer;box-shadow:0 1px 4px rgba(0,0,0,.3)}
+.volume-panel-pct{text-align:center;font-size:.78rem;color:var(--text-2);margin-top:8px;font-weight:600}
+
 .wsidebar{display:flex;flex-direction:column;gap:14px}
 .scard{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:var(--shadow)}
 .sc-title{font-size:.64rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:12px}
@@ -800,33 +832,116 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 
 /* ═══════════════════════════════════
    INTRO / WELCOME PAGE
+   Space (spacefs.com)-inspired: generous whitespace, one feature per
+   dedicated box, minimal copy, live scroll-triggered simulations instead
+   of static screenshots, and every CTA consolidated into one closing block.
 ═══════════════════════════════════ */
-.intro-page{max-width:760px;margin:0 auto}
-.intro-hero{margin-bottom:36px}
-.intro-hero h1{font-family:'DM Sans',sans-serif;font-size:2.2rem;font-weight:650;
-  color:var(--text);letter-spacing:-.02em;margin-bottom:14px;line-height:1.15}
-.intro-hero p{color:var(--text-2);font-size:.95rem;line-height:1.7;max-width:58ch}
-.intro-hero p+p{margin-top:12px}
+.intro-page{max-width:820px;margin:0 auto}
 
-.intro-steps{margin-bottom:36px}
-.intro-step{display:flex;gap:16px;background:var(--surface);border:1px solid var(--border);
-  border-radius:14px;padding:18px 20px;margin-bottom:12px;box-shadow:var(--shadow)}
-.intro-step-num{width:34px;height:34px;border-radius:50%;background:var(--accent-dim);
-  border:1px solid rgba(232,135,90,.25);color:var(--accent);display:flex;align-items:center;
-  justify-content:center;font-family:'DM Sans',sans-serif;font-size:1rem;flex-shrink:0}
-.intro-step-body h3{font-family:'DM Sans',sans-serif;font-size:1.05rem;font-weight:650;
-  color:var(--text);margin-bottom:5px}
-.intro-step-body p{color:var(--muted);font-size:.85rem;line-height:1.6}
+.intro-hero{padding:64px 0 0;margin-bottom:96px;text-align:center}
+.intro-hero h1{font-family:'DM Sans',sans-serif;font-size:clamp(2.6rem,6.5vw,4rem);font-weight:700;
+  color:var(--text);letter-spacing:-.03em;margin-bottom:20px;line-height:1.05}
+.intro-hero p{color:var(--text-2);font-size:1.05rem;line-height:1.6;max-width:46ch;margin:0 auto}
 
-.intro-cta{display:flex;gap:10px;flex-wrap:wrap}
-.intro-cta-primary{padding:12px 26px;border-radius:50px;border:none;cursor:pointer;
+/* Every feature lives in its own quiet, bordered box — one idea at a time */
+.intro-box{background:var(--surface);border:1px solid var(--border);border-radius:20px;
+  padding:56px 48px;margin-bottom:40px}
+.intro-box-label{font-size:.66rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:14px}
+.intro-box h2{font-family:'DM Sans',sans-serif;font-size:clamp(1.4rem,3vw,1.85rem);font-weight:700;
+  color:var(--text);letter-spacing:-.02em;margin-bottom:10px;line-height:1.2}
+.intro-box>p{color:var(--muted);font-size:.92rem;line-height:1.6;max-width:48ch;margin-bottom:36px}
+
+.intro-badge{display:inline-flex;align-items:center;gap:7px;font-size:.78rem;font-weight:600;
+  color:var(--accent);background:var(--accent-dim);border:1px solid rgba(232,135,90,.22);
+  padding:7px 16px;border-radius:50px}
+.intro-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--sage);
+  box-shadow:0 0 6px var(--sage)}
+.intro-ai-box{text-align:left}
+
+/* ── Simulation shell (shared by both mockups) ── */
+.sim-shell{background:var(--bg);border:1px solid var(--border);border-radius:16px;
+  padding:28px;overflow:hidden;position:relative}
+
+/* ── Simulation 1: Build ── */
+.sim-build{display:grid;grid-template-columns:1fr 220px;gap:20px}
+.sim-search{grid-column:1/-1;background:var(--card);border:1px solid var(--border);
+  border-radius:9px;padding:9px 14px;color:var(--muted);font-size:.8rem;margin-bottom:4px}
+.sim-ex-list{display:flex;flex-direction:column;gap:9px}
+.sim-ex-card{background:var(--card);border:1px solid var(--border);border-radius:11px;
+  padding:12px 14px;position:relative;opacity:0;transform:translateX(-14px);
+  transition:opacity .45s ease,transform .45s ease}
+.sim-build-box.in-view .sim-ex-card{opacity:1;transform:translateX(0)}
+.sim-build-box.in-view .sim-ex-card:nth-child(1){transition-delay:.1s}
+.sim-build-box.in-view .sim-ex-card:nth-child(2){transition-delay:.6s}
+.sim-build-box.in-view .sim-ex-card:nth-child(3){transition-delay:1.1s}
+.sim-ex-name{font-size:.86rem;font-weight:700;color:var(--text);margin-bottom:3px}
+.sim-ex-eq{font-size:.68rem;color:var(--accent);background:var(--accent-dim);
+  padding:2px 8px;border-radius:50px;display:inline-block}
+.sim-plus{position:absolute;top:10px;right:10px;width:20px;height:20px;border-radius:50%;
+  background:var(--card2);border:1px solid var(--border);color:var(--muted);font-size:.72rem;
+  font-weight:700;display:flex;align-items:center;justify-content:center;transition:all .3s ease}
+.sim-build-box.in-view .sim-ex-card:nth-child(1) .sim-plus{transition-delay:.4s}
+.sim-build-box.in-view .sim-ex-card:nth-child(2) .sim-plus{transition-delay:.9s}
+.sim-build-box.in-view .sim-ex-card:nth-child(3) .sim-plus{transition-delay:1.4s}
+.sim-build-box.in-view .sim-ex-card .sim-plus{background:var(--sage);border-color:var(--sage);
+  color:#fff;transform:scale(1.15)}
+.sim-routine-panel{background:var(--card);border:1px solid var(--border);border-radius:11px;
+  padding:14px}
+.sim-routine-title{font-size:.72rem;font-weight:700;color:var(--text-2);letter-spacing:.03em;
+  margin-bottom:10px;text-transform:uppercase}
+.sim-routine-item{display:flex;align-items:center;justify-content:space-between;gap:6px;
+  font-size:.76rem;color:var(--text);padding:7px 0;border-top:1px solid var(--border);
+  opacity:0;transform:translateY(6px);transition:opacity .4s ease,transform .4s ease}
+.sim-routine-item:first-child{border-top:none}
+.sim-build-box.in-view .sim-routine-item:nth-child(1){transition-delay:.55s;opacity:1;transform:translateY(0)}
+.sim-build-box.in-view .sim-routine-item:nth-child(2){transition-delay:1.05s;opacity:1;transform:translateY(0)}
+.sim-build-box.in-view .sim-routine-item:nth-child(3){transition-delay:1.55s;opacity:1;transform:translateY(0)}
+.sim-stepper{color:var(--accent);font-weight:700;background:var(--accent-dim);
+  padding:1px 8px;border-radius:50px;font-size:.7rem;flex-shrink:0}
+
+/* ── Simulation 2: Run ── */
+.sim-run{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+.sim-run-left{text-align:center}
+.sim-run-name{font-family:'DM Sans',sans-serif;font-size:1.15rem;font-weight:700;
+  color:var(--text);margin-bottom:16px;transition:opacity .25s ease}
+.sim-ring-wrap{position:relative;width:120px;height:120px;margin:0 auto}
+.sim-ring-wrap svg{width:100%;height:100%;transform:rotate(-90deg)}
+.sim-ring-wrap circle{fill:none;stroke-width:7}
+.sim-ring-wrap .bg{stroke:var(--border)}
+.sim-ring-wrap .fg{stroke:var(--accent);stroke-linecap:round;stroke-dasharray:264;
+  transition:stroke-dashoffset 1s linear}
+.sim-ring-num{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-family:'DM Sans',sans-serif;font-size:1.9rem;font-weight:700;color:var(--text)}
+.sim-queue{display:flex;flex-direction:column;gap:8px}
+.sim-queue-item{display:flex;align-items:center;gap:10px;font-size:.82rem;color:var(--text-2);
+  padding:9px 12px;background:var(--card);border:1px solid var(--border);border-radius:9px;
+  transition:all .3s ease}
+.sim-queue-item.done{opacity:.5}
+.sim-queue-item.current{border-color:var(--accent);color:var(--text)}
+.sim-check{width:16px;height:16px;border-radius:50%;border:1.5px solid var(--border-strong);
+  flex-shrink:0;display:flex;align-items:center;justify-content:center;transition:all .3s ease}
+.sim-queue-item.done .sim-check{background:var(--sage);border-color:var(--sage)}
+.sim-queue-item.done .sim-check::after{content:'✓';color:#fff;font-size:.6rem;font-weight:700}
+.sim-queue-item.current .sim-check{border-color:var(--accent)}
+
+.intro-closing{margin-top:72px;text-align:center;padding:0 0 24px}
+.intro-closing-eyebrow{font-size:.66rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--accent);margin-bottom:14px}
+.intro-closing h2{font-family:'DM Sans',sans-serif;font-size:clamp(1.6rem,3.6vw,2.2rem);font-weight:700;
+  color:var(--text);letter-spacing:-.02em;margin-bottom:32px;line-height:1.15}
+.intro-cta{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+.intro-cta-primary{padding:14px 30px;border-radius:50px;border:none;cursor:pointer;
   background:var(--accent);color:var(--accent-on);font-family:'DM Sans',sans-serif;
-  font-size:.88rem;font-weight:600;transition:all .2s;box-shadow:0 4px 16px var(--accent-shadow)}
+  font-size:.92rem;font-weight:700;transition:all .2s;box-shadow:0 4px 16px var(--accent-shadow)}
 .intro-cta-primary:hover{background:var(--accent-hover);transform:translateY(-1px)}
-.intro-cta-secondary{padding:12px 26px;border-radius:50px;border:1px solid var(--border);
+.intro-cta-secondary{padding:14px 30px;border-radius:50px;border:1px solid var(--border);
   background:var(--surface);color:var(--text-2);font-family:'DM Sans',sans-serif;
-  font-size:.88rem;font-weight:500;cursor:pointer;transition:all .18s}
+  font-size:.92rem;font-weight:600;cursor:pointer;transition:all .18s}
 .intro-cta-secondary:hover{border-color:var(--border-strong);color:var(--text)}
+.intro-signup-link{display:inline-block;margin-top:22px;font-size:.82rem;color:var(--muted);
+  text-decoration:none;border-bottom:1px solid transparent;transition:all .18s}
+.intro-signup-link:hover{color:var(--accent);border-bottom-color:var(--accent)}
 
 /* Floating bottom dock — hidden by default, only shown on mobile (see media query) */
 .floating-dock{display:none}
@@ -893,8 +1008,12 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   .preview-edit-btn{flex:1}
 
   /* Intro page */
-  .intro-hero h1{font-size:1.6rem}
-  .intro-step{padding:14px 16px}
+  .intro-hero{padding-top:32px;margin-bottom:56px}
+  .intro-box{padding:28px 20px;margin-bottom:24px}
+  .sim-shell{padding:16px}
+  .sim-build{grid-template-columns:1fr;gap:16px}
+  .sim-run{grid-template-columns:1fr;gap:22px}
+  .intro-closing{margin-top:48px}
 
   /* Leave clearance at the bottom of scrollable pages so the floating dock never covers content */
   .page{padding-bottom:104px}
@@ -931,6 +1050,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 }
 
 </style>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
 <body>
 
@@ -979,7 +1099,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 </nav>
 
 <!-- ══════ MY ROUTINES ══════ -->
-<div class="page active" id="routinesPage">
+<div class="page" id="routinesPage">
   <div class="ph-row">
     <h1>My Routines</h1>
     <button class="new-routine-btn" onclick="startNewRoutine()">+ New Routine</button>
@@ -1143,6 +1263,27 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
         <button class="cbtn cs" onclick="prevEx()">Prev</button>
         <button class="cbtn cp" id="pauseBtn" onclick="togglePause()">Pause</button>
         <button class="cbtn cs" onclick="nextEx()">Next</button>
+        <div class="sound-ctrl-wrap" id="soundCtrlWrap">
+          <button class="sound-toggle-btn" onclick="toggleVolumePanel(event)" title="Alert volume" aria-label="Alert volume">
+            <svg class="snd-on" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 7.5h2.8L10 4v12L5.8 12.5H3v-5z" fill="currentColor" stroke="none"/>
+              <path d="M13 7a4.2 4.2 0 010 6M15.3 4.5a7.7 7.7 0 010 11"/>
+            </svg>
+            <svg class="snd-off" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 7.5h2.8L10 4v12L5.8 12.5H3v-5z" fill="currentColor" stroke="none"/>
+              <path d="M13.5 7.5l4 5M17.5 7.5l-4 5"/>
+            </svg>
+          </button>
+          <div class="volume-panel hidden" id="volumePanel">
+            <div class="volume-panel-label">Alert Volume</div>
+            <div class="volume-row">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="volume-mute-ico"><path d="M3 7.5h2.8L10 4v12L5.8 12.5H3v-5z" fill="currentColor" stroke="none"/><path d="M13.5 7.5l4 5M17.5 7.5l-4 5"/></svg>
+              <input type="range" class="volume-slider" id="volumeSlider" min="0" max="100" value="60" oninput="setSoundVolume(this.value)"/>
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" class="volume-max-ico"><path d="M3 7.5h2.8L10 4v12L5.8 12.5H3v-5z" fill="currentColor" stroke="none"/><path d="M13 7a4.2 4.2 0 010 6M15.3 4.5a7.7 7.7 0 010 11"/></svg>
+            </div>
+            <div class="volume-panel-pct" id="volumePct">60%</div>
+          </div>
+        </div>
       </div>
       <div style="margin-top:10px"><button class="cbtn cd" onclick="endWorkout()">End Workout</button></div>
     </div>
@@ -1329,55 +1470,91 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 <!-- ══════ INTRO / WELCOME ══════ -->
 <div class="page" id="introPage">
   <div class="intro-page">
+
     <div class="intro-hero">
       <h1>Train on your terms.</h1>
-      <p>FITSET is a personal fitness companion that lives entirely in your browser. Build custom routines from a library of 280+ exercises, run guided workouts with timers and rep tracking, get coaching from an AI trainer, and follow structured rehab programs if you're recovering from an injury.</p>
-      <p>No account, no sign-up, no cloud database — every routine, workout, and rehab log is stored locally on your device.</p>
+      <p>Build routines, follow guided workouts, and get AI coaching — all in your browser.</p>
     </div>
 
-    <div class="sec-label">How it works</div>
-    <div class="intro-steps">
-      <div class="intro-step">
-        <div class="intro-step-num">1</div>
-        <div class="intro-step-body">
-          <h3>Build a routine</h3>
-          <p>Head to the Builder, search or filter the exercise library by muscle group or equipment, and tap to add exercises. Set reps or timed duration for each, adjust rest between exercises, and choose how many rounds to repeat.</p>
-        </div>
-      </div>
-      <div class="intro-step">
-        <div class="intro-step-num">2</div>
-        <div class="intro-step-body">
-          <h3>Save it to My Routines</h3>
-          <p>Name your routine and save it. It'll show up as a card on the My Routines page — tap it to preview the full exercise list before you start.</p>
-        </div>
-      </div>
-      <div class="intro-step">
-        <div class="intro-step-num">3</div>
-        <div class="intro-step-body">
-          <h3>Start your workout</h3>
-          <p>Hit Start Workout and FITSET guides you through it — countdown timers for timed exercises, a tap or camera-based rep counter for rep exercises, and automatic rest breaks between each.</p>
-        </div>
-      </div>
-      <div class="intro-step">
-        <div class="intro-step-num">4</div>
-        <div class="intro-step-body">
-          <h3>Ask the AI Coach</h3>
-          <p>Not sure where to start? The AI Coach can build a full routine for you, answer form questions, or give nutrition and recovery advice — just ask, or tap a suggested prompt.</p>
-        </div>
-      </div>
-      <div class="intro-step">
-        <div class="intro-step-num">5</div>
-        <div class="intro-step-body">
-          <h3>Recovering from an injury? Try Rehab</h3>
-          <p>Rehab mode offers structured, phase-based recovery programs with guided exercises and pain/swelling check-ins. It's self-guided tracking, not medical advice — always confirm progression with a doctor or physical therapist.</p>
+    <!-- Simulation 1: building a routine -->
+    <div class="intro-box sim-build-box" id="simBuildBox">
+      <div class="intro-box-label">Build</div>
+      <h2>Design your routine</h2>
+      <p>Search the exercise library, tap to add, and set reps or rest — it all lands in your routine as you go.</p>
+      <div class="sim-shell">
+        <div class="sim-build">
+          <div class="sim-search">Search exercises…</div>
+          <div class="sim-ex-list">
+            <div class="sim-ex-card">
+              <div class="sim-ex-name">Bench Press</div>
+              <div class="sim-ex-eq">Barbell</div>
+              <div class="sim-plus">+</div>
+            </div>
+            <div class="sim-ex-card">
+              <div class="sim-ex-name">Squat</div>
+              <div class="sim-ex-eq">Barbell</div>
+              <div class="sim-plus">+</div>
+            </div>
+            <div class="sim-ex-card">
+              <div class="sim-ex-name">Pull-Up</div>
+              <div class="sim-ex-eq">No Equipment</div>
+              <div class="sim-plus">+</div>
+            </div>
+          </div>
+          <div class="sim-routine-panel">
+            <div class="sim-routine-title">My Routine</div>
+            <div class="sim-routine-item"><span>Bench Press</span><span class="sim-stepper">10 reps</span></div>
+            <div class="sim-routine-item"><span>Squat</span><span class="sim-stepper">10 reps</span></div>
+            <div class="sim-routine-item"><span>Pull-Up</span><span class="sim-stepper">8 reps</span></div>
+          </div>
         </div>
       </div>
     </div>
 
-    <div class="intro-cta">
-      <button class="intro-cta-primary" onclick="showPage('builder')">Build Your First Routine</button>
-      <button class="intro-cta-secondary" onclick="showPage('routines')">See My Routines</button>
+    <!-- Simulation 2: running a routine -->
+    <div class="intro-box sim-run-box" id="simRunBox">
+      <div class="intro-box-label">Run</div>
+      <h2>Follow the workout</h2>
+      <p>Countdown timers, rep tracking, and rest breaks — FITSET guides you through every set automatically.</p>
+      <div class="sim-shell">
+        <div class="sim-run">
+          <div class="sim-run-left">
+            <div class="sim-run-name" id="simRunName">Jumping Jack</div>
+            <div class="sim-ring-wrap">
+              <svg viewBox="0 0 100 100">
+                <circle class="bg" cx="50" cy="50" r="42"/>
+                <circle class="fg" id="simRunRing" cx="50" cy="50" r="42" stroke-dashoffset="0"/>
+              </svg>
+              <div class="sim-ring-num" id="simRunNum">4</div>
+            </div>
+          </div>
+          <div class="sim-queue" id="simRunQueue">
+            <div class="sim-queue-item current"><span class="sim-check"></span>Jumping Jack</div>
+            <div class="sim-queue-item"><span class="sim-check"></span>Squat</div>
+            <div class="sim-queue-item"><span class="sim-check"></span>Push-Up</div>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <!-- AI Coach: minimal, no marketing copy -->
+    <div class="intro-box intro-ai-box">
+      <div class="intro-box-label">Coach</div>
+      <h2>Ask anything, anytime.</h2>
+      <span class="intro-badge">AI Coach · Powered by Claude</span>
+    </div>
+
+    <!-- Closing CTA — every primary action lives here -->
+    <div class="intro-closing">
+      <div class="intro-closing-eyebrow">Ready when you are</div>
+      <h2>Start training today.</h2>
+      <div class="intro-cta">
+        <button class="intro-cta-primary" onclick="showPage('builder')">Build Your First Routine</button>
+        <button class="intro-cta-secondary" onclick="showPage('routines')">See My Routines</button>
+      </div>
+      <a href="#" class="intro-signup-link" onclick="authMode='signup';openAuthModal();return false;">New here? Create a free account →</a>
+    </div>
+
   </div>
 </div>
 
@@ -1396,6 +1573,9 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   </button>
   <button class="fd-btn" id="fdAi" onclick="showPage('ai')" aria-label="AI Coach" title="AI Coach">
     <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a4 4 0 00-4 4v1H5a2 2 0 00-2 2v6a2 2 0 002 2h10a2 2 0 002-2V9a2 2 0 00-2-2h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4z"/></svg>
+  </button>
+  <button class="fd-btn" id="fdProfile" onclick="openAuthModal()" aria-label="Profile" title="Profile">
+    <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="7" r="3.2"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
   </button>
 </div>
 
@@ -1441,6 +1621,10 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3a3 3 0 100 6 3 3 0 000-6z"/><path d="M4 17c0-3 2.5-5.5 6-5.5s6 2.5 6 5.5"/><path d="M8.5 11.5L7 17M11.5 11.5L13 17"/></svg>
       Rehab
     </button>
+    <button class="sidebar-item" id="sidebarAccount" onclick="openAuthModal();closeSidebar()">
+      <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="7" r="3.2"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
+      <span id="sidebarAccountLabel">Sign In</span>
+    </button>
   </div>
   <div class="sidebar-footer">FITSET v2 · Your personal trainer</div>
 </div>
@@ -1482,6 +1666,33 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 </div>
 
 <!-- RENAME MODAL -->
+<!-- ACCOUNT MODAL -->
+<div class="modal-bg hidden" id="authModal">
+  <div class="modal-inner">
+    <div class="modal-title" id="authModalTitle">Sign In</div>
+
+    <div id="authFormSection">
+      <input class="modal-input" type="email" id="authEmail" placeholder="Email" autocomplete="email" style="margin-bottom:10px"/>
+      <input class="modal-input" type="password" id="authPassword" placeholder="Password" autocomplete="current-password"/>
+      <div id="authError" style="font-size:.78rem;margin-top:10px;min-height:1.2em;color:var(--danger)"></div>
+      <div style="font-size:.78rem;color:var(--muted);margin-top:14px;text-align:center">
+        <span id="authSwitchPrompt">Don't have an account?</span>
+        <a href="#" id="authSwitchLink" onclick="setAuthMode('signup');return false;" style="color:var(--accent);font-weight:600;text-decoration:none">Sign up</a>
+      </div>
+    </div>
+
+    <div id="authAccountSection" class="hidden" style="text-align:center;padding:6px 0 4px">
+      <div style="font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:6px">Signed in as</div>
+      <div style="color:var(--text);font-size:.92rem;font-weight:600;margin-bottom:18px" id="authAccountEmail"></div>
+    </div>
+
+    <div class="modal-btns">
+      <button class="modal-cancel" onclick="closeAuthModal()">Close</button>
+      <button class="modal-confirm" id="authSubmitBtn" onclick="submitAuth()">Sign In</button>
+    </div>
+  </div>
+</div>
+
 <div class="modal-bg hidden" id="renameModal">
   <div class="modal-inner">
     <div class="modal-title">Rename Routine</div>
@@ -1668,7 +1879,194 @@ function loadSavedRoutines(){
 }
 function persistRoutines(){
   localStorage.setItem('fitsetRoutines',JSON.stringify(savedRoutines));
+  if(currentUser)syncRoutinesToCloud();
 }
+
+// ══════════════════════════════════════
+// ACCOUNTS (Supabase)
+// localStorage stays the always-on, synchronous source of truth so none of
+// the existing render code has to change. When a user is signed in, every
+// persistRoutines() call also fires an async push to Supabase in the
+// background, and logging in pulls the cloud copy down over localStorage.
+// ══════════════════════════════════════
+const sb=(window.supabase&&window.supabase.createClient)?window.supabase.createClient(
+  'https://lsxncpgajqckafvwnhpo.supabase.co',
+  'sb_publishable_RiUwZsmkF-o7BWh8bz1zPg_ZLVm9JXg'
+):null;
+let currentUser=null;
+let authMode='signin';
+
+async function initAuth(){
+  if(!sb){console.warn('Supabase client unavailable — accounts disabled, using local storage only.');return;}
+  try{
+    const{data}=await sb.auth.getSession();
+    if(data&&data.session){
+      currentUser=data.session.user;
+      await migrateLocalRoutinesToCloud();
+      await loadRoutinesFromCloud();
+    }
+  }catch(e){console.error('Auth init failed',e);}
+  updateAuthUI();
+}
+
+function updateAuthUI(){
+  const label=document.getElementById('sidebarAccountLabel');
+  if(label)label.textContent=currentUser?currentUser.email:'Sign In';
+  const fdProfile=document.getElementById('fdProfile');
+  if(fdProfile)fdProfile.classList.toggle('active',!!currentUser);
+}
+
+function openAuthModal(){
+  authMode=currentUser?'account':'signin';
+  renderAuthModal();
+  document.getElementById('authModal').classList.remove('hidden');
+}
+function closeAuthModal(){
+  document.getElementById('authModal').classList.add('hidden');
+  document.getElementById('authError').textContent='';
+  document.getElementById('authError').style.color='var(--danger)';
+}
+function setAuthMode(mode){
+  authMode=mode;
+  document.getElementById('authError').textContent='';
+  renderAuthModal();
+}
+function renderAuthModal(){
+  const formSection=document.getElementById('authFormSection');
+  const acctSection=document.getElementById('authAccountSection');
+  const title=document.getElementById('authModalTitle');
+  const submitBtn=document.getElementById('authSubmitBtn');
+  if(authMode==='account'){
+    formSection.classList.add('hidden');
+    acctSection.classList.remove('hidden');
+    title.textContent='Account';
+    document.getElementById('authAccountEmail').textContent=currentUser?currentUser.email:'';
+    submitBtn.textContent='Sign Out';
+    submitBtn.onclick=signOutUser;
+  }else{
+    formSection.classList.remove('hidden');
+    acctSection.classList.add('hidden');
+    document.getElementById('authEmail').value='';
+    document.getElementById('authPassword').value='';
+    if(authMode==='signup'){
+      title.textContent='Create Account';
+      submitBtn.textContent='Sign Up';
+      document.getElementById('authSwitchPrompt').textContent='Already have an account?';
+      document.getElementById('authSwitchLink').textContent='Sign in';
+      document.getElementById('authSwitchLink').onclick=function(){setAuthMode('signin');return false;};
+    }else{
+      title.textContent='Sign In';
+      submitBtn.textContent='Sign In';
+      document.getElementById('authSwitchPrompt').textContent="Don't have an account?";
+      document.getElementById('authSwitchLink').textContent='Sign up';
+      document.getElementById('authSwitchLink').onclick=function(){setAuthMode('signup');return false;};
+    }
+    submitBtn.onclick=submitAuth;
+  }
+}
+
+async function submitAuth(){
+  const errEl=document.getElementById('authError');
+  if(!sb){errEl.textContent='Accounts are temporarily unavailable — try again in a moment.';return;}
+  const email=document.getElementById('authEmail').value.trim();
+  const password=document.getElementById('authPassword').value;
+  errEl.style.color='var(--danger)';
+  errEl.textContent='';
+  if(!email||!password){errEl.textContent='Enter an email and password.';return;}
+  if(password.length<6){errEl.textContent='Password must be at least 6 characters.';return;}
+
+  const submitBtn=document.getElementById('authSubmitBtn');
+  const origLabel=submitBtn.textContent;
+  submitBtn.textContent='Please wait…';submitBtn.disabled=true;
+
+  try{
+    if(authMode==='signup'){
+      const{data,error}=await sb.auth.signUp({email,password});
+      if(error){errEl.textContent=error.message;return;}
+      if(!data.session){
+        errEl.style.color='var(--sage)';
+        errEl.textContent='Check your email to confirm your account, then sign in.';
+        setAuthMode('signin');
+        return;
+      }
+      currentUser=data.user;
+    }else{
+      const{data,error}=await sb.auth.signInWithPassword({email,password});
+      if(error){errEl.textContent=error.message;return;}
+      currentUser=data.user;
+    }
+    await migrateLocalRoutinesToCloud();
+    await loadRoutinesFromCloud();
+    updateAuthUI();
+    closeAuthModal();
+    showToast('Signed in as '+currentUser.email);
+  }catch(e){
+    errEl.textContent='Something went wrong. Please try again.';
+    console.error(e);
+  }finally{
+    submitBtn.textContent=origLabel;submitBtn.disabled=false;
+  }
+}
+
+async function signOutUser(){
+  if(sb)await sb.auth.signOut();
+  currentUser=null;
+  updateAuthUI();
+  loadSavedRoutines();
+  renderRoutinesPage();
+  closeAuthModal();
+  showToast('Signed out — routines saved on this device only');
+}
+
+// One-time-per-login: push any routines already sitting in localStorage
+// (built before the user had an account) up to their new cloud account,
+// so switching to accounts never loses existing work.
+async function migrateLocalRoutinesToCloud(){
+  if(!currentUser||!sb)return;
+  loadSavedRoutines();
+  if(!savedRoutines.length)return;
+  try{
+    const{data:existing}=await sb.from('Fitset').select('id');
+    const existingIds=new Set((existing||[]).map(r=>r.id));
+    const toMigrate=savedRoutines.filter(r=>!existingIds.has(r.id));
+    for(const r of toMigrate){
+      await sb.from('Fitset').upsert({id:r.id,name:r.name,data:r});
+    }
+  }catch(e){console.error('Migration failed',e);}
+}
+
+async function loadRoutinesFromCloud(){
+  if(!currentUser||!sb)return;
+  try{
+    const{data,error}=await sb.from('Fitset').select('*').order('created_at',{ascending:true});
+    if(error){console.error(error);return;}
+    savedRoutines=(data||[]).map(row=>({...row.data,id:row.id,name:row.name}));
+    localStorage.setItem('fitsetRoutines',JSON.stringify(savedRoutines));
+    renderRoutinesPage();
+  }catch(e){console.error('Cloud load failed',e);}
+}
+
+// Mirrors the current in-memory routine list up to Supabase: upserts
+// everything present locally, deletes anything that's been removed locally.
+async function syncRoutinesToCloud(){
+  if(!currentUser||!sb)return;
+  try{
+    const{data:existing}=await sb.from('Fitset').select('id');
+    const existingIds=new Set((existing||[]).map(r=>r.id));
+    const localIds=new Set(savedRoutines.map(r=>r.id));
+    for(const r of savedRoutines){
+      await sb.from('Fitset').upsert({id:r.id,name:r.name,data:r});
+    }
+    for(const id of existingIds){
+      if(!localIds.has(id))await sb.from('Fitset').delete().eq('id',id);
+    }
+  }catch(e){console.error('Cloud sync failed',e);}
+}
+
+document.getElementById('authModal').addEventListener('click',function(e){
+  if(e.target===this)closeAuthModal();
+});
+
 
 // Computes total time/calories across all rounds of a routine
 function computeRoutineStats(exercises,rest,rounds){
@@ -2172,12 +2570,75 @@ function riPointerUp(){
 }
 
 // ══════════════════════════════════════
+// WORKOUT SOUND ALERTS
+// 3-2-1 countdown beep + a distinct completion alarm, generated with the
+// Web Audio API so no external sound files are needed. Volume (0-1)
+// persists to localStorage; 0 = muted.
+// ══════════════════════════════════════
+let audioCtx=null;
+let soundVolume=parseFloat(localStorage.getItem('fitsetSoundVolume'));
+if(isNaN(soundVolume))soundVolume=0.6;
+function getAudioCtx(){
+  if(!audioCtx){
+    try{audioCtx=new(window.AudioContext||window.webkitAudioContext)();}
+    catch(e){return null;}
+  }
+  if(audioCtx.state==='suspended')audioCtx.resume();
+  return audioCtx;
+}
+function playTone(freq,duration,type,volume,delay){
+  if(soundVolume<=0)return;
+  const ctx=getAudioCtx();
+  if(!ctx)return;
+  const startAt=ctx.currentTime+(delay||0);
+  const osc=ctx.createOscillator();
+  const gain=ctx.createGain();
+  osc.type=type||'sine';
+  osc.frequency.value=freq;
+  gain.gain.setValueAtTime((volume||0.25)*soundVolume,startAt);
+  gain.gain.exponentialRampToValueAtTime(0.001,startAt+duration);
+  osc.connect(gain);gain.connect(ctx.destination);
+  osc.start(startAt);osc.stop(startAt+duration);
+}
+function playCountdownBeep(){
+  playTone(880,0.15,'sine',0.22,0);
+}
+function playAlarmSound(){
+  // distinct two-tone chime so it's clearly different from the countdown ticks
+  playTone(1046.5,0.18,'square',0.28,0);
+  playTone(1318.5,0.22,'square',0.28,0.16);
+}
+function toggleVolumePanel(e){
+  if(e)e.stopPropagation();
+  document.querySelectorAll('.volume-panel').forEach(p=>p.classList.toggle('hidden'));
+}
+function setSoundVolume(val){
+  soundVolume=Math.max(0,Math.min(100,val))/100;
+  localStorage.setItem('fitsetSoundVolume',soundVolume);
+  updateSoundToggleUI();
+  if(soundVolume>0)getAudioCtx();
+}
+function updateSoundToggleUI(){
+  const pct=Math.round(soundVolume*100);
+  document.querySelectorAll('.sound-toggle-btn').forEach(btn=>btn.classList.toggle('muted',soundVolume<=0));
+  document.querySelectorAll('.volume-slider').forEach(el=>el.value=pct);
+  document.querySelectorAll('.volume-panel-pct').forEach(el=>el.textContent=pct+'%');
+}
+document.addEventListener('click',(e)=>{
+  const wrap=document.getElementById('soundCtrlWrap');
+  if(wrap && !wrap.contains(e.target)){
+    document.getElementById('volumePanel').classList.add('hidden');
+  }
+});
+
+// ══════════════════════════════════════
 // WORKOUT ENGINE
 // ══════════════════════════════════════
 function startWorkout(){
   if(!routine.length)return;
   wIdx=0;wStartTime=Date.now();isPaused=false;totalRepsAll=0;
   totalRounds=curRounds;curRound=1;
+  getAudioCtx(); // unlock audio on this user gesture (Start Workout tap)
   document.getElementById('navWorkout').classList.remove('hidden');
   showPage('workout');loadExercise(0);
 }
@@ -2223,7 +2684,8 @@ function loadExercise(idx){
     updateRing(timeLeft,totalTime);
     wTimer=setInterval(()=>{
       if(isPaused)return;timeLeft--;updateRing(timeLeft,totalTime);
-      if(timeLeft<=0){clearInterval(wTimer);triggerNextOrRest();}
+      if(timeLeft>0&&timeLeft<=3)playCountdownBeep();
+      if(timeLeft<=0){clearInterval(wTimer);playAlarmSound();triggerNextOrRest();}
     },1000);
   }else{
     document.getElementById('modeBadge').textContent='Reps';
@@ -2384,7 +2846,8 @@ function startRest(){
   updateRestRing(restLeft,globalRest);
   restTimer=setInterval(()=>{
     if(isPaused)return;restLeft--;updateRestRing(restLeft,globalRest);
-    if(restLeft<=0){clearInterval(restTimer);document.getElementById('restOverlay').classList.add('hidden');advanceToNext();}
+    if(restLeft>0&&restLeft<=3)playCountdownBeep();
+    if(restLeft<=0){clearInterval(restTimer);playAlarmSound();document.getElementById('restOverlay').classList.add('hidden');advanceToNext();}
   },1000);
 }
 function updateRestRing(sec,total){
@@ -2480,7 +2943,7 @@ function toggleThemeMobile(){
 // ══════════════════════════════════════
 // PAGE HISTORY (Chrome-style back/forward)
 // ══════════════════════════════════════
-let navHistory=['routines'],navHistoryPos=0,isNavigatingHistory=false;
+let navHistory=[],navHistoryPos=0,isNavigatingHistory=false;
 function recordPageHistory(name){
   if(!isNavigatingHistory){
     if(navHistory[navHistoryPos]!==name){
@@ -3047,6 +3510,17 @@ function nextMotiv(){
 
 function closeMotiv(){
   document.getElementById('motivModal').classList.add('hidden');
+  maybePromptSignIn();
+}
+
+// Show the sign-in prompt once, after the motivation popup is out of the way
+let signInPromptShown=false;
+function maybePromptSignIn(){
+  if(signInPromptShown||currentUser)return;
+  signInPromptShown=true;
+  setTimeout(()=>{
+    if(!currentUser){authMode='signin';openAuthModal();}
+  },500);
 }
 
 // Close on backdrop click
@@ -3422,12 +3896,85 @@ function ensureDefaultRoutine(){
   persistRoutines();
 }
 
-// Show motivation on first load after short delay
-setTimeout(()=>{ openMotiv(); }, 600);
+// ══════════════════════════════════════
+// INTRO PAGE SIMULATIONS (scroll-triggered)
+// Build box: CSS handles the staggered reveal once `.in-view` is added.
+// Run box: a small looping state machine that only runs while visible.
+// ══════════════════════════════════════
+(function(){
+  const buildBox=document.getElementById('simBuildBox');
+  if(buildBox){
+    const io=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting)buildBox.classList.add('in-view'); });
+    },{threshold:.35});
+    io.observe(buildBox);
+  }
+
+  const runBox=document.getElementById('simRunBox');
+  if(runBox){
+    const names=['Jumping Jack','Squat','Push-Up'];
+    const DUR=4;
+    const circumference=2*Math.PI*42;
+    let idx=0,sec=DUR,timer=null,running=false;
+    const ring=document.getElementById('simRunRing');
+    const numEl=document.getElementById('simRunNum');
+    const nameEl=document.getElementById('simRunName');
+    const items=()=>Array.from(document.querySelectorAll('#simRunQueue .sim-queue-item'));
+
+    function renderTick(){
+      numEl.textContent=sec;
+      ring.style.strokeDashoffset=circumference*(1-sec/DUR);
+    }
+    function goToExercise(i){
+      idx=i;
+      items().forEach((it,n)=>{
+        it.classList.toggle('current',n===idx);
+        it.classList.toggle('done',n<idx);
+      });
+      nameEl.style.opacity=0;
+      setTimeout(()=>{ nameEl.textContent=names[idx]; nameEl.style.opacity=1; },200);
+      sec=DUR;
+      renderTick();
+    }
+    function tick(){
+      sec--;
+      if(sec<0){
+        items()[idx].classList.add('done');
+        items()[idx].classList.remove('current');
+        goToExercise((idx+1)%names.length);
+        return;
+      }
+      renderTick();
+    }
+    function start(){
+      if(running)return;
+      running=true;
+      renderTick();
+      timer=setInterval(tick,1000);
+    }
+    function stop(){ running=false; clearInterval(timer); }
+    const io2=new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting)start();else stop(); });
+    },{threshold:.35});
+    io2.observe(runBox);
+  }
+})();
+
 ensureDefaultRoutine();
 loadRehabProgram();
-renderRoutinesPage();
-syncFloatingDock('routines');
+updateSoundToggleUI();
+initAuth();
+
+// First-time visitors land on the intro page instead of My Routines.
+// Returning visitors skip straight to their routines, same as before.
+const isNewVisitor=!localStorage.getItem('fitsetVisited');
+localStorage.setItem('fitsetVisited','true');
+if(isNewVisitor){
+  showPage('intro');
+}else{
+  showPage('routines');
+  setTimeout(()=>{ openMotiv(); }, 600);
+}
 </script>
 </body>
 </html>
