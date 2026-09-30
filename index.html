@@ -508,79 +508,67 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   font-family:'DM Sans',sans-serif;transition:all .15s}
 .sub-chip.active{border-color:var(--sage);color:var(--sage);background:var(--sage-dim)}
 
-/* Exercise filters: muscle group / target area / equipment dropdowns,
-   grouped in a distinctly-styled panel so they're never mistaken for
-   exercise cards below. Applies at every screen size. */
-.ex-filters-card{
-  display:flex;flex-direction:column;gap:12px;
-  background:var(--card2);border:1px dashed var(--border-strong);border-radius:14px;
-  padding:14px;margin-bottom:8px;
-}
-.muscle-select-wrap{display:block;position:relative;margin-bottom:0}
-.ex-filter-label{
-  display:flex;align-items:center;gap:6px;
-  font-size:.65rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
-  color:var(--muted);margin-bottom:6px;
-}
-.ex-filter-label svg{width:12px;height:12px;flex-shrink:0;opacity:.8}
-.muscle-select-btn{
-  width:100%;display:flex;align-items:center;justify-content:space-between;
-  background:var(--card);border:1px solid var(--border);border-radius:9px;
-  padding:10px 12px;color:var(--text);font-family:'DM Sans',sans-serif;
-  font-size:.85rem;font-weight:600;cursor:pointer;transition:border-color .15s;
-}
-.muscle-select-btn:hover,.muscle-select-btn:active{border-color:var(--accent)}
-.muscle-select-btn svg{width:15px;height:15px;color:var(--muted);flex-shrink:0;transition:transform .18s}
-.muscle-select-btn.open svg{transform:rotate(180deg)}
-.muscle-select-btn.open{border-color:var(--accent)}
-.muscle-select-list{
-  position:absolute;top:calc(100% + 6px);left:0;right:0;z-index:60;
-  background:var(--surface);border:1px solid var(--border-strong);border-radius:12px;
-  padding:6px;box-shadow:var(--shadow-md);max-height:320px;overflow-y:auto;
-}
-.muscle-select-item{
-  display:block;width:100%;text-align:left;padding:11px 12px;border-radius:8px;
-  border:none;background:none;color:var(--text-2);font-family:'DM Sans',sans-serif;
-  font-size:.86rem;cursor:pointer;transition:background .15s,color .15s;
-}
-.muscle-select-item:hover{background:var(--card)}
-.muscle-select-item.active{background:var(--accent-dim);color:var(--accent);font-weight:600}
-.muscle-select-item:active{background:var(--card)}
-.ex-list-label{display:block;margin-top:14px}
+/* Toolbar: search + muscle-group chips stay pinned while the list scrolls with the page */
+.bld-toolbar{position:sticky;top:var(--nav-h,61px);z-index:40;background:var(--bg);padding:10px 0 12px;margin-bottom:2px;
+  transition:border-color .2s,box-shadow .2s}
+.bld-search-row{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.bld-search-row .search-bar{flex:1;min-width:0;margin:0;cursor:text}
+.bld-search-row .search-bar input{min-width:0;font-size:.9rem}
+.search-bar input::-webkit-search-cancel-button{-webkit-appearance:none}
+.bld-clear{background:none;border:none;color:var(--muted);cursor:pointer;padding:2px;display:flex;flex-shrink:0}
+.bld-clear svg{width:14px;height:14px}
+.bld-clear:hover{color:var(--text)}
+.bld-filter-btn{position:relative;flex-shrink:0;width:42px;height:42px;border-radius:9px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text-2);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .15s}
+.bld-filter-btn svg{width:18px;height:18px}
+.bld-filter-btn:hover,.bld-filter-btn.open{border-color:var(--accent);color:var(--text)}
+.bld-filter-count{position:absolute;top:-6px;right:-6px;min-width:18px;height:18px;padding:0 5px;border-radius:50px;
+  background:var(--accent);color:var(--accent-on);font-size:.64rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.bld-chips{display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.bld-chips::-webkit-scrollbar{display:none}
+.bld-chips.wrap{flex-wrap:wrap;overflow:visible}
+.bld-chip{flex-shrink:0;display:inline-flex;align-items:center;gap:6px;padding:7px 14px;border-radius:50px;border:1px solid var(--border);
+  background:var(--surface);color:var(--text-2);font-family:'DM Sans',sans-serif;font-size:.8rem;font-weight:500;
+  cursor:pointer;white-space:nowrap;transition:background .15s,border-color .15s,color .15s;-webkit-tap-highlight-color:transparent}
+.bld-chip span{font-size:.7rem;color:var(--muted)}
+.bld-chip:hover:not(.active){border-color:var(--border-strong);color:var(--text)}
+.bld-chip.active{background:var(--accent);border-color:var(--accent);color:var(--accent-on)}
+.bld-chip.active span{color:var(--accent-on);opacity:.6}
+.bld-filter-panel{margin-top:12px;padding:14px;background:var(--surface);border:1px solid var(--border);border-radius:12px;animation:fadeUp .2s ease}
+.bld-filter-lbl{font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);margin-bottom:8px}
+#bldAreaWrap{margin-top:14px}
+.bld-count{display:flex;align-items:center;justify-content:space-between;gap:10px;font-size:.76rem;color:var(--muted);margin:4px 2px 10px}
+.bld-count button,.ex-empty button{background:none;border:none;color:var(--text-2);font-family:'DM Sans',sans-serif;font-size:.76rem;
+  text-decoration:underline;text-underline-offset:2px;cursor:pointer;padding:0}
 
-.ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;max-height:480px;overflow-y:auto;padding-right:4px}
-.ex-grid::-webkit-scrollbar{width:4px}
-.ex-grid::-webkit-scrollbar-thumb{background:var(--border);border-radius:4px}
-
-.ex-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;
-  padding:13px 13px 11px;cursor:pointer;transition:all .18s;position:relative;overflow:hidden}
-.ex-card:hover{border-color:var(--accent);transform:translateY(-2px);
-  box-shadow:0 6px 20px var(--accent-shadow)}
-.ex-card:active{border-color:var(--sage)}
-.ex-card .nm{font-family:'DM Sans',sans-serif;font-size:.92rem;font-weight:650;
-  margin-bottom:3px;color:var(--text)}
-.ex-card .mt{font-size:.7rem;color:var(--muted)}
-.ex-card .eq{font-size:.67rem;color:var(--accent);margin-top:5px;
-  background:var(--accent-dim);padding:2px 7px;border-radius:50px;display:inline-block}
-.grp-dot{display:inline-block;width:6px;height:6px;border-radius:50%;
-  background:var(--accent);margin-bottom:8px;opacity:.55}
-.add-badge{position:absolute;top:9px;right:9px;width:20px;height:20px;border-radius:50%;
-  background:var(--sage);color:#fff;display:flex;align-items:center;justify-content:center;
-  font-size:.7rem;font-weight:700;opacity:1;box-shadow:0 2px 8px rgba(0,0,0,.3);transition:transform .15s}
-.ex-card:hover .add-badge{transform:scale(1.12)}
-.ex-count-badge{font-size:.7rem;color:var(--accent);margin-top:2px}
-
-/* YouTube button on exercise cards */
-.ex-yt-btn{
-  position:absolute;bottom:9px;right:9px;
-  width:24px;height:24px;border-radius:7px;
-  border:1px solid var(--border);background:var(--card2);
-  cursor:pointer;display:flex;align-items:center;justify-content:center;
-  transition:all .15s;
-}
-.ex-yt-btn:hover{border-color:var(--border-strong);background:var(--card2)}
-.ex-yt-btn svg{width:9px;height:9px;fill:var(--muted);margin-left:1px;transition:fill .15s}
-.ex-yt-btn:hover svg{fill:var(--text)}
+.ex-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.ex-card{display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:12px;
+  padding:10px 11px 10px 14px;min-height:62px;cursor:pointer;position:relative;user-select:none;-webkit-user-select:none;
+  transition:border-color .18s,background .18s,transform .12s;-webkit-tap-highlight-color:transparent}
+.ex-card:hover{border-color:var(--border-strong)}
+.ex-card:active{transform:scale(.985)}
+.ex-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.ex-info{flex:1;min-width:0}
+.ex-card .nm{font-size:.9rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ex-card .mt{font-size:.72rem;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ex-card .in-tag{color:var(--text);font-weight:600}
+.ex-yt-btn{width:30px;height:30px;border-radius:8px;border:1px solid transparent;background:none;cursor:pointer;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;color:var(--muted);transition:all .15s}
+.ex-yt-btn:hover{border-color:var(--border);color:var(--text)}
+.ex-yt-btn svg{width:10px;height:10px;fill:currentColor;margin-left:1px}
+.ex-add{width:34px;height:34px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+  border:1.5px solid var(--border-strong);color:var(--text-2);font-size:.76rem;font-weight:700;
+  transition:background .2s,border-color .2s,color .2s}
+.ex-add svg{width:16px;height:16px}
+.ex-card:hover .ex-add{border-color:var(--accent);color:var(--text)}
+.ex-card.added{background:var(--card);border-color:var(--border-strong)}
+.ex-card.added .ex-add{background:var(--accent);border-color:var(--accent);color:var(--accent-on)}
+.ex-card.pop{animation:exCardFlash .6s ease-out}
+.ex-card.pop .ex-add{animation:exAddPop .42s cubic-bezier(.2,.9,.3,1.4)}
+@keyframes exAddPop{0%{transform:scale(.55)}60%{transform:scale(1.18)}100%{transform:scale(1)}}
+@keyframes exCardFlash{0%{box-shadow:0 0 0 0 var(--accent-shadow-strong)}100%{box-shadow:0 0 0 12px transparent}}
+.ex-empty{grid-column:1/-1;text-align:center;color:var(--muted);font-size:.84rem;padding:34px 10px;line-height:1.7}
+@media (max-width:980px){.ex-grid{grid-template-columns:1fr}}
 
 /* YouTube button inside routine panel items */
 .ri-yt-btn{
@@ -594,7 +582,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 
 /* Routine panel */
 .rp{background:var(--surface);border:1px solid var(--border);border-radius:14px;
-  padding:20px;position:sticky;top:72px;box-shadow:var(--shadow-md)}
+  padding:20px;position:sticky;top:calc(var(--nav-h,61px) + 14px);box-shadow:var(--shadow-md);
+  max-height:calc(100vh - var(--nav-h,61px) - 28px);overflow-y:auto;overscroll-behavior:contain}
 .rp-title-row{display:flex;align-items:center;gap:8px;margin-bottom:16px;
   border-bottom:1px solid var(--border);padding-bottom:12px}
 .rp-title-input{background:none;border:none;outline:none;
@@ -649,6 +638,84 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   text-align:center;border:1px solid var(--border)}
 .ss .v{font-family:'DM Sans',sans-serif;font-size:1.15rem;color:var(--accent)}
 .ss .l{font-size:.67rem;color:var(--muted);margin-top:2px}
+
+.rp-sheet-head,.bld-browse{display:none}
+.ri{align-items:center}
+.ri.just-added{animation:riFlash 1s ease-out}
+@keyframes riFlash{0%{border-color:var(--accent);background:var(--accent-dim)}100%{border-color:var(--border);background:var(--card)}}
+.ri-name{margin-bottom:7px}
+.ri-controls{flex-direction:row;flex-wrap:wrap;align-items:center;gap:8px}
+.ri-controls .num-val{min-width:56px}
+.ri-side{display:flex;flex-direction:column;gap:5px;align-items:center}
+.bld-tray,.bld-backdrop{display:none}
+
+/* ── Builder on phones: one scrolling list, a routine bar above the dock, routine opens as a bottom sheet ── */
+@media (max-width:680px){
+  /* clip (not hidden) so the page doesn't become a scroll container, which would stop the toolbar from pinning */
+  #builderPage{padding-bottom:196px;overflow-x:clip}
+  #builderPage .ph{margin-bottom:4px}
+  #builderPage .ph p{font-size:.8rem}
+  .bld-toolbar{margin:0 -14px 2px;padding:10px 14px 12px;border-bottom:1px solid transparent}
+  .bld-toolbar.stuck{border-bottom-color:var(--border);box-shadow:0 10px 18px -14px rgba(0,0,0,.55)}
+  .bld-toolbar>.bld-chips{margin:0 -14px;padding:0 14px}
+  .bld-search-row .search-bar{padding:10px 12px}
+  /* 16px stops iOS Safari from zooming in when the field is focused */
+  .bld-search-row .search-bar input{font-size:16px}
+  .ex-card{min-height:64px}
+
+  body.on-builder .bld-tray{display:flex}
+  body.sheet-open .bld-tray{display:none}
+  .bld-tray{position:fixed;left:0;right:0;margin:0 auto;bottom:94px;width:calc(100% - 28px);max-width:460px;z-index:149;
+    align-items:center;gap:12px;padding:9px 9px 9px 10px;border-radius:18px;border:1px solid var(--border-strong);
+    background:var(--surface);box-shadow:0 10px 30px rgba(0,0,0,.32);cursor:pointer;text-align:left;color:var(--text);
+    font-family:'DM Sans',sans-serif;transition:transform .38s cubic-bezier(.2,.8,.2,1);-webkit-tap-highlight-color:transparent}
+  .floating-dock.compact ~ .bld-tray{transform:translateY(14px)}
+  .bld-tray:active{scale:.98}
+  .bld-tray-count{width:40px;height:40px;border-radius:12px;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    background:var(--card2);border:1px solid var(--border);font-family:'DM Serif Display',serif;font-size:1.2rem;color:var(--text-2)}
+  .bld-tray.has .bld-tray-count{background:var(--accent);border-color:var(--accent);color:var(--accent-on)}
+  .bld-tray.bump .bld-tray-count{animation:exAddPop .42s cubic-bezier(.2,.9,.3,1.4)}
+  .bld-tray-text{flex:1;min-width:0;display:flex;flex-direction:column;gap:1px}
+  .bld-tray-title{font-size:.86rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .bld-tray-sub{font-size:.74rem;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;transition:color .2s}
+  .bld-tray.flash .bld-tray-sub{color:var(--text);font-weight:500}
+  .bld-tray-cta{display:flex;align-items:center;gap:4px;padding:9px 13px;border-radius:50px;flex-shrink:0;
+    background:var(--card2);color:var(--muted);font-size:.8rem;font-weight:600}
+  .bld-tray.has .bld-tray-cta{background:var(--accent);color:var(--accent-on)}
+  .bld-tray-cta svg{width:14px;height:14px}
+
+  .bld-backdrop{display:block;position:fixed;inset:0;z-index:205;background:rgba(0,0,0,.5);opacity:0;pointer-events:none;transition:opacity .3s}
+  body.sheet-open .bld-backdrop{opacity:1;pointer-events:auto}
+  body.sheet-open{overflow:hidden}
+  body.sheet-open .floating-dock{display:none}
+
+  #builderPage .rp{position:fixed;left:0;right:0;bottom:0;top:auto;z-index:210;max-height:88vh;max-height:88dvh;
+    overflow-y:auto;overscroll-behavior:contain;border-radius:22px 22px 0 0;border-bottom:none;
+    padding:0 16px calc(16px + env(safe-area-inset-bottom));box-shadow:0 -14px 40px rgba(0,0,0,.4);
+    transform:translateY(105%);visibility:hidden;
+    transition:transform .36s cubic-bezier(.2,.8,.2,1),visibility 0s linear .36s}
+  #builderPage .rp.open{transform:none;visibility:visible;transition:transform .36s cubic-bezier(.2,.8,.2,1),visibility 0s}
+  #builderPage .rp.dragging-sheet{transition:none}
+  .rp-sheet-head{display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:3;
+    background:var(--surface);margin:0 -16px 10px;padding:24px 16px 10px;touch-action:none;cursor:grab;
+    user-select:none;-webkit-user-select:none}
+  .rp-grabber{position:absolute;top:9px;left:50%;width:40px;height:5px;margin-left:-20px;border-radius:5px;background:var(--border-strong)}
+  .rp-sheet-title{font-size:1.05rem;font-weight:650;color:var(--text)}
+  .rp-sheet-close{width:32px;height:32px;border-radius:50%;border:1px solid var(--border);background:var(--card);color:var(--text-2);
+    display:flex;align-items:center;justify-content:center;cursor:pointer}
+  .rp-sheet-close svg{width:14px;height:14px}
+  #builderPage .rp .ico-btn{width:32px;height:32px;font-size:.95rem}
+  #builderPage .rp .mt-btn{padding:6px 12px;font-size:.74rem}
+  #builderPage .rp .rm-btn{padding:7px;font-size:.9rem}
+  #builderPage .rp .ri-yt-btn{width:30px;height:30px}
+  #builderPage .rp .start-btn{position:sticky;bottom:0;z-index:2}
+  .rlist{min-height:0}
+  .bld-browse{display:inline-block;margin-top:12px;padding:9px 18px;border-radius:50px;border:1px solid var(--border);
+    background:var(--card);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;cursor:pointer}
+}
+@media (max-width:360px){
+  .bld-tray{bottom:82px}
+}
 
 /* ═══════════════════════════════════
    WORKOUT PAGE
@@ -1357,11 +1424,9 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   .new-routine-btn{font-size:.8rem;padding:8px 14px}
 
   /* Builder: stack library above routine panel, full width, no fixed 390px column */
-  .builder-grid{grid-template-columns:1fr;gap:16px}
+  .builder-grid{grid-template-columns:1fr;gap:0}
   .builder-grid>*{min-width:0}
-  .ex-grid{grid-template-columns:1fr;max-height:400px;min-width:0}
   .ex-card{min-width:0}
-  .rp{position:static;top:auto;min-width:0}
 
   /* AI Coach: hide the suggestions rail, chat takes the full screen */
   .ai-layout{grid-template-columns:1fr;margin:-18px -14px}
@@ -1406,25 +1471,25 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   /* Floating bottom dock — frosted glass: dark tint + heavy blur so content shows through softly */
   .floating-dock{
     display:flex;align-items:center;gap:2px;
-    position:fixed;left:50%;bottom:20px;transform:translateX(-50%);
+    position:fixed;left:0;right:0;margin:0 auto;bottom:20px;
     width:calc(100% - 40px);max-width:380px;
-    background:rgba(38,38,40,.55);
-    backdrop-filter:blur(28px) saturate(180%);-webkit-backdrop-filter:blur(28px) saturate(180%);
-    border:1px solid rgba(255,255,255,.1);
+    background:rgba(38,38,40,.42);
+    backdrop-filter:blur(44px) saturate(200%);-webkit-backdrop-filter:blur(44px) saturate(200%);
+    border:1px solid rgba(255,255,255,.12);
     border-radius:32px;padding:6px;z-index:150;
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.07),0 2px 6px rgba(0,0,0,.18),0 12px 32px rgba(0,0,0,.34);
-    transition:width .38s cubic-bezier(.2,.8,.2,1),max-width .38s cubic-bezier(.2,.8,.2,1),padding .38s ease,
-      background .3s,border-color .3s,box-shadow .3s;
+    box-shadow:inset 0 1px 0 rgba(255,255,255,.08),0 2px 6px rgba(0,0,0,.18),0 12px 32px rgba(0,0,0,.34);
+    transform-origin:50% 100%;
+    transition:scale .4s cubic-bezier(.2,.8,.2,1),background .3s,border-color .3s,box-shadow .3s;
     animation:dockFloat 3.6s ease-in-out infinite;
-    will-change:transform;
+    will-change:transform,scale;
   }
-  /* Gentle 3px drift; translateX stays in every frame so the dock never loses its centering */
+  /* Gentle 3px vertical drift only; the dock is centered with auto margins so nothing can push it sideways */
   @keyframes dockFloat{
-    0%,100%{transform:translate(-50%,0)}
-    50%{transform:translate(-50%,-3px)}
+    0%,100%{transform:translateY(0)}
+    50%{transform:translateY(-3px)}
   }
   [data-theme="light"] .floating-dock{
-    background:rgba(250,249,246,.55);border-color:rgba(255,255,255,.7);
+    background:rgba(250,249,246,.45);border-color:rgba(255,255,255,.7);
     box-shadow:inset 0 1px 0 rgba(255,255,255,.6),0 2px 6px rgba(0,0,0,.06),0 12px 28px rgba(0,0,0,.13);
   }
   body.hide-floating-dock .floating-dock{display:none}
@@ -1437,11 +1502,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
     -webkit-tap-highlight-color:transparent;
   }
   .fd-btn svg{width:21px;height:21px;transition:transform .3s ease,width .38s ease,height .38s ease}
-  /* Scrolling down tucks the dock in (narrower, smaller icons); scrolling up brings it back */
-  .floating-dock.compact{width:calc(100% - 110px);max-width:292px;padding:4px}
-  .floating-dock.compact .fd-btn{height:40px}
-  .floating-dock.compact .fd-btn svg{width:18px;height:18px}
-  .floating-dock.compact .fd-divider{height:20px}
+  /* Scrolling down shrinks the whole dock toward its bottom-center; scrolling up restores it */
+  .floating-dock.compact{scale:.78}
   .fd-btn:hover svg{transform:scale(1.1)}
   .fd-btn:hover:not(.active){color:var(--text)}
   .fd-btn:active{transform:scale(.94)}
@@ -1451,7 +1513,6 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   [data-theme="light"] .fd-btn.active{background:rgba(0,0,0,.08)}
   @media (max-width:360px){
     .floating-dock{width:calc(100% - 24px);bottom:14px;padding:5px;gap:0}
-    .floating-dock.compact{width:calc(100% - 70px)}
     .fd-btn{height:44px}
     .fd-btn svg{width:20px;height:20px}
     .fd-divider{margin:0}
@@ -1583,99 +1644,70 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 
 <!-- ══════ BUILDER ══════ -->
 <div class="page" id="builderPage">
-  <div class="ph">
+  <div class="ph bld-head">
     <h1 id="builderTitle">Build Routine</h1>
-    <p>Pick exercises, set reps or time, and configure rest.</p>
+    <p>Tap exercises to add them, then set reps and start.</p>
   </div>
   <div class="builder-grid">
-    <div>
-      <div class="sec-label">Exercise Library</div>
-      <div class="search-bar">
-        <svg style="width:14px;height:14px;color:var(--muted);opacity:.6;flex-shrink:0" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6">
-          <circle cx="6.5" cy="6.5" r="4.5"/><path d="M10.5 10.5L14 14"/>
-        </svg>
-        <input type="text" id="searchInput" placeholder="Search exercises…" oninput="filterEx()"/>
-      </div>
-      <div class="ex-filters-card" id="exFiltersCard">
-        <div class="muscle-select-wrap" id="muscleSelectWrap">
-          <div class="ex-filter-label">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h12M4 8h8M6.5 13h3"/></svg>
-            Muscle Group
-          </div>
-          <button class="muscle-select-btn" id="muscleSelectBtn" onclick="toggleSelectList('muscleSelectList','muscleSelectBtn',event)">
-            <span id="muscleSelectLabel">All Muscle Groups</span>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
+    <div class="bld-lib">
+      <div class="bld-toolbar" id="bldToolbar">
+        <div class="bld-search-row">
+          <label class="search-bar">
+            <svg style="width:15px;height:15px;color:var(--muted);flex-shrink:0" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"><circle cx="6.5" cy="6.5" r="4.5"/><path d="M10.5 10.5L14 14"/></svg>
+            <input type="search" id="searchInput" placeholder="Search exercises" autocomplete="off" enterkeyhint="search"
+              oninput="filterEx()" onkeydown="if(event.key==='Enter')this.blur()" aria-label="Search exercises"/>
+            <button type="button" class="bld-clear hidden" id="searchClear" onclick="clearBuilderSearch()" aria-label="Clear search">
+              <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+            </button>
+          </label>
+          <button type="button" class="bld-filter-btn" id="bldFilterBtn" onclick="toggleBuilderFilters()" aria-expanded="false" aria-controls="bldFilterPanel" aria-label="More filters">
+            <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><path d="M3 6h8M15 6h2M3 14h2M9 14h8"/><circle cx="13" cy="6" r="2"/><circle cx="7" cy="14" r="2"/></svg>
+            <span class="bld-filter-count hidden" id="bldFilterCount"></span>
           </button>
-          <div class="muscle-select-list hidden" id="muscleSelectList">
-            <button class="muscle-select-item active" data-group="all" onclick="selectMuscleGroup('all',this)">All Muscle Groups</button>
-            <button class="muscle-select-item" data-group="chest" onclick="selectMuscleGroup('chest',this)">Chest</button>
-            <button class="muscle-select-item" data-group="back" onclick="selectMuscleGroup('back',this)">Back</button>
-            <button class="muscle-select-item" data-group="legs" onclick="selectMuscleGroup('legs',this)">Legs</button>
-            <button class="muscle-select-item" data-group="shoulders" onclick="selectMuscleGroup('shoulders',this)">Shoulders</button>
-            <button class="muscle-select-item" data-group="arms" onclick="selectMuscleGroup('arms',this)">Arms</button>
-            <button class="muscle-select-item" data-group="core" onclick="selectMuscleGroup('core',this)">Core</button>
-            <button class="muscle-select-item" data-group="cardio" onclick="selectMuscleGroup('cardio',this)">Cardio</button>
-          </div>
         </div>
-        <div class="muscle-select-wrap hidden" id="subRegionSelectWrap">
-          <div class="ex-filter-label">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="8" cy="8" r="6"/><circle cx="8" cy="8" r="2"/></svg>
-            Target Area
-          </div>
-          <button class="muscle-select-btn" id="subRegionSelectBtn" onclick="toggleSelectList('subRegionSelectList','subRegionSelectBtn',event)">
-            <span id="subRegionSelectLabel">All Areas</span>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
-          </button>
-          <div class="muscle-select-list hidden" id="subRegionSelectList"></div>
-        </div>
-        <div class="muscle-select-wrap" id="equipSelectWrap">
-          <div class="ex-filter-label">
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3l4 4M13 13l-4-4M9.5 6.5l-3 3M6 3L3 6M13 3l-3 3M3 13l3-3M10 10l3 3"/></svg>
-            Equipment
-          </div>
-          <button class="muscle-select-btn" id="equipSelectBtn" onclick="toggleSelectList('equipSelectList','equipSelectBtn',event)">
-            <span id="equipSelectLabel">All Equipment</span>
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>
-          </button>
-          <div class="muscle-select-list hidden" id="equipSelectList">
-            <button class="muscle-select-item active" data-eq="all" onclick="selectEquipMobile('all',this)">All Equipment</button>
-            <button class="muscle-select-item" data-eq="Barbell" onclick="selectEquipMobile('Barbell',this)">Barbell</button>
-            <button class="muscle-select-item" data-eq="Dumbbell" onclick="selectEquipMobile('Dumbbell',this)">Dumbbell</button>
-            <button class="muscle-select-item" data-eq="Cable" onclick="selectEquipMobile('Cable',this)">Cable</button>
-            <button class="muscle-select-item" data-eq="Machine" onclick="selectEquipMobile('Machine',this)">Machine</button>
-            <button class="muscle-select-item" data-eq="Kettlebell" onclick="selectEquipMobile('Kettlebell',this)">Kettlebell</button>
-            <button class="muscle-select-item" data-eq="No Equipment" onclick="selectEquipMobile('No Equipment',this)">No Equipment</button>
+        <div class="bld-chips" id="bldGroupChips" role="group" aria-label="Muscle group"></div>
+        <div class="bld-filter-panel hidden" id="bldFilterPanel">
+          <div class="bld-filter-lbl">Equipment</div>
+          <div class="bld-chips wrap" id="bldEquipChips" role="group" aria-label="Equipment"></div>
+          <div id="bldAreaWrap" class="hidden">
+            <div class="bld-filter-lbl">Target area</div>
+            <div class="bld-chips wrap" id="bldAreaChips" role="group" aria-label="Target area"></div>
           </div>
         </div>
       </div>
-      <div class="sec-label ex-list-label" id="exListLabel">Exercises</div>
+      <div class="bld-count" id="bldCount"></div>
       <div class="ex-grid" id="exGrid"></div>
     </div>
-    <div class="rp">
+    <div class="rp" id="routinePanel" aria-label="Your routine">
+      <div class="rp-sheet-head" id="rpSheetHead">
+        <div class="rp-grabber"></div>
+        <div class="rp-sheet-title">Your routine</div>
+        <button type="button" class="rp-sheet-close" onclick="closeRoutineSheet()" aria-label="Close">
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><path d="M4 4l8 8M12 4l-8 8"/></svg>
+        </button>
+      </div>
       <div class="rp-title-row">
-        <input class="rp-title-input" type="text" id="routineTitle" placeholder="Routine name…" value="My Routine"/>
+        <input class="rp-title-input" type="text" id="routineTitle" placeholder="Routine name…" value="My Routine" oninput="updateBuilderTray()" aria-label="Routine name"/>
         <button class="rp-save-btn" onclick="saveCurrentRoutine()">Save Routine</button>
       </div>
       <div class="global-rest">
         <label>Rest between exercises<span>Applied to all</span></label>
         <div class="rest-ctrl">
-          <button class="ico-btn" onclick="changeGlobalRest(-5)">−</button>
+          <button class="ico-btn" onclick="changeGlobalRest(-5)" aria-label="Less rest">−</button>
           <div class="rest-val" id="globalRestVal">30s</div>
-          <button class="ico-btn" onclick="changeGlobalRest(5)">+</button>
+          <button class="ico-btn" onclick="changeGlobalRest(5)" aria-label="More rest">+</button>
         </div>
       </div>
       <div class="global-rest">
         <label>Rounds<span>Repeat the whole routine</span></label>
         <div class="rest-ctrl">
-          <button class="ico-btn" onclick="changeRounds(-1)">−</button>
+          <button class="ico-btn" onclick="changeRounds(-1)" aria-label="Fewer rounds">−</button>
           <div class="rest-val" id="roundsVal">1</div>
-          <button class="ico-btn" onclick="changeRounds(1)">+</button>
+          <button class="ico-btn" onclick="changeRounds(1)" aria-label="More rounds">+</button>
         </div>
       </div>
       <div class="sec-label">Exercises</div>
-      <div class="rlist" id="rList">
-        <div class="empty-rlist">Select exercises from the library<br>to build your routine</div>
-      </div>
+      <div class="rlist" id="rList"></div>
       <div class="rsummary hidden" id="rSummary">
         <div class="ss"><div class="v" id="sEx">0</div><div class="l">Exercises</div></div>
         <div class="ss"><div class="v" id="sTime">0m</div><div class="l">Est. time</div></div>
@@ -2182,6 +2214,17 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
     <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="7" r="3.2"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
   </button>
 </div>
+
+<!-- BUILDER ROUTINE TRAY (mobile): sits above the dock, opens the routine sheet -->
+<button type="button" class="bld-tray" id="bldTray" onclick="openRoutineSheet()" aria-label="Review your routine">
+  <span class="bld-tray-count" id="bldTrayCount">0</span>
+  <span class="bld-tray-text">
+    <span class="bld-tray-title" id="bldTrayTitle">Your routine is empty</span>
+    <span class="bld-tray-sub" id="bldTraySub" aria-live="polite">Tap an exercise to add it</span>
+  </span>
+  <span class="bld-tray-cta">Review<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 10l4-4 4 4"/></svg></span>
+</button>
+<div class="bld-backdrop" id="bldBackdrop" onclick="closeRoutineSheet()"></div>
 
 <!-- TOAST -->
 <div class="fitset-toast" id="fitsetToast"><span class="toast-dot"></span><span id="toastMsg"></span></div>
@@ -3072,9 +3115,7 @@ function kgToDisplay(kg){return Math.round((wUnit()==='kg'?kg:kg*KG_TO_LB)*10)/1
 
 // Builder opens pre-filtered to bodyweight moves when the profile says "no equipment"
 function applyProfileEquipmentFilter(){
-  const eq=loadProfile().equipment==='none'?'No Equipment':'all';
-  const item=document.querySelector(`#equipSelectList .muscle-select-item[data-eq="${eq}"]`);
-  if(item)selectEquipMobile(eq,item);
+  setBuilderEquip(loadProfile().equipment==='none'?'No Equipment':'all',true);
 }
 function initProfile(){
   if(!localStorage.getItem('fitsetMemberSince')){
@@ -3893,76 +3934,17 @@ function launchRoutine(id){
 // ══════════════════════════════════════
 // BUILDER
 // ══════════════════════════════════════
-function renderExGrid(){
-  const q=document.getElementById('searchInput').value.toLowerCase();
-  const g=document.getElementById('exGrid');
-  const list=EX.filter(e=>
-    (curGroup==='all'||e.gk===curGroup)&&
-    (curEquip==='all'||e.eq===curEquip)&&
-    (curSubRegion==='all'||normalizeMuscleToken(e.muscle.split('/')[0])===curSubRegion)&&
-    (e.name.toLowerCase().includes(q)||e.muscle.toLowerCase().includes(q)||e.eq.toLowerCase().includes(q))
-  );
-  if(!list.length){
-    g.innerHTML='<div style="color:var(--muted);font-size:.82rem;padding:14px;grid-column:span 2">No exercises found</div>';
-    return;
-  }
-  g.innerHTML=list.map(e=>{
-    const inRoutine=routine.filter(r=>r.id===e.id).length;
-    const ytUrl=`https://www.youtube.com/results?search_query=${encodeURIComponent(e.ytQ)}`;
-    return`<div class="ex-card" onclick="addEx(${e.id})">
-      <div class="grp-dot"></div>
-      <div class="nm">${e.name}</div>
-      <div class="mt">${e.muscle}</div>
-      <div class="eq">${e.eq}</div>
-      ${inRoutine?`<div class="ex-count-badge">In routine${inRoutine>1?' ×'+inRoutine:''}</div>`:''}
-      <div class="add-badge">+</div>
-      <button class="ex-yt-btn" onclick="event.stopPropagation();window.open('${ytUrl}','_blank')" title="Watch tutorial on YouTube">
-        <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
-      </button>
-    </div>`;
-  }).join('');
-}
+const BLD_GROUPS=[['all','All'],['chest','Chest'],['back','Back'],['legs','Legs'],['shoulders','Shoulders'],['arms','Arms'],['core','Core'],['cardio','Cardio']];
+const BLD_EQUIP=[['all','Any'],['No Equipment','No equipment'],['Dumbbell','Dumbbell'],['Barbell','Barbell'],['Kettlebell','Kettlebell'],['Cable','Cable'],['Machine','Machine']];
+const BLD_PLUS='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M8 3v10M3 8h10"/></svg>';
+const BLD_CHECK='<svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg>';
+let bldAreas=[];
 
-function setGroup(f,el){
-  curGroup=f;
-  document.querySelectorAll('#groupChips .chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');renderExGrid();
-}
+function bldQuery(){return(document.getElementById('searchInput').value||'').trim().toLowerCase();}
+function bldTextMatch(e,q){return!q||e.name.toLowerCase().includes(q)||e.muscle.toLowerCase().includes(q)||e.eq.toLowerCase().includes(q);}
+function isMobileBuilder(){return window.matchMedia('(max-width:680px)').matches;}
 
-// Mobile dropdown lists (alternative to the desktop chip rows).
-// One generic toggle handles all three (muscle group, target area, equipment) —
-// opening one auto-closes the others.
-function toggleSelectList(listId,btnId,e){
-  if(e)e.stopPropagation();
-  document.querySelectorAll('.muscle-select-list').forEach(l=>{if(l.id!==listId)l.classList.add('hidden');});
-  document.querySelectorAll('.muscle-select-btn').forEach(b=>{if(b.id!==btnId)b.classList.remove('open');});
-  document.getElementById(listId).classList.toggle('hidden');
-  document.getElementById(btnId).classList.toggle('open');
-}
-document.addEventListener('click',(e)=>{
-  document.querySelectorAll('.muscle-select-wrap').forEach(wrap=>{
-    if(!wrap.contains(e.target)){
-      wrap.querySelectorAll('.muscle-select-list').forEach(l=>l.classList.add('hidden'));
-      wrap.querySelectorAll('.muscle-select-btn').forEach(b=>b.classList.remove('open'));
-    }
-  });
-});
-
-function selectMuscleGroup(group,el){
-  curGroup=group;
-  curSubRegion='all';
-  document.querySelectorAll('#muscleSelectList .muscle-select-item').forEach(i=>i.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('muscleSelectLabel').textContent=el.textContent;
-  document.getElementById('muscleSelectList').classList.add('hidden');
-  document.getElementById('muscleSelectBtn').classList.remove('open');
-  updateSubRegionList(group,el.textContent);
-  renderExGrid();
-}
-
-// Sub-region ("Target Area") list is derived from the exercise data itself —
-// the primary muscle tag already written on each exercise (e.g. "Upper Chest",
-// "Lower Chest") — rather than hand-tagging every exercise a second time.
+// Sub-region ("Target Area") list is derived from the primary muscle tag already on each exercise
 function normalizeMuscleToken(t){
   return t.replace(/\s*\([^)]*\)\s*$/,'').trim();
 }
@@ -3976,53 +3958,172 @@ function getSubRegionsForGroup(gk){
   });
   return Array.from(set).sort();
 }
-function updateSubRegionList(group,groupLabel){
-  const wrap=document.getElementById('subRegionSelectWrap');
-  const list=document.getElementById('subRegionSelectList');
-  const label=document.getElementById('subRegionSelectLabel');
-  if(group==='all'){
-    wrap.classList.add('hidden');
-    list.innerHTML='';
-    label.textContent='All Areas';
+
+function exCardHtml(e){
+  const n=routine.filter(r=>r.id===e.id).length;
+  const ytUrl=`https://www.youtube.com/results?search_query=${encodeURIComponent(e.ytQ||e.name+' exercise form').replace(/'/g,'%27')}`;
+  const name=escHtml(e.name);
+  return`<div class="ex-card${n?' added':''}" data-id="${e.id}" role="button" tabindex="0"
+      aria-label="${n?`${name}, in routine${n>1?' '+n+' times':''}. Add again`:`Add ${name}`}"
+      onclick="addEx(${e.id})" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();addEx(${e.id})}">
+    <div class="ex-info">
+      <div class="nm">${name}</div>
+      <div class="mt">${n?`<span class="in-tag">In routine${n>1?' ×'+n:''}</span> · `:''}${escHtml(normalizeMuscleToken(e.muscle.split('/')[0]))} · ${escHtml(e.eq)}</div>
+    </div>
+    <button type="button" class="ex-yt-btn" onclick="event.stopPropagation();window.open('${ytUrl}','_blank','noopener')" aria-label="Watch ${name} tutorial" title="Watch tutorial">
+      <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
+    </button>
+    <div class="ex-add" aria-hidden="true">${n?(n>1?'×'+n:BLD_CHECK):BLD_PLUS}</div>
+  </div>`;
+}
+
+function renderBuilderFilters(q){
+  const base=EX.filter(e=>(curEquip==='all'||e.eq===curEquip)&&bldTextMatch(e,q));
+  document.getElementById('bldGroupChips').innerHTML=BLD_GROUPS.map(([k,l])=>{
+    const n=k==='all'?base.length:base.filter(e=>e.gk===k).length;
+    return`<button type="button" class="bld-chip${curGroup===k?' active':''}" aria-pressed="${curGroup===k}" onclick="setBuilderGroup('${k}')">${l}<span>${n}</span></button>`;
+  }).join('');
+  document.getElementById('bldEquipChips').innerHTML=BLD_EQUIP.map(([v,l])=>
+    `<button type="button" class="bld-chip${curEquip===v?' active':''}" aria-pressed="${curEquip===v}" onclick="setBuilderEquip('${v}')">${l}</button>`).join('');
+  const areaWrap=document.getElementById('bldAreaWrap');
+  if(curGroup==='all'){areaWrap.classList.add('hidden');bldAreas=[];}
+  else{
+    bldAreas=getSubRegionsForGroup(curGroup);
+    document.getElementById('bldAreaChips').innerHTML=
+      `<button type="button" class="bld-chip${curSubRegion==='all'?' active':''}" onclick="setBuilderArea(-1)">All</button>`+
+      bldAreas.map((a,i)=>`<button type="button" class="bld-chip${curSubRegion===a?' active':''}" onclick="setBuilderArea(${i})">${escHtml(a)}</button>`).join('');
+    areaWrap.classList.remove('hidden');
+  }
+  const extra=(curEquip!=='all')+(curSubRegion!=='all');
+  const badge=document.getElementById('bldFilterCount');
+  badge.textContent=extra;badge.classList.toggle('hidden',!extra);
+  document.getElementById('searchClear').classList.toggle('hidden',!q);
+}
+
+function renderExGrid(){
+  const q=bldQuery();
+  renderBuilderFilters(q);
+  const list=EX.filter(e=>
+    (curGroup==='all'||e.gk===curGroup)&&
+    (curEquip==='all'||e.eq===curEquip)&&
+    (curSubRegion==='all'||normalizeMuscleToken(e.muscle.split('/')[0])===curSubRegion)&&
+    bldTextMatch(e,q)
+  );
+  const filtered=q||curGroup!=='all'||curEquip!=='all'||curSubRegion!=='all';
+  document.getElementById('bldCount').innerHTML=
+    `<span>${list.length} exercise${list.length===1?'':'s'}</span>${filtered?'<button type="button" onclick="clearBuilderFilters()">Clear filters</button>':''}`;
+  document.getElementById('exGrid').innerHTML=list.length?list.map(exCardHtml).join('')
+    :`<div class="ex-empty">No exercises match.<br><button type="button" onclick="clearBuilderFilters()">Clear filters</button></div>`;
+}
+
+// Replace just the cards for one exercise so the list doesn't redraw (and jump) on every tap
+function refreshExCards(id,pop){
+  const e=EX.find(x=>x.id===id);if(!e)return;
+  document.querySelectorAll(`#exGrid .ex-card[data-id="${id}"]`).forEach(card=>{
+    const tmp=document.createElement('div');tmp.innerHTML=exCardHtml(e).trim();
+    const fresh=tmp.firstElementChild;
+    if(pop)fresh.classList.add('pop');
+    const hadFocus=document.activeElement===card;
+    card.replaceWith(fresh);
+    if(hadFocus)fresh.focus({preventScroll:true});
+  });
+}
+
+// After changing a filter, bring the top of the results back into view under the pinned toolbar
+function scrollBuilderResultsTop(){
+  const lib=document.querySelector('.bld-lib');if(!lib)return;
+  const nav=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||60;
+  const top=lib.getBoundingClientRect().top+scrollY-nav;
+  if(scrollY>top)window.scrollTo({top});
+}
+function setBuilderGroup(g){
+  curGroup=g;curSubRegion='all';renderExGrid();scrollBuilderResultsTop();
+  const chip=document.querySelector('#bldGroupChips .bld-chip.active');
+  if(chip)chip.scrollIntoView({block:'nearest',inline:'center',behavior:'smooth'});
+}
+function setBuilderEquip(eq,silent){curEquip=eq;renderExGrid();if(!silent)scrollBuilderResultsTop();}
+function setBuilderArea(i){curSubRegion=i<0?'all':bldAreas[i];renderExGrid();scrollBuilderResultsTop();}
+function toggleBuilderFilters(force){
+  const panel=document.getElementById('bldFilterPanel'),btn=document.getElementById('bldFilterBtn');
+  const open=force!==undefined?force:panel.classList.contains('hidden');
+  panel.classList.toggle('hidden',!open);btn.classList.toggle('open',open);btn.setAttribute('aria-expanded',open);
+}
+function clearBuilderSearch(){
+  const s=document.getElementById('searchInput');s.value='';renderExGrid();s.focus();
+}
+function clearBuilderFilters(){
+  document.getElementById('searchInput').value='';
+  curGroup='all';curEquip='all';curSubRegion='all';
+  renderExGrid();scrollBuilderResultsTop();
+}
+function filterEx(){renderExGrid();}
+
+// ── Routine tray (mobile) + bottom sheet ──
+let bldTrayTimer=null;
+function updateBuilderTray(flashText){
+  const tray=document.getElementById('bldTray');if(!tray)return;
+  const n=routine.length;
+  const sub=document.getElementById('bldTraySub');
+  tray.classList.toggle('has',n>0);
+  document.getElementById('bldTrayCount').textContent=n;
+  document.getElementById('bldTrayTitle').textContent=n?(document.getElementById('routineTitle').value.trim()||'My Routine'):'Your routine is empty';
+  if(flashText){
+    sub.textContent=flashText;
+    tray.classList.remove('bump','flash');void tray.offsetWidth;tray.classList.add('bump','flash');
+    clearTimeout(bldTrayTimer);
+    bldTrayTimer=setTimeout(()=>{tray.classList.remove('flash');bldTrayTimer=null;updateBuilderTray();},1600);
     return;
   }
-  const regions=getSubRegionsForGroup(group);
-  const allLabel='All '+groupLabel;
-  let html=`<button class="muscle-select-item active" onclick="selectSubRegion('all',this)">${allLabel}</button>`;
-  regions.forEach(r=>{
-    const escaped=r.replace(/'/g,"\\'");
-    html+=`<button class="muscle-select-item" onclick="selectSubRegion('${escaped}',this)">${r}</button>`;
+  if(bldTrayTimer)return;
+  if(!n){sub.textContent='Tap an exercise to add it';return;}
+  const{mins}=computeRoutineStats(routine,globalRest,curRounds);
+  sub.textContent=`${n} exercise${n===1?'':'s'} · ~${mins<60?mins+' min':Math.floor(mins/60)+'h '+(mins%60)+'m'}`;
+}
+function openRoutineSheet(){
+  if(!isMobileBuilder())return;
+  document.getElementById('routinePanel').classList.add('open');
+  document.body.classList.add('sheet-open');
+}
+function closeRoutineSheet(){
+  const rp=document.getElementById('routinePanel');
+  if(rp){rp.classList.remove('open');rp.style.transform='';}
+  document.body.classList.remove('sheet-open');
+}
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.body.classList.contains('sheet-open'))closeRoutineSheet();});
+window.addEventListener('resize',()=>{if(!isMobileBuilder()&&document.body.classList.contains('sheet-open'))closeRoutineSheet();});
+// Drag the sheet's header down to dismiss it
+(function(){
+  const head=document.getElementById('rpSheetHead'),rp=document.getElementById('routinePanel');
+  if(!head||!rp)return;
+  let y0=null,dy=0;
+  head.addEventListener('pointerdown',e=>{
+    if(e.target.closest('button'))return;
+    y0=e.clientY;dy=0;rp.classList.add('dragging-sheet');head.setPointerCapture(e.pointerId);
   });
-  list.innerHTML=html;
-  label.textContent=allLabel;
-  wrap.classList.remove('hidden');
+  head.addEventListener('pointermove',e=>{
+    if(y0===null)return;
+    dy=Math.max(0,e.clientY-y0);rp.style.transform=`translateY(${dy}px)`;
+  });
+  const end=()=>{
+    if(y0===null)return;
+    y0=null;rp.classList.remove('dragging-sheet');rp.style.transform='';
+    if(dy>90)closeRoutineSheet();
+  };
+  head.addEventListener('pointerup',end);head.addEventListener('pointercancel',end);
+})();
+// Nav height drives the toolbar's sticky offset; the toolbar gets a divider once it's pinned
+function syncNavHeight(){
+  const nav=document.querySelector('nav');
+  if(nav)document.documentElement.style.setProperty('--nav-h',nav.offsetHeight+'px');
 }
-function selectSubRegion(region,el){
-  curSubRegion=region;
-  document.querySelectorAll('#subRegionSelectList .muscle-select-item').forEach(i=>i.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('subRegionSelectLabel').textContent=el.textContent;
-  document.getElementById('subRegionSelectList').classList.add('hidden');
-  document.getElementById('subRegionSelectBtn').classList.remove('open');
-  renderExGrid();
-}
-
-function setEquip(f,el){
-  curEquip=f;
-  document.querySelectorAll('#eqChips .sub-chip').forEach(c=>c.classList.remove('active'));
-  el.classList.add('active');
-  renderExGrid();
-}
-function selectEquipMobile(eq,el){
-  setEquip(eq,el);
-  document.querySelectorAll('#equipSelectList .muscle-select-item').forEach(i=>i.classList.remove('active'));
-  el.classList.add('active');
-  document.getElementById('equipSelectLabel').textContent=el.textContent;
-  document.getElementById('equipSelectList').classList.add('hidden');
-  document.getElementById('equipSelectBtn').classList.remove('open');
-}
-
-function filterEx(){renderExGrid();}
+window.addEventListener('resize',syncNavHeight);
+syncNavHeight();
+window.addEventListener('scroll',()=>{
+  if(!document.body.classList.contains('on-builder'))return;
+  const tb=document.getElementById('bldToolbar');if(!tb)return;
+  const nav=parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--nav-h'))||60;
+  tb.classList.toggle('stuck',tb.getBoundingClientRect().top<=nav+1&&scrollY>0);
+},{passive:true});
 
 function changeGlobalRest(d){
   globalRest=Math.max(0,Math.min(300,globalRest+d));
@@ -4035,13 +4136,27 @@ function changeRounds(d){
   renderRoutine();
 }
 
+let bldLastAdded=null;
 function addEx(id){
   const e=EX.find(x=>x.id===id);if(!e)return;
-  routine.push({...e,iid:Date.now()+Math.random(),mode:e.defMode,duration:e.defDur,reps:e.defReps});
-  renderRoutine();renderExGrid();
+  const item={...e,iid:Date.now()+Math.random(),mode:e.defMode,duration:e.defDur,reps:e.defReps};
+  routine.push(item);
+  bldLastAdded=item.iid;
+  renderRoutine();
+  refreshExCards(id,true);
+  updateBuilderTray(`${e.name} added`);
+  if(navigator.vibrate)navigator.vibrate(8);
+  // Desktop: the routine panel is on screen, so bring the new row into view there
+  if(!isMobileBuilder()){
+    const last=document.querySelector('#rList .ri:last-child');
+    if(last)last.scrollIntoView({block:'nearest',behavior:'smooth'});
+  }
 }
 function removeEx(iid){
-  routine=routine.filter(r=>r.iid!==iid);renderRoutine();renderExGrid();
+  const r=routine.find(x=>x.iid===iid);
+  routine=routine.filter(x=>x.iid!==iid);
+  renderRoutine();
+  if(r)refreshExCards(r.id);
 }
 function changeVal(iid,field,delta,min,max){
   const r=routine.find(x=>x.iid===iid);if(!r)return;
@@ -4056,13 +4171,17 @@ function renderRoutine(){
   const sum=document.getElementById('rSummary');
   const btn=document.getElementById('startBtn');
   if(!routine.length){
-    list.innerHTML='<div class="empty-rlist">Select exercises from the library<br>to build your routine</div>';
-    sum.classList.add('hidden');btn.disabled=true;return;
+    list.innerHTML=`<div class="empty-rlist">No exercises yet.<br>Tap exercises in the library to add them.<br>
+      <button type="button" class="bld-browse" onclick="closeRoutineSheet()">Browse exercises</button></div>`;
+    sum.classList.add('hidden');btn.disabled=true;
+    updateBuilderTray();
+    return;
   }
   list.innerHTML=routine.map((r,i)=>{
     const ytUrl=`https://www.youtube.com/results?search_query=${encodeURIComponent(r.ytQ||r.name+' exercise form')}`;
+    const isReps=r.mode==='reps';
     return`
-    <div class="ri">
+    <div class="ri${r.iid===bldLastAdded?' just-added':''}">
       <div class="ri-grip" onpointerdown="riPointerDown(event,${i})" title="Drag to reorder">
         <svg viewBox="0 0 10 16" width="10" height="16">
           <circle cx="2" cy="2" r="1.3" fill="currentColor"/><circle cx="8" cy="2" r="1.3" fill="currentColor"/>
@@ -4072,46 +4191,33 @@ function renderRoutine(){
       </div>
       <div class="ri-num">${i+1}</div>
       <div class="ri-body">
-        <div class="ri-name">${r.name}</div>
+        <div class="ri-name">${escHtml(r.name)}</div>
         <div class="ri-controls">
-          <div class="ri-row">
-            <span class="ri-lbl">Mode</span>
-            <div class="ri-mode-toggle">
-              <button class="mt-btn ${r.mode==='reps'?'active':''}" onclick="setMode(${r.iid},'reps')">Reps</button>
-              <button class="mt-btn ${r.mode==='timed'?'active':''}" onclick="setMode(${r.iid},'timed')">Time</button>
-            </div>
+          <div class="ri-mode-toggle">
+            <button class="mt-btn ${isReps?'active':''}" onclick="setMode(${r.iid},'reps')">Reps</button>
+            <button class="mt-btn ${!isReps?'active':''}" onclick="setMode(${r.iid},'timed')">Time</button>
           </div>
-          ${r.mode==='reps'?`
-          <div class="ri-row">
-            <span class="ri-lbl">Reps</span>
-            <div class="num-ctrl">
-              <button class="ico-btn" onclick="changeVal(${r.iid},'reps',-1,1,999)">−</button>
-              <span class="num-val">${r.reps}</span>
-              <button class="ico-btn" onclick="changeVal(${r.iid},'reps',1,1,999)">+</button>
-            </div>
-          </div>`:`
-          <div class="ri-row">
-            <span class="ri-lbl">Time</span>
-            <div class="num-ctrl">
-              <button class="ico-btn" onclick="changeVal(${r.iid},'duration',-5,5,600)">−</button>
-              <span class="num-val">${r.duration}s</span>
-              <button class="ico-btn" onclick="changeVal(${r.iid},'duration',5,5,600)">+</button>
-            </div>
-          </div>`}
+          <div class="num-ctrl">
+            <button class="ico-btn" onclick="changeVal(${r.iid},'${isReps?'reps':'duration'}',${isReps?-1:-5},${isReps?1:5},${isReps?999:600})" aria-label="Less">−</button>
+            <span class="num-val">${isReps?r.reps+' reps':r.duration+'s'}</span>
+            <button class="ico-btn" onclick="changeVal(${r.iid},'${isReps?'reps':'duration'}',${isReps?1:5},${isReps?1:5},${isReps?999:600})" aria-label="More">+</button>
+          </div>
         </div>
       </div>
-      <div style="display:flex;flex-direction:column;gap:5px;align-items:center">
+      <div class="ri-side">
         <a href="${ytUrl}" target="_blank" rel="noopener" class="ri-yt-btn" title="Watch on YouTube" onclick="event.stopPropagation()">
           <svg viewBox="0 0 10 10"><polygon points="2,1 9,5 2,9"/></svg>
         </a>
-        <button class="rm-btn" onclick="removeEx(${r.iid})" style="margin:0">✕</button>
+        <button class="rm-btn" onclick="removeEx(${r.iid})" style="margin:0" aria-label="Remove ${escHtml(r.name)}">✕</button>
       </div>
     </div>`}).join('');
+  bldLastAdded=null;
   const{mins,cals}=computeRoutineStats(routine,globalRest,curRounds);
   document.getElementById('sEx').textContent=routine.length;
   document.getElementById('sTime').textContent=mins<60?mins+'m':Math.floor(mins/60)+'h '+(mins%60)+'m';
   document.getElementById('sCals').textContent=cals;
   sum.classList.remove('hidden');btn.disabled=false;
+  updateBuilderTray();
 }
 
 // ── Drag to reorder (pointer events: works for mouse & touch) ──
@@ -4958,6 +5064,8 @@ function syncFloatingDock(name){
   document.body.classList.toggle('hide-floating-dock',name==='workout');
   setDockCompact(false);
   dockLastY=window.scrollY;
+  document.body.classList.toggle('on-builder',name==='builder');
+  if(name!=='builder')closeRoutineSheet();
 }
 let dockLastY=0,dockTicking=false;
 function setDockCompact(on){
@@ -5212,8 +5320,6 @@ const EX_MORE = [
   {id:1114,name:"Ski Jumps",muscle:"Legs / Cardio / Agility",group:"Cardio",gk:"cardio",eq:"No Equipment",defDur:30,defReps:1,cals:9,ytQ:"ski jumps exercise form tutorial",defMode:"timed"},
 ];
 EX.push(...EX_MORE);
-// Update equipment filter to handle No Equipment
-const _origSetEquip = setEquip;
 
 // ══════════════════════════════════════
 // REHAB MODE
@@ -6075,6 +6181,7 @@ loadActiveProgram();
 updateSoundToggleUI();
 updateVoiceToggleUI();
 initProfile();
+renderRoutine();
 initAuth();
 
 // First-time visitors land on the intro page; returning visitors land on Home.
