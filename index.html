@@ -2,37 +2,42 @@
 <html lang="en" data-theme="dark">
 <head>
 <meta charset="UTF-8"/>
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+<meta name="theme-color" content="#0e0e10"/>
 <title>FITSET — Build Your Routine</title>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&display=swap" rel="stylesheet"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=DM+Serif+Display&display=swap" rel="stylesheet"/>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 
 [data-theme="dark"]{
-  --bg:#1a1a1a; --surface:#222; --card:#2a2a2a; --card2:#303030;
-  --border:#383838; --border-strong:#505050; --nav-bg:rgba(26,26,26,.94);
-  --accent:#e8e6e1; --accent-dim:rgba(232,230,225,.08); --accent-hover:#ffffff;
-  --accent-shadow:rgba(232,230,225,.12); --accent-shadow-strong:rgba(232,230,225,.18);
-  --accent-on:#1a1a1a;
-  --sage:#8abf9a; --sage-dim:rgba(138,191,154,.1); --sage-border:rgba(138,191,154,.28);
-  --text:#f0ece8; --text-2:#b8b0a8; --muted:#686058;
-  --danger:#d96b5a; --danger-dim:rgba(217,107,90,.1);
-  --shadow:0 2px 10px rgba(0,0,0,.28); --shadow-md:0 4px 22px rgba(0,0,0,.38);
-  --logo-fill:#1a1a1a; --yt-bg:#cc0000; --overlay-bg:rgba(26,26,26,.97);
-  --heat-1:rgba(138,191,154,.28); --heat-2:rgba(138,191,154,.5); --heat-3:rgba(138,191,154,.75); --heat-4:#8abf9a;
+  --bg:#0e0e10; --bg-elev:#141417; --surface:#18181c; --card:#202025; --card2:#2a2a30;
+  --border:rgba(255,255,255,.08); --border-strong:rgba(255,255,255,.14); --nav-bg:rgba(14,14,16,.82);
+  --accent:#f3f2ef; --accent-dim:rgba(243,242,239,.08); --accent-hover:#ffffff;
+  --accent-shadow:rgba(0,0,0,.35); --accent-shadow-strong:rgba(0,0,0,.45);
+  --accent-on:#121214;
+  --sage:#43c467; --sage-dim:rgba(67,196,103,.1); --sage-border:rgba(67,196,103,.3);
+  --live:#43c467; --gold:#d9b25f;
+  --text:#f3f2ef; --text-2:#c9c8c4; --muted:#8d8c92;
+  --danger:#ef5350; --danger-dim:rgba(239,83,80,.1); --danger-border:rgba(239,83,80,.28);
+  --shadow:0 1px 2px rgba(0,0,0,.35),0 8px 24px rgba(0,0,0,.25); --shadow-md:0 12px 40px rgba(0,0,0,.45);
+  --logo-fill:#0e0e10; --yt-bg:#cc0000; --overlay-bg:rgba(14,14,16,.97);
+  --heat-1:#1d4d2c; --heat-2:#25723d; --heat-3:#2f9b50; --heat-4:#43c467;
 }
 [data-theme="light"]{
-  --bg:#e9e6e0; --surface:#e0ddd6; --card:#d5d1c8; --card2:#cac6bc;
-  --border:#bcb6a9; --border-strong:#a39c8d; --nav-bg:rgba(233,230,224,.95);
-  --accent:#3a3a3a; --accent-dim:rgba(58,58,58,.09); --accent-hover:#1a1a1a;
-  --accent-shadow:rgba(58,58,58,.16); --accent-shadow-strong:rgba(58,58,58,.24);
+  --bg:#f6f5f2; --bg-elev:#fbfaf8; --surface:#ffffff; --card:#f1f0ec; --card2:#e7e5e0;
+  --border:rgba(20,20,24,.08); --border-strong:rgba(20,20,24,.16); --nav-bg:rgba(246,245,242,.85);
+  --accent:#1b1b1f; --accent-dim:rgba(27,27,31,.06); --accent-hover:#000000;
+  --accent-shadow:rgba(20,20,24,.12); --accent-shadow-strong:rgba(20,20,24,.18);
   --accent-on:#ffffff;
-  --sage:#25794f; --sage-dim:rgba(37,121,79,.11); --sage-border:rgba(37,121,79,.32);
-  --text:#1a1a1a; --text-2:#4a4640; --muted:#847d6f;
-  --danger:#b0362a; --danger-dim:rgba(176,54,42,.09);
-  --shadow:0 2px 10px rgba(0,0,0,.1); --shadow-md:0 4px 22px rgba(0,0,0,.15);
-  --logo-fill:#e9e6e0; --yt-bg:#cc0000; --overlay-bg:rgba(233,230,224,.97);
-  --heat-1:rgba(37,121,79,.22); --heat-2:rgba(37,121,79,.42); --heat-3:rgba(37,121,79,.66); --heat-4:#25794f;
+  --sage:#2fa452; --sage-dim:rgba(47,164,82,.1); --sage-border:rgba(47,164,82,.3);
+  --live:#2fa452; --gold:#b8892f;
+  --text:#17171a; --text-2:#3a3a40; --muted:#7a7980;
+  --danger:#d64541; --danger-dim:rgba(214,69,65,.08); --danger-border:rgba(214,69,65,.28);
+  --shadow:0 1px 2px rgba(20,20,24,.05),0 6px 20px rgba(20,20,24,.06); --shadow-md:0 14px 44px rgba(20,20,24,.16);
+  --logo-fill:#f6f5f2; --yt-bg:#cc0000; --overlay-bg:rgba(246,245,242,.97);
+  --heat-1:#c6e9cf; --heat-2:#8dd3a0; --heat-3:#4fb36b; --heat-4:#2a8a47;
 }
 
 
@@ -52,11 +57,10 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .logo-mark{width:34px;height:34px;border-radius:8px;
   display:flex;align-items:center;justify-content:center;
   transition:background .2s,box-shadow .2s;overflow:hidden;flex-shrink:0}
-[data-theme="dark"] .logo-mark{background:#111111;box-shadow:0 2px 8px rgba(0,0,0,.5)}
-[data-theme="light"] .logo-mark{background:#e9e6e0;box-shadow:0 2px 8px rgba(0,0,0,.18);border:1px solid #bcb6a9}
+[data-theme="dark"] .logo-mark{background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow)}
+[data-theme="light"] .logo-mark{background:var(--surface);border:1px solid var(--border-strong);box-shadow:var(--shadow)}
 .logo-mark svg{width:24px;height:24px}
-[data-theme="dark"] .logo-mark svg{color:#f0ece8}
-[data-theme="light"] .logo-mark svg{color:#1a1a1a}
+.logo-mark svg{color:var(--text)}
 .nav-right{display:flex;align-items:center;gap:10px}
 .theme-toggle{display:flex;background:var(--card);border-radius:50px;padding:3px;border:1px solid var(--border)}
 .tt-btn{padding:5px 12px;border-radius:50px;border:none;cursor:pointer;font-family:'DM Sans',sans-serif;
@@ -98,11 +102,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .cp:hover{background:var(--accent-hover);transform:translateY(-1px)}
 .cs{background:var(--card);color:var(--text-2);border:1px solid var(--border)}
 .cs:hover{border-color:var(--border-strong);color:var(--text)}
-.cd{background:var(--danger-dim);color:var(--danger);border:1px solid rgba(217,107,90,.18)}
-.cd:hover{background:rgba(192,57,43,.14)}
+.cd{background:var(--danger-dim);color:var(--danger);border:1px solid var(--danger-border)}
+.cd:hover{filter:brightness(1.15)}
 .cdone{background:var(--sage-dim);color:var(--sage);border:1px solid var(--sage-border);
   font-size:.9rem;padding:12px 26px}
-.cdone:hover{background:rgba(47,158,110,.18)}
+.cdone:hover{filter:brightness(1.1)}
 
 /* ═══════════════════════════════════
    MY ROUTINES PAGE
@@ -140,7 +144,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .rc-start-btn{width:100%;padding:9px;border-radius:50px;border:none;cursor:pointer;
   background:var(--accent-dim);color:var(--accent);
   font-family:'DM Sans',sans-serif;font-size:.82rem;font-weight:600;transition:all .18s;
-  border:1px solid rgba(232,135,90,.2)}
+  border:1px solid var(--border-strong)}
 .rc-start-btn:hover{background:var(--accent);color:var(--accent-on)}
 .empty-routines{text-align:center;padding:60px 20px;color:var(--muted)}
 .empty-routines h3{font-family:'DM Sans',sans-serif;font-size:1.4rem;font-weight:650;
@@ -188,6 +192,16 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .home-hero{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin-bottom:22px}
 .home-hero h1{font-family:'DM Serif Display',serif;font-size:1.9rem;font-weight:400;color:var(--text);letter-spacing:-.02em}
 .home-hero p{color:var(--muted);font-size:.87rem;margin-top:4px}
+.home-streak{display:flex;align-items:center;gap:10px;padding:8px 16px 8px 9px;border-radius:50px;cursor:pointer;
+  background:var(--surface);border:1px solid var(--border);box-shadow:var(--shadow);font-family:'DM Sans',sans-serif;
+  color:var(--text);text-align:left;transition:border-color .18s,transform .18s}
+.home-streak:hover{border-color:var(--border-strong);transform:translateY(-1px)}
+.home-streak-ico{width:34px;height:34px;border-radius:50%;background:var(--card2);color:var(--text-2);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.home-streak.on .home-streak-ico{color:var(--text)}
+.home-streak-ico svg{width:17px;height:17px}
+.hs-val{display:block;font-family:'DM Serif Display',serif;font-weight:400;font-size:1.15rem;line-height:1.05;color:var(--text)}
+.hs-sub{display:block;font-size:.7rem;color:var(--muted);white-space:nowrap;margin-top:1px}
 .home-next-btn{padding:11px 22px;border-radius:50px;border:none;cursor:pointer;background:var(--accent);
   color:var(--accent-on);font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;
   box-shadow:0 3px 12px var(--accent-shadow);transition:all .18s;white-space:nowrap}
@@ -249,7 +263,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .home-log-chip{font-size:.7rem;padding:3px 10px;border-radius:50px;background:var(--card);
   border:1px solid var(--border);color:var(--text-2);white-space:nowrap;flex-shrink:0}
 .home-log-chip.easy{color:var(--sage);border-color:var(--sage-border);background:var(--sage-dim)}
-.home-log-chip.hard{color:var(--danger);border-color:rgba(217,107,90,.25);background:var(--danger-dim)}
+.home-log-chip.hard{color:var(--danger);border-color:var(--danger-border);background:var(--danger-dim)}
 
 @media (max-width:680px){
   .home-hero h1{font-size:1.5rem}
@@ -357,7 +371,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .pf-btn:hover{border-color:var(--border-strong);color:var(--text)}
 .pf-btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-on)}
 .pf-btn.primary:hover{background:var(--accent-hover)}
-.pf-btn.danger{color:var(--danger);border-color:rgba(217,107,90,.3);background:var(--danger-dim)}
+.pf-btn.danger{color:var(--danger);border-color:var(--danger-border);background:var(--danger-dim)}
 .pf-link{background:none;border:none;cursor:pointer;color:var(--muted);font-family:'DM Sans',sans-serif;
   font-size:.8rem;font-weight:500;padding:0;text-decoration:underline;text-underline-offset:2px}
 .pf-link:hover{color:var(--text)}
@@ -423,7 +437,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .pf-act-val{font-family:'DM Serif Display',serif;font-weight:400;font-size:1.3rem;color:var(--text);margin-top:3px;white-space:nowrap}
 .pf-act-stat.right{text-align:right}
 .pf-act-medal{display:inline-flex;align-items:center;gap:5px}
-.pf-act-medal svg{width:18px;height:18px;color:#d4a24c}
+.pf-act-medal svg{width:18px;height:18px;color:var(--gold)}
 .pf-act-medal.none{color:var(--muted)}
 .pf-act-medal.none svg{color:var(--muted)}
 .pf-act-ex{background:var(--card);border-top:1px solid var(--border);padding:8px 18px 12px}
@@ -433,8 +447,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   display:flex;align-items:center;justify-content:center;font-size:.64rem;color:var(--muted)}
 .pf-act-exrow .nm{flex:1;min-width:0;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .pf-act-exrow .v{color:var(--text-2);white-space:nowrap}
-.pf-act-exrow .pr{font-size:.6rem;font-weight:700;letter-spacing:.06em;color:#d4a24c;border:1px solid rgba(212,162,76,.4);
-  background:rgba(212,162,76,.1);border-radius:50px;padding:1px 6px}
+.pf-act-exrow .pr{font-size:.6rem;font-weight:700;letter-spacing:.06em;color:var(--gold);border:1px solid color-mix(in srgb,var(--gold) 45%,transparent);
+  background:color-mix(in srgb,var(--gold) 12%,transparent);border-radius:50px;padding:1px 6px}
 .pf-act-exrow.extra{display:none}
 .pf-act.expanded .pf-act-exrow.extra{display:flex}
 .pf-act-more{background:none;border:none;cursor:pointer;color:var(--text-2);text-decoration:underline;text-underline-offset:2px;font-family:'DM Sans',sans-serif;
@@ -717,6 +731,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   .bld-tray{bottom:82px}
 }
 
+
 /* ═══════════════════════════════════
    WORKOUT PAGE
 ═══════════════════════════════════ */
@@ -735,7 +750,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .mode-badge{display:inline-flex;align-items:center;gap:6px;padding:5px 14px;
   border-radius:50px;font-size:.73rem;font-weight:500;margin-bottom:18px;
   border:1px solid var(--border);color:var(--muted)}
-.mode-badge.timed{background:var(--accent-dim);border-color:rgba(232,135,90,.28);color:var(--accent)}
+.mode-badge.timed{background:var(--accent-dim);border-color:var(--border-strong);color:var(--accent)}
 .mode-badge.reps{background:var(--sage-dim);border-color:var(--sage-border);color:var(--sage)}
 
 .tring-wrap{position:relative;width:170px;height:170px;margin:0 auto 24px}
@@ -835,7 +850,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .qi-name{font-size:.82rem;flex:1;color:var(--text-2)}
 .qi-tag{font-size:.69rem;color:var(--muted);background:var(--card);padding:2px 8px;border-radius:50px;border:1px solid var(--border)}
 .round-badge{display:inline-flex;align-items:center;gap:4px;font-size:.71rem;font-weight:500;
-  color:var(--accent);background:var(--accent-dim);border:1px solid rgba(232,135,90,.25);
+  color:var(--accent);background:var(--accent-dim);border:1px solid var(--border-strong);
   padding:4px 11px;border-radius:50px;margin-bottom:10px}
 
 .ytcard{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;box-shadow:var(--shadow)}
@@ -972,6 +987,14 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:300;
   display:flex;align-items:center;justify-content:center;animation:fadeUp .2s ease}
+.google-btn{width:100%;display:flex;align-items:center;justify-content:center;gap:10px;height:44px;border-radius:50px;
+  border:1px solid var(--border-strong);background:var(--surface);color:var(--text);cursor:pointer;
+  font-family:'DM Sans',sans-serif;font-size:.88rem;font-weight:600;transition:background .15s,border-color .15s}
+.google-btn:hover{background:var(--card);border-color:var(--text-2)}
+.google-btn:disabled{opacity:.6;cursor:default}
+.auth-or{display:flex;align-items:center;gap:12px;margin:16px 0 14px;font-size:.7rem;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted)}
+.auth-or::before,.auth-or::after{content:'';flex:1;height:1px;background:var(--border)}
 .modal-inner{background:var(--surface);border:1px solid var(--border);border-radius:16px;
   padding:24px;width:90%;max-width:380px;box-shadow:0 20px 60px rgba(0,0,0,.4)}
 .modal-title{font-family:'DM Sans',sans-serif;font-size:1.3rem;font-weight:650;
@@ -1073,8 +1096,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .ai-avatar svg{width:18px;height:18px;fill:var(--accent-on)}
 .ai-header-text h3{font-family:'DM Sans',sans-serif;font-size:1rem;font-weight:650;color:var(--text)}
 .ai-header-text p{font-size:.72rem;color:var(--muted)}
-.ai-status-dot{width:8px;height:8px;border-radius:50%;background:#4caf7d;
-  box-shadow:0 0 6px #4caf7d;margin-left:auto;flex-shrink:0}
+.ai-status-dot{width:8px;height:8px;border-radius:50%;background:var(--live);
+  box-shadow:0 0 6px var(--live);margin-left:auto;flex-shrink:0}
 .ai-status-dot.thinking{background:var(--accent);box-shadow:0 0 6px var(--accent);
   animation:blink2 .8s ease-in-out infinite}
 @keyframes blink2{0%,100%{opacity:1}50%{opacity:.3}}
@@ -1128,7 +1151,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .msg-bubble li{margin-bottom:3px}
 .msg-bubble .routine-chip{display:inline-flex;align-items:center;gap:5px;
   padding:3px 10px;border-radius:50px;background:var(--accent-dim);
-  border:1px solid rgba(232,135,90,.25);color:var(--accent);font-size:.75rem;
+  border:1px solid var(--border-strong);color:var(--accent);font-size:.75rem;
   margin:2px 3px 2px 0;cursor:pointer;transition:all .15s;font-weight:500}
 .msg-bubble .routine-chip:hover{background:var(--accent);color:var(--accent-on)}
 
@@ -1172,7 +1195,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   box-shadow:0 2px 8px var(--accent-shadow);flex-shrink:0;
 }
 .ai-save-routine-btn:hover{background:var(--accent-hover);transform:scale(1.03)}
-.ai-save-routine-btn.saved{background:var(--sage);box-shadow:0 2px 8px rgba(122,171,138,.3)}
+.ai-save-routine-btn.saved{background:var(--sage);box-shadow:0 2px 8px var(--sage-border)}
 .ai-save-routine-btn svg{width:13px;height:13px;fill:var(--accent-on)}
 
 /* Toast notification */
@@ -1250,7 +1273,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .rehab-checkin-note{color:var(--muted);font-style:italic}
 
 .rehab-caution-note{display:flex;align-items:flex-start;gap:6px;font-size:.76rem;color:var(--danger);
-  background:var(--danger-dim);border:1px solid rgba(217,107,90,.2);border-radius:8px;
+  background:var(--danger-dim);border:1px solid var(--danger-border);border-radius:8px;
   padding:8px 11px;margin:0 auto 18px;max-width:340px;text-align:left;line-height:1.4}
 
 /* ═══════════════════════════════════
@@ -1265,6 +1288,61 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .intro-hero h1{font-family:'DM Sans',sans-serif;font-size:clamp(2.6rem,6.5vw,4rem);font-weight:700;
   color:var(--text);letter-spacing:-.03em;margin-bottom:20px;line-height:1.05}
 .intro-hero p{color:var(--text-2);font-size:1.05rem;line-height:1.6;max-width:46ch;margin:0 auto}
+.intro-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:640px;margin:40px auto 0;text-align:left}
+.intro-step{display:flex;flex-direction:column;gap:10px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px}
+.intro-step-n{width:26px;height:26px;border-radius:50%;background:var(--accent);color:var(--accent-on);flex-shrink:0;
+  font-size:.78rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+.intro-step b{display:block;font-size:.95rem;color:var(--text);margin-bottom:2px}
+.intro-step span{font-size:.8rem;color:var(--muted);line-height:1.45}
+
+.intro-dock{display:flex;gap:4px;max-width:360px;margin:6px auto 0;padding:6px;border-radius:32px;
+  background:var(--card);border:1px solid var(--border-strong);box-shadow:var(--shadow-md)}
+.intro-dock span{flex:1;height:44px;border-radius:24px;display:flex;align-items:center;justify-content:center;color:var(--text-2)}
+.intro-dock span.active{background:var(--accent-dim);color:var(--text)}
+.intro-dock svg{width:20px;height:20px}
+.intro-dock-labels{display:grid;grid-template-columns:repeat(5,1fr);max-width:360px;margin:10px auto 0;padding:0 6px;
+  font-size:.72rem;color:var(--muted);text-align:center}
+.intro-nav-extra{display:flex;flex-wrap:wrap;justify-content:center;gap:12px 26px;margin-top:26px;font-size:.8rem;color:var(--text-2)}
+.intro-nav-extra>div{display:flex;align-items:center;gap:9px}
+.intro-key{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--card);color:var(--text);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.intro-key svg{width:16px;height:16px}
+
+.intro-feats,.intro-tips{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.intro-feats{margin-top:22px}
+.intro-feat{display:flex;gap:12px;align-items:flex-start;padding:14px;border:1px solid var(--border);border-radius:12px;background:var(--bg)}
+.intro-feat.important{grid-column:1/-1;background:var(--card);border-color:var(--border-strong)}
+.intro-feat-ico{width:34px;height:34px;border-radius:10px;background:var(--card);border:1px solid var(--border);color:var(--text);
+  display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.intro-feat.important .intro-feat-ico{background:var(--accent);border-color:var(--accent);color:var(--accent-on)}
+.intro-feat-ico svg{width:17px;height:17px}
+.intro-feat b{display:block;font-size:.87rem;color:var(--text);margin-bottom:3px}
+.intro-feat span{font-size:.79rem;color:var(--muted);line-height:1.5}
+.intro-feat em{font-style:normal;color:var(--text-2);font-weight:500;white-space:nowrap}
+
+.sim-track{display:grid;grid-template-columns:1.5fr 1fr;gap:22px;align-items:center}
+.sim-hm{display:grid;grid-template-rows:repeat(7,1fr);grid-auto-flow:column;grid-auto-columns:1fr;gap:4px}
+.sim-hm i{aspect-ratio:1;border-radius:3px;background:var(--card);opacity:0;transform:scale(.5);
+  transition:opacity .35s ease,transform .35s ease;transition-delay:var(--d,0s)}
+.sim-hm i.l1{background:var(--heat-1)}.sim-hm i.l2{background:var(--heat-2)}
+.sim-hm i.l3{background:var(--heat-3)}.sim-hm i.l4{background:var(--heat-4)}
+.intro-reveal.in-view .sim-hm i{opacity:1;transform:none}
+.sim-hm-cap{font-size:.74rem;color:var(--muted);margin-top:12px;line-height:1.5}
+.sim-tiles{display:grid;gap:9px}
+.sim-tile{background:var(--card);border:1px solid var(--border);border-radius:9px;padding:10px 13px}
+.sim-tile-l{font-size:.72rem;color:var(--muted)}
+.sim-tile-v{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--text);margin-top:2px;white-space:nowrap}
+
+.intro-plans{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.intro-plan{background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:20px}
+.intro-plan h3{font-size:1.02rem;font-weight:650;color:var(--text);margin:14px 0 6px}
+.intro-plan p{font-size:.82rem;color:var(--muted);line-height:1.55}
+.intro-weeks{display:flex;gap:5px;margin-top:16px}
+.intro-weeks i{flex:1;height:6px;border-radius:6px;background:var(--card2)}
+.intro-weeks i.on{background:var(--text-2)}
+.intro-weeks i.cur{background:var(--accent);box-shadow:0 0 0 2px var(--accent-dim)}
+.intro-note{margin-top:14px;font-size:.76rem;color:var(--text-2);line-height:1.5;padding:10px 12px;border-radius:9px;
+  background:var(--card);border:1px solid var(--border)}
 
 /* Every feature lives in its own quiet, bordered box — one idea at a time */
 .intro-box{background:var(--surface);border:1px solid var(--border);border-radius:20px;
@@ -1279,7 +1357,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .intro-box>p{color:var(--muted);font-size:.92rem;line-height:1.6;max-width:48ch;margin-bottom:36px}
 
 .intro-badge{display:inline-flex;align-items:center;gap:7px;font-size:.78rem;font-weight:600;
-  color:var(--accent);background:var(--accent-dim);border:1px solid rgba(232,135,90,.22);
+  color:var(--accent);background:var(--accent-dim);border:1px solid var(--border-strong);
   padding:7px 16px;border-radius:50px}
 .intro-badge::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--sage);
   box-shadow:0 0 6px var(--sage)}
@@ -1334,8 +1412,17 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .sim-build-box.in-view .sim-ex-card:nth-child(1) .sim-plus{transition-delay:.4s}
 .sim-build-box.in-view .sim-ex-card:nth-child(2) .sim-plus{transition-delay:.9s}
 .sim-build-box.in-view .sim-ex-card:nth-child(3) .sim-plus{transition-delay:1.4s}
-.sim-build-box.in-view .sim-ex-card .sim-plus{background:var(--sage);border-color:var(--sage);
-  color:#fff;transform:scale(1.15)}
+.sim-build-box.in-view .sim-ex-card .sim-plus{background:var(--accent);border-color:var(--accent);
+  color:var(--accent-on);font-size:0;transform:scale(1.15)}
+.sim-build-box.in-view .sim-ex-card .sim-plus::after{content:'✓';font-size:.66rem}
+.sim-tray{grid-column:1/-1;display:flex;align-items:center;gap:10px;background:var(--surface);border:1px solid var(--border-strong);
+  border-radius:14px;padding:8px 8px 8px 10px;opacity:0;transform:translateY(10px);transition:opacity .45s ease 1.9s,transform .45s ease 1.9s}
+.sim-build-box.in-view .sim-tray{opacity:1;transform:none}
+.sim-tray-n{width:30px;height:30px;border-radius:9px;background:var(--accent);color:var(--accent-on);flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;font-family:'DM Serif Display',serif;font-size:1rem}
+.sim-tray-t{flex:1;min-width:0;font-size:.78rem;font-weight:600;color:var(--text)}
+.sim-tray-t small{display:block;font-weight:400;color:var(--muted);font-size:.68rem;margin-top:1px}
+.sim-tray-b{font-size:.72rem;font-weight:600;background:var(--accent);color:var(--accent-on);padding:6px 13px;border-radius:50px}
 .sim-routine-panel{background:var(--card);border:1px solid var(--border);border-radius:11px;
   padding:14px}
 .sim-routine-title{font-size:.72rem;font-weight:700;color:var(--text-2);letter-spacing:.03em;
@@ -1392,6 +1479,64 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 .intro-signup-link{display:inline-block;margin-top:22px;font-size:.82rem;color:var(--muted);
   text-decoration:none;border-bottom:1px solid transparent;transition:all .18s}
 .intro-signup-link:hover{color:var(--accent);border-bottom-color:var(--accent)}
+
+/* Live workout bar */
+.live-bar{display:none;position:fixed;left:0;right:0;margin:0 auto;bottom:24px;width:calc(100% - 28px);max-width:440px;z-index:151;
+  align-items:center;gap:12px;padding:9px 10px 12px 9px;border-radius:18px;background:var(--surface);
+  border:1px solid var(--border-strong);box-shadow:0 12px 32px rgba(0,0,0,.35);cursor:pointer;overflow:hidden;
+  transition:transform .38s cubic-bezier(.2,.8,.2,1);-webkit-tap-highlight-color:transparent}
+body.workout-live:not(.on-workout) .live-bar{display:flex;animation:liveIn .35s cubic-bezier(.2,.8,.2,1)}
+body.workout-live.sheet-open .live-bar{display:none}
+@keyframes liveIn{from{opacity:0;translate:0 16px}}
+.live-bar:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.live-ring{position:relative;width:44px;height:44px;flex-shrink:0}
+.live-ring svg{width:44px;height:44px;transform:rotate(-90deg)}
+.lr-bg{fill:none;stroke:var(--card2);stroke-width:3.5}
+.lr-fg{fill:none;stroke:var(--accent);stroke-width:3.5;stroke-linecap:round;stroke-dasharray:119.38;transition:stroke-dashoffset .5s linear}
+.live-ring span{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;
+  font-size:.82rem;font-weight:700;color:var(--text);font-variant-numeric:tabular-nums}
+.live-text{flex:1;min-width:0}
+.live-status{display:flex;align-items:center;gap:6px;font-size:.66rem;font-weight:600;letter-spacing:.06em;
+  text-transform:uppercase;color:var(--muted);white-space:nowrap;overflow:hidden}
+.live-status span:last-child{overflow:hidden;text-overflow:ellipsis}
+.live-dot{width:7px;height:7px;border-radius:50%;background:var(--sage);flex-shrink:0;animation:livePulse 1.6s ease-out infinite}
+@keyframes livePulse{0%{box-shadow:0 0 0 0 color-mix(in srgb,var(--live) 60%,transparent)}100%{box-shadow:0 0 0 7px transparent}}
+.live-bar.paused .live-dot{background:var(--muted);animation:none}
+.live-bar.paused .live-status{color:var(--text)}
+.live-name{font-size:.92rem;font-weight:600;color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
+.live-time{font-size:.8rem;color:var(--text-2);font-variant-numeric:tabular-nums;flex-shrink:0}
+.live-btn{width:40px;height:40px;border-radius:50%;border:none;background:var(--accent);color:var(--accent-on);cursor:pointer;
+  display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:transform .15s}
+.live-btn:active{transform:scale(.92)}
+.live-btn svg{width:16px;height:16px}
+.live-progress{position:absolute;left:0;right:0;bottom:0;height:3px;background:var(--card2)}
+.live-progress div{height:100%;width:0;background:var(--accent);transition:width .4s ease}
+body.workout-live .page{padding-bottom:110px}
+
+.w-minimize{align-self:flex-start;display:inline-flex;align-items:center;gap:5px;margin:-12px 0 14px -8px;padding:6px 12px 6px 9px;
+  border-radius:50px;border:1px solid var(--border);background:var(--card);color:var(--text-2);cursor:pointer;
+  font-family:'DM Sans',sans-serif;font-size:.76rem;font-weight:600;transition:all .15s}
+.w-minimize:hover{border-color:var(--border-strong);color:var(--text)}
+.w-minimize svg{width:14px;height:14px}
+
+.bld-live-note{display:none}
+body.workout-live #builderPage .builder-grid{display:none}
+body.workout-live .bld-live-note{display:block;max-width:520px;background:var(--surface);border:1px solid var(--border-strong);
+  border-radius:14px;padding:20px;box-shadow:var(--shadow)}
+.bld-live-note b{display:block;font-size:1rem;color:var(--text);margin-bottom:4px}
+.bld-live-note span{display:block;font-size:.84rem;color:var(--muted);line-height:1.5}
+.bld-live-actions{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+/* Phones: the live bar sits just above the dock (these must come after the base .live-bar rule) */
+@media (max-width:680px){
+  .live-bar{bottom:94px}
+  .floating-dock.compact ~ .live-bar{transform:translateY(14px)}
+  body.workout-live .bld-tray{display:none!important}
+  body.workout-live .page,body.workout-live #builderPage{padding-bottom:180px}
+  .home-streak{padding:6px 12px 6px 6px}
+  .home-streak-ico{width:30px;height:30px}
+  .hs-val{font-size:1rem}
+}
+@media (max-width:360px){.live-bar{bottom:82px}}
 
 /* Floating bottom dock — hidden by default, only shown on mobile (see media query) */
 .floating-dock{display:none}
@@ -1464,6 +1609,15 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   .sim-run{grid-template-columns:1fr;gap:22px}
   .sim-ai-grid{grid-template-columns:1fr;gap:16px}
   .intro-closing{margin-top:48px}
+  .intro-steps{grid-template-columns:1fr;gap:8px;margin-top:28px}
+  .intro-step{flex-direction:row;align-items:center;padding:12px 14px;gap:12px}
+  .intro-feats,.intro-tips,.intro-plans{grid-template-columns:1fr}
+  .sim-track{grid-template-columns:1fr;gap:16px}
+  .sim-tiles{grid-template-columns:repeat(3,1fr)}
+  .sim-tile{padding:9px 10px}
+  .sim-tile-v{font-size:1.05rem}
+  .intro-dock-labels{font-size:.64rem}
+  .intro-nav-extra{justify-content:flex-start}
 
   /* Leave clearance at the bottom of scrollable pages so the floating dock never covers content */
   .page{padding-bottom:104px}
@@ -1527,6 +1681,119 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   [data-theme="light"] .fd-theme .fd-icon-moon{display:block}
 }
 
+
+/* ═══════════════════════════════════
+   DESKTOP (≥1024px): permanent left sidebar, wider dashboard layouts.
+   Everything here is desktop-only; phones and tablets are unchanged.
+═══════════════════════════════════ */
+.sb-desk{display:none}
+@media (min-width:1024px){
+  body{padding-left:252px}
+  body>nav{display:none}
+  .sidebar-overlay{display:none}
+  .sidebar{transform:none;width:252px;z-index:120;box-shadow:none;background:var(--bg-elev);
+    border-right:1px solid var(--border);padding:16px 14px 14px}
+  .sidebar-head{border-bottom:none;padding:2px 2px 16px}
+  .sidebar-close,.sidebar-footer{display:none}
+  .sb-desk{display:flex}
+  .sb-hist{gap:2px}
+  .sb-hist-btn{width:30px;height:30px;border-radius:8px;border:none;background:none;color:var(--text-2);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s}
+  .sb-hist-btn svg{width:15px;height:15px}
+  .sb-hist-btn:hover:not(:disabled){background:var(--card);color:var(--text)}
+  .sb-hist-btn:disabled{opacity:.28;cursor:default}
+  .sb-cta{align-items:center;justify-content:center;gap:7px;height:42px;margin:0 2px 10px;border-radius:50px;border:none;cursor:pointer;
+    background:var(--accent);color:var(--accent-on);font-family:'DM Sans',sans-serif;font-size:.86rem;font-weight:600;
+    box-shadow:var(--shadow);transition:background .18s,transform .18s}
+  .sb-cta:hover{background:var(--accent-hover);transform:translateY(-1px)}
+  .sb-cta svg{width:16px;height:16px}
+  .sidebar-nav{display:flex;flex-direction:column;padding:0;overflow-y:auto}
+  .sidebar-item{padding:9px 12px;margin-bottom:2px;font-size:.86rem}
+  .sidebar-item.active{background:var(--card);color:var(--text);font-weight:600}
+  /* desktop grouping: Home · Routines · Builder | Plans: Programs · Rehab | Help: AI Coach · How It Works */
+  #sidebarHome{order:1}#sidebarRoutines{order:2}#sidebarBuilder{order:3}
+  .sb-label-plans{order:4}#sidebarPrograms{order:5}#sidebarRehab{order:6}
+  .sb-label-help{order:7}#sidebarAi{order:8}#sidebarIntro{order:9}
+  #sidebarProfile{display:none}
+  .sb-label{font-size:.66rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);padding:18px 12px 6px}
+  .sb-foot{align-items:center;gap:4px;margin-top:auto;padding-top:12px;border-top:1px solid var(--border)}
+  .sb-profile{flex:1;min-width:0;display:flex;align-items:center;gap:10px;padding:7px 8px;border-radius:12px;border:none;
+    background:none;cursor:pointer;text-align:left;color:var(--text);font-family:'DM Sans',sans-serif;transition:background .18s}
+  .sb-profile:hover,.sb-profile.active{background:var(--card)}
+  .sb-avatar{width:36px;height:36px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;
+    background:var(--card2);border:1px solid var(--border-strong);font-size:.82rem;font-weight:600;color:var(--text)}
+  .sb-avatar svg{width:17px;height:17px;color:var(--text-2)}
+  .sb-profile-text{min-width:0}
+  .sb-profile b{display:block;font-size:.86rem;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+  .sb-profile small{display:block;font-size:.72rem;color:var(--muted)}
+  .sb-theme{width:36px;height:36px;border-radius:50%;border:none;background:none;color:var(--text-2);cursor:pointer;
+    display:flex;align-items:center;justify-content:center;transition:background .15s,color .15s}
+  .sb-theme:hover{background:var(--card);color:var(--text)}
+  .sb-theme svg{width:18px;height:18px}
+  .sb-sun,.sb-moon{display:none}
+  [data-theme="dark"] .sb-sun{display:block}
+  [data-theme="light"] .sb-moon{display:block}
+
+  /* content area */
+  .page{padding:44px clamp(32px,4.5vw,72px) 80px;max-width:1320px;margin:0 auto}
+  .ph h1,#routinesPage .ph-row h1{font-size:2.1rem}
+  .fitset-toast{left:calc(50% + 126px)}
+  .live-bar{left:252px}
+  body.workout-live .page{padding-bottom:120px}
+  /* let the library column shrink; otherwise the scrollable chip row widens it and pushes the routine panel off-screen */
+  .builder-grid>*{min-width:0}
+  #aiPage{padding:0;max-width:none}
+  .ai-layout{height:100vh;margin:0}
+
+  /* Home dashboard: stats + heatmap on the left, weekly goal + recent workouts on the right */
+  .home-page{max-width:1180px}
+  .home-hero{margin-bottom:26px}
+  .home-hero h1{font-size:2.4rem}
+  .home-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;grid-template-areas:"main goal" "main recent";
+    gap:0 24px;align-items:start}
+  .hg-main{grid-area:main;margin-bottom:0}
+  .hg-goal{grid-area:goal}
+  .hg-recent{grid-area:recent}
+  .hg-goal .weekly-goal-card{flex-direction:column;align-items:stretch;gap:12px;padding:18px}
+  .hg-goal .wg-bar{flex:none;width:100%;max-width:none;height:8px}
+  .hg-goal .wg-edit{justify-content:space-between}
+  .hg-recent .home-log-row{padding:12px 14px;gap:12px}
+  .heatmap{gap:3px}
+
+  /* Profile: identity card on the left, tabs and content on the right */
+  .pf-page{max-width:1180px;display:grid;grid-template-columns:300px minmax(0,1fr);gap:28px;align-items:start}
+  .pf-side{position:sticky;top:44px;background:var(--surface);border:1px solid var(--border);border-radius:14px;
+    padding:26px 22px 22px;box-shadow:var(--shadow)}
+  .pf-side .pf-head{flex-direction:column;align-items:center;text-align:center;gap:12px;margin-bottom:10px;position:relative}
+  .pf-side .pf-avatar{width:96px;height:96px;font-size:2.4rem}
+  .pf-side .pf-head-text{width:100%}
+  .pf-side .pf-round-btn{position:absolute;top:-10px;right:-6px;width:38px;height:38px}
+  .pf-side .pf-meta{justify-content:center;margin-bottom:18px}
+  .pf-side .pf-actions{grid-template-columns:1fr;gap:8px;margin-bottom:0}
+  .pf-main .pf-tabs{margin-top:-4px}
+  #pfPane-progress.active{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+  #pfPane-progress .pf-card{margin:0}
+  #pfWeekCard,#pfPane-progress>.pf-card:nth-child(3),#pfMilestonesCard{grid-column:1/-1}
+  #pfWeekCard{order:1}#pfStreakCard{order:2}#pfBodyCard{order:3}
+  #pfPane-progress>.pf-card:nth-child(3){order:4}#pfMilestonesCard{order:5}
+  .pf-records{grid-template-columns:repeat(4,minmax(0,1fr))}
+  .pf-milestones{grid-template-columns:repeat(6,minmax(0,1fr))}
+  #pfPane-activities,#pfPane-more{max-width:760px}
+}
+
+/* Builder layout safety: cards may shrink (names truncate) instead of spilling under the routine panel.
+   One card column until the library is wide enough for two. Phones (≤680px) keep their own single-column layout. */
+@media (min-width:681px){
+  .builder-grid{grid-template-columns:minmax(0,1fr) 390px}
+  .ex-grid{grid-template-columns:minmax(0,1fr)}
+  .ex-card .ex-info{min-width:0}
+}
+@media (min-width:1024px) and (max-width:1279px){
+  .builder-grid{grid-template-columns:minmax(0,1fr) 340px;gap:20px}
+}
+@media (min-width:1280px){
+  .ex-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
 </head>
@@ -1609,13 +1876,14 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   <div class="home-page">
     <div class="home-hero">
       <div>
-        <h1>What's next?</h1>
-        <p>Your training at a glance.</p>
+        <h1 id="homeGreeting">Welcome back</h1>
+        <p id="homeSub"></p>
       </div>
-      <button class="home-next-btn" id="homeNextBtn"></button>
+      <button type="button" class="home-streak" id="homeStreak" onclick="showPage('profile');setPfTab('progress')" aria-label="Your streak. Open progress"></button>
     </div>
-    <div id="weeklyGoalCard"></div>
-    <div class="home-card">
+    <div class="home-grid">
+    <div class="hg-goal" id="weeklyGoalCard"></div>
+    <div class="home-card hg-main">
       <div class="home-card-top">
         <div class="home-seg" id="homeTabSeg">
           <button class="home-seg-btn" data-tab="overview" onclick="setHomeTab('overview')">Overview</button>
@@ -1629,8 +1897,11 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
       </div>
       <div id="homeCardBody"></div>
     </div>
-    <div class="sec-label">Recent Workouts</div>
-    <div id="homeRecent"></div>
+    <div class="hg-recent">
+      <div class="sec-label">Recent Workouts</div>
+      <div id="homeRecent"></div>
+    </div>
+    </div>
   </div>
 </div>
 
@@ -1647,6 +1918,14 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
   <div class="ph bld-head">
     <h1 id="builderTitle">Build Routine</h1>
     <p>Tap exercises to add them, then set reps and start.</p>
+  </div>
+  <div class="bld-live-note">
+    <b>Workout in progress</b>
+    <span>Finish or end your current workout before building or editing a routine.</span>
+    <div class="bld-live-actions">
+      <button type="button" class="pf-btn primary" onclick="showPage('workout')">Back to workout</button>
+      <button type="button" class="pf-btn" onclick="confirmEndLiveWorkout()">End workout</button>
+    </div>
   </div>
   <div class="builder-grid">
     <div class="bld-lib">
@@ -1722,6 +2001,9 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 <div class="page" id="workoutPage">
   <div class="wlayout">
     <div class="wmain">
+      <button type="button" class="w-minimize" onclick="minimizeWorkout()" aria-label="Minimize workout and keep it running">
+        <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6l4 4 4-4"/></svg>Minimize
+      </button>
       <div class="wpbar"><div class="wpfill" id="wpFill" style="width:0%"></div></div>
       <div class="exdisp">
         <div class="ex-bigname" id="exName">—</div>
@@ -2013,6 +2295,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 <!-- ══════ PROFILE ══════ -->
 <div class="page" id="profilePage">
   <div class="pf-page">
+    <div class="pf-side">
     <div class="pf-head">
       <div class="pf-avatar" id="pfAvatar"></div>
       <div class="pf-head-text">
@@ -2029,6 +2312,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
       <button class="pf-action" id="pfAcctBtn"></button>
     </div>
 
+    </div>
+    <div class="pf-main">
     <div class="pf-tabs" role="tablist">
       <button class="pf-tab" data-tab="progress" role="tab" onclick="setPfTab('progress')">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V2.8h6V4M9 17v-3M12 17v-6M15 17v-4"/></svg>
@@ -2089,6 +2374,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
         </div>
       </div>
     </div>
+    </div>
     <input type="file" id="pfImportInput" accept="application/json,.json" class="hidden" onchange="importBackupFile(this)"/>
   </div>
 </div>
@@ -2099,14 +2385,40 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 
     <div class="intro-hero">
       <h1>Train on your terms.</h1>
-      <p>Build routines, follow guided workouts, and get AI coaching — all in your browser.</p>
+      <p>Build a routine in a minute, follow it step by step, and watch your progress add up. All in your browser, nothing to install.</p>
+      <div class="intro-steps">
+        <div class="intro-step"><div class="intro-step-n">1</div><div><b>Build</b><span>Pick exercises and set your reps.</span></div></div>
+        <div class="intro-step"><div class="intro-step-n">2</div><div><b>Train</b><span>Follow timers, count reps, rest.</span></div></div>
+        <div class="intro-step"><div class="intro-step-n">3</div><div><b>Track</b><span>Streaks, records and milestones.</span></div></div>
+      </div>
+    </div>
+
+    <!-- Getting around: the dock -->
+    <div class="intro-box">
+      <div class="intro-box-label">Navigate</div>
+      <h2>Everything is one tap away.</h2>
+      <p>The dock at the bottom of your screen takes you anywhere. It shrinks while you scroll down and comes back when you scroll up.</p>
+      <div class="sim-shell">
+        <div class="intro-dock" aria-hidden="true">
+          <span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="3.6"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.5 4.5l1.4 1.4M14.1 14.1l1.4 1.4M4.5 15.5l1.4-1.4M14.1 5.9l1.4-1.4"/></svg></span>
+          <span class="active"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9L10 3.5 16.5 9v7.5h-4.2v-4.5H7.7v4.5H3.5V9z"/></svg></span>
+          <span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 16.8V5.6a2.4 2.4 0 012.4-2.4h4.8a2.4 2.4 0 012.4 2.4v11.2l-3.9-4.1a1.3 1.3 0 00-1.8 0z"/></svg></span>
+          <span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path d="M10 4v12M4 10h12"/></svg></span>
+          <span><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="3.2"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg></span>
+        </div>
+        <div class="intro-dock-labels" aria-hidden="true"><span>Theme</span><span>Home</span><span>Routines</span><span>Build</span><span>Profile</span></div>
+        <div class="intro-nav-extra">
+          <div><span class="intro-key"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 5.5h13M3.5 10h13M3.5 14.5h13"/></svg></span>Menu: AI Coach, Programs, Rehab and more</div>
+          <div><span class="intro-key"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5L6.5 10l5.5 5.5"/></svg></span>Back and forward, like a browser</div>
+        </div>
+      </div>
     </div>
 
     <!-- Simulation 1: building a routine -->
     <div class="intro-box sim-build-box" id="simBuildBox">
       <div class="intro-box-label">Build</div>
       <h2>Design your routine</h2>
-      <p>Search the exercise library, tap to add, and set reps or rest — it all lands in your routine as you go.</p>
+      <p>Search, or filter by muscle and equipment, then tap + to add. The check mark confirms it's in and the bar above the dock keeps count. Tap Review to set reps, drag to reorder, and start.</p>
       <div class="sim-shell">
         <div class="sim-build">
           <div class="sim-search">Search exercises…</div>
@@ -2128,11 +2440,12 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
             </div>
           </div>
           <div class="sim-routine-panel">
-            <div class="sim-routine-title">My Routine</div>
+            <div class="sim-routine-title">Your routine</div>
             <div class="sim-routine-item"><span>Bench Press</span><span class="sim-stepper">10 reps</span></div>
             <div class="sim-routine-item"><span>Squat</span><span class="sim-stepper">10 reps</span></div>
             <div class="sim-routine-item"><span>Pull-Up</span><span class="sim-stepper">8 reps</span></div>
           </div>
+          <div class="sim-tray"><span class="sim-tray-n">3</span><span class="sim-tray-t">My Routine<small>3 exercises · ~12 min</small></span><span class="sim-tray-b">Review</span></div>
         </div>
       </div>
     </div>
@@ -2141,7 +2454,7 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
     <div class="intro-box sim-run-box" id="simRunBox">
       <div class="intro-box-label">Run</div>
       <h2>Follow the workout</h2>
-      <p>Countdown timers, rep tracking, and rest breaks — FITSET guides you through every set automatically.</p>
+      <p>Countdown timers, rep tracking and rest breaks run on their own. Just follow along.</p>
       <div class="sim-shell">
         <div class="sim-run">
           <div class="sim-run-left">
@@ -2161,13 +2474,66 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
           </div>
         </div>
       </div>
+      <div class="intro-feats">
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="5.5" width="15" height="11" rx="2.5"/><circle cx="10" cy="11" r="3"/><path d="M7 5.5l1.2-2h3.6l1.2 2"/></svg></div><div><b>Count reps your way</b><span>Tap the big button for each rep, or turn on the camera and FITSET counts for you.</span></div></div>
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8v4M7 5.5v9M10 3.5v13M13 6.5v7M16 8.5v3"/></svg></div><div><b>Voice cues</b><span>Hear what's next and when to rest, so you can keep your eyes off the screen.</span></div></div>
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 15l4-4.5 3 2.5 6-7"/><path d="M12.5 6h4v4"/></svg></div><div><b>Get stronger every session</b><span>Log the weight you used and FITSET remembers it, then suggests a small step up next time.</span></div></div>
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7"/><path d="M7 11.8c.8 1 1.8 1.5 3 1.5s2.2-.5 3-1.5"/><path d="M7.5 8h.01M12.5 8h.01"/></svg></div><div><b>Say how it felt</b><span>After each workout, rate it too easy, just right or too hard. Your AI Coach uses this.</span></div></div>
+      </div>
+    </div>
+
+    <!-- Track: progress shows up on its own -->
+    <div class="intro-box intro-reveal">
+      <div class="intro-box-label">Track</div>
+      <h2>Watch the work add up.</h2>
+      <p>Every workout you finish is saved automatically. There's nothing to log by hand.</p>
+      <div class="sim-shell">
+        <div class="sim-track">
+          <div>
+            <div class="sim-hm" id="simHm" aria-hidden="true"></div>
+            <div class="sim-hm-cap">Each square is a day. The stronger the color, the longer you trained. Tap one to see what you did.</div>
+          </div>
+          <div class="sim-tiles">
+            <div class="sim-tile"><div class="sim-tile-l">Streak</div><div class="sim-tile-v">7 weeks</div></div>
+            <div class="sim-tile"><div class="sim-tile-l">Records</div><div class="sim-tile-v">12</div></div>
+            <div class="sim-tile"><div class="sim-tile-l">Milestones</div><div class="sim-tile-v">5 of 12</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="intro-feats">
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 9L10 3.5 16.5 9v7.5h-4.2v-4.5H7.7v4.5H3.5V9z"/></svg></div><div><b>Home</b><span>Your activity heatmap, current streak and weekly goal at a glance.</span></div></div>
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="12" height="15" rx="2"/><path d="M7.5 14v-2.5M10 14V9M12.5 14v-3.5"/></svg></div><div><b>Profile › Progress</b><span>A 12-week chart, your personal records, body weight and milestones.</span></div></div>
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M2 10h3.5l2-5 4 10 2-5H18"/></svg></div><div><b>Profile › Activities</b><span>Every workout you've done, with the records you beat. Searchable.</span></div></div>
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 16.5s-6-3.6-6-8.2A3.3 3.3 0 0110 6a3.3 3.3 0 016 2.3c0 4.6-6 8.2-6 8.2z"/></svg></div><div><b>Keep your streak</b><span>Hit your weekly goal to keep it going. Set the goal on Home.</span></div></div>
+      </div>
+    </div>
+
+    <!-- Plans: Programs + Rehab -->
+    <div class="intro-box">
+      <div class="intro-box-label">Plans</div>
+      <h2>Not sure what to do? Follow a plan.</h2>
+      <p>Both live in the menu (☰). Pick one and FITSET tells you exactly what to do each day.</p>
+      <div class="intro-plans">
+        <div class="intro-plan">
+          <div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M4 3.5h12M4 3.5v13l4-2.5 4 2.5v-13"/></svg></div>
+          <h3>Programs</h3>
+          <p>Multi-week plans, including ones with no equipment. Finish today's session and it moves you to the next day automatically.</p>
+          <div class="intro-weeks" aria-hidden="true"><i class="on"></i><i class="on"></i><i class="cur"></i><i></i><i></i><i></i></div>
+        </div>
+        <div class="intro-plan">
+          <div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 3a3 3 0 100 6 3 3 0 000-6z"/><path d="M4 17c0-3 2.5-5.5 6-5.5s6 2.5 6 5.5"/><path d="M8.5 11.5L7 17M11.5 11.5L13 17"/></svg></div>
+          <h3>Rehab</h3>
+          <p>Guided recovery after an injury, such as an ankle sprain, phase by phase from gentle mobility back to full training.</p>
+          <div class="intro-note">Rehab is guidance, not medical advice. Follow your doctor or physio, and stop if anything hurts sharply.</div>
+        </div>
+      </div>
     </div>
 
     <!-- AI Coach: real screenshot + a live scroll-triggered chat simulation -->
     <div class="intro-box intro-ai-box sim-ai-box" id="simAiBox">
       <div class="intro-box-label">Coach</div>
       <h2>Ask anything, anytime.</h2>
-      <p>Get routine ideas, form tips, and recovery advice — right in the chat.</p>
+      <p>Get routine ideas, form tips and recovery advice right in the chat. It knows your recent workouts and your profile, so its advice fits you.</p>
       <span class="intro-badge">AI Coach · Powered by Claude</span>
       <div class="sim-shell" style="margin-top:28px">
         <div class="sim-ai-grid">
@@ -2181,12 +2547,28 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
       </div>
     </div>
 
+    <!-- Before you start: the practical things new users trip over -->
+    <div class="intro-box">
+      <div class="intro-box-label">Before you start</div>
+      <h2>A few things worth knowing.</h2>
+      <div class="intro-tips">
+        <div class="intro-feat important"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="10" cy="5" rx="6" ry="2.2"/><path d="M4 5v10c0 1.2 2.7 2.2 6 2.2s6-1 6-2.2V5M4 10c0 1.2 2.7 2.2 6 2.2s6-1 6-2.2"/></svg></div><div><b>Your data lives in this browser</b><span>Routines and history are saved on this device. Download a backup in <em>Profile › More › Your data</em>, or sign in to back up your routines.</span></div></div>
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="7" r="3.2"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg></div><div><b>Tell FITSET about you</b><span>Set your goal, level and equipment in <em>Profile › Edit profile</em>. Choose "None" to see bodyweight exercises first.</span></div></div>
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="7.5"/><path d="M8.5 7.2v5.6L13 10z" fill="currentColor"/></svg></div><div><b>Watch before you try</b><span>Tap ▶︎ next to any exercise for a short form tutorial.</span></div></div>
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><rect x="5.5" y="2.5" width="9" height="15" rx="2"/><path d="M9 15h2"/></svg></div><div><b>Keep it on your home screen</b><span>On iPhone, tap Share, then Add to Home Screen, and FITSET opens like an app.</span></div></div>
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 12.3A6.5 6.5 0 017.7 4.5a.6.6 0 00-.8-.7 8 8 0 108.9 8.9.6.6 0 00-.3-.4z"/></svg></div><div><b>Light or dark</b><span>Switch themes with the first button on the dock.</span></div></div>
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5l1.8 4.6 4.7 1.9-4.7 1.9L10 15.5l-1.8-4.6L3.5 9l4.7-1.9z"/></svg></div><div><b>Need a push?</b><span>Tap the FITSET logo at the top for a motivation quote.</span></div></div>
+        <div class="intro-feat"><div class="intro-feat-ico"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2.5l6 2.3v4.6c0 3.8-2.6 6.6-6 8.1-3.4-1.5-6-4.3-6-8.1V4.8z"/><path d="M7.3 10l1.9 1.9 3.6-3.8"/></svg></div><div><b>Train safe</b><span>Warm up first, keep good form, and stop if you feel sharp pain.</span></div></div>
+      </div>
+    </div>
+
     <!-- Closing CTA — leads with account creation -->
     <div class="intro-closing">
       <div class="intro-closing-eyebrow">Ready when you are</div>
       <h2>Start training today.</h2>
       <div class="intro-cta">
         <button class="intro-cta-primary" onclick="openAuthModal('signup')">Sign Up</button>
+        <button class="intro-cta-secondary" onclick="showPage('profile');openPfMore('edit')">Set up my profile</button>
       </div>
       <a href="#" class="intro-signup-link" onclick="showPage('builder')">Or explore without an account →</a>
     </div>
@@ -2226,6 +2608,22 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
 </button>
 <div class="bld-backdrop" id="bldBackdrop" onclick="closeRoutineSheet()"></div>
 
+<!-- LIVE WORKOUT BAR: visible on every other page while a workout is running -->
+<div class="live-bar" id="liveBar" role="button" tabindex="0" aria-label="Return to your workout"
+  onclick="showPage('workout')" onkeydown="if(event.key==='Enter')showPage('workout')">
+  <div class="live-ring" aria-hidden="true">
+    <svg viewBox="0 0 44 44"><circle class="lr-bg" cx="22" cy="22" r="19"/><circle class="lr-fg" id="liveRing" cx="22" cy="22" r="19"/></svg>
+    <span id="liveRingTxt">0</span>
+  </div>
+  <div class="live-text">
+    <div class="live-status"><span class="live-dot"></span><span id="liveStatus">Workout</span></div>
+    <div class="live-name" id="liveName">—</div>
+  </div>
+  <div class="live-time" id="liveTime" aria-label="Workout time">0:00</div>
+  <button type="button" class="live-btn" id="livePauseBtn" onclick="event.stopPropagation();liveTogglePause()" aria-label="Pause workout"><svg viewBox="0 0 16 16" fill="currentColor"><rect x="4" y="3" width="3" height="10" rx="1"/><rect x="9" y="3" width="3" height="10" rx="1"/></svg></button>
+  <div class="live-progress" aria-hidden="true"><div id="liveProgress"></div></div>
+</div>
+
 <!-- TOAST -->
 <div class="fitset-toast" id="fitsetToast"><span class="toast-dot"></span><span id="toastMsg"></span></div>
 
@@ -2240,8 +2638,15 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
       <span class="sidebar-logo">FITSET</span>
     </div>
     <button class="sidebar-close" onclick="closeSidebar()">✕</button>
+    <div class="sb-hist sb-desk">
+      <button class="sb-hist-btn" id="sbBackBtn" onclick="goBackPage()" aria-label="Go back" disabled><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12.5 4.5L7 10l5.5 5.5"/></svg></button>
+      <button class="sb-hist-btn" id="sbFwdBtn" onclick="goForwardPage()" aria-label="Go forward" disabled><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M7.5 4.5L13 10l-5.5 5.5"/></svg></button>
+    </div>
   </div>
+  <button class="sb-cta sb-desk" onclick="startNewRoutine()"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round"><path d="M10 4v12M4 10h12"/></svg>New routine</button>
   <div class="sidebar-nav">
+    <div class="sb-label sb-desk sb-label-plans">Plans</div>
+    <div class="sb-label sb-desk sb-label-help">Help</div>
     <button class="sidebar-item" id="sidebarIntro" onclick="showPage('intro');closeSidebar()">
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="10" r="7.2"/><path d="M10 9v4.5M10 6.5v.01" stroke-linecap="round"/></svg>
       How It Works
@@ -2273,6 +2678,16 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
     <button class="sidebar-item" id="sidebarProfile" onclick="showPage('profile');closeSidebar()">
       <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="10" cy="7" r="3.2"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>
       Profile
+    </button>
+  </div>
+  <div class="sb-foot sb-desk">
+    <button class="sb-profile" id="sbProfileCard" onclick="showPage('profile')">
+      <span class="sb-avatar" id="sbAvatar"></span>
+      <span class="sb-profile-text"><b id="sbName">Your profile</b><small>Progress &amp; settings</small></span>
+    </button>
+    <button class="sb-theme" onclick="toggleThemeMobile()" aria-label="Toggle dark or light theme" title="Toggle theme">
+      <svg class="sb-sun" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="10" cy="10" r="3.6"/><path d="M10 2v2M10 16v2M2 10h2M16 10h2M4.5 4.5l1.4 1.4M14.1 14.1l1.4 1.4M4.5 15.5l1.4-1.4M14.1 5.9l1.4-1.4"/></svg>
+      <svg class="sb-moon" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M15.5 12.3A6.5 6.5 0 017.7 4.5a.6.6 0 00-.8-.7 8 8 0 108.9 8.9.6.6 0 00-.3-.4z"/></svg>
     </button>
   </div>
   <div class="sidebar-footer">FITSET v2 · Your personal trainer</div>
@@ -2321,6 +2736,8 @@ nav{display:flex;align-items:center;justify-content:space-between;padding:13px 3
     <div class="modal-title" id="authModalTitle">Sign In</div>
 
     <div id="authFormSection">
+      <button type="button" class="google-btn" id="googleBtn" onclick="signInWithGoogle()"><svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="#4285F4" d="M23.5 12.27c0-.85-.08-1.67-.22-2.45H12v4.64h6.45a5.52 5.52 0 0 1-2.39 3.62v3h3.87c2.27-2.09 3.57-5.17 3.57-8.81z"/><path fill="#34A853" d="M12 24c3.24 0 5.96-1.07 7.94-2.91l-3.87-3a7.2 7.2 0 0 1-10.7-3.78H1.4v3.1A12 12 0 0 0 12 24z"/><path fill="#FBBC05" d="M5.37 14.31a7.2 7.2 0 0 1 0-4.62V6.6H1.4a12 12 0 0 0 0 10.8z"/><path fill="#EA4335" d="M12 4.77c1.76 0 3.34.61 4.59 1.8l3.43-3.43A11.96 11.96 0 0 0 12 0 12 12 0 0 0 1.4 6.6l3.97 3.09A7.2 7.2 0 0 1 12 4.77z"/></svg><span>Continue with Google</span></button>
+      <div class="auth-or"><span>or use email</span></div>
       <input class="modal-input" type="email" id="authEmail" placeholder="Email" autocomplete="email" style="margin-bottom:10px"/>
       <input class="modal-input" type="password" id="authPassword" placeholder="Password" autocomplete="current-password"/>
       <div id="authError" style="font-size:.78rem;margin-top:10px;min-height:1.2em;color:var(--danger)"></div>
@@ -2615,6 +3032,33 @@ function renderAuthModal(){
   }
 }
 
+// Google sign-in (OAuth via Supabase). Needs the Google provider switched on in the Supabase dashboard,
+// and a real web address (it can't work from a double-clicked file:// page).
+async function signInWithGoogle(){
+  const errEl=document.getElementById('authError');
+  errEl.style.color='var(--danger)';errEl.textContent='';
+  if(!sb){errEl.textContent='Accounts are temporarily unavailable. Try again in a moment.';return;}
+  if(location.protocol==='file:'){errEl.textContent='Google sign-in only works on the live site (or localhost), not from a saved file.';return;}
+  const btn=document.getElementById('googleBtn');
+  btn.disabled=true;
+  try{
+    const{error}=await sb.auth.signInWithOAuth({provider:'google',options:{redirectTo:location.origin+location.pathname}});
+    if(error){errEl.textContent=error.message;btn.disabled=false;}
+  }catch(e){
+    errEl.textContent='Could not start Google sign-in. Please try again.';
+    btn.disabled=false;console.error(e);
+  }
+}
+// If Google/Supabase sent the user back with an error, show it instead of failing silently
+function showAuthReturnError(){
+  const q=new URLSearchParams(location.search),h=new URLSearchParams(location.hash.replace(/^#/,''));
+  const msg=q.get('error_description')||h.get('error_description');
+  if(!msg)return;
+  history.replaceState(null,'',location.pathname);
+  openAuthModal('signin');
+  const el=document.getElementById('authError');
+  el.style.color='var(--danger)';el.textContent=msg.replace(/\+/g,' ');
+}
 async function submitAuth(){
   const errEl=document.getElementById('authError');
   if(!sb){errEl.textContent='Accounts are temporarily unavailable — try again in a moment.';return;}
@@ -2776,7 +3220,7 @@ function buildProgramDayRoutine(tpl,dayIndex,week){
   return{exercises,rest:45,rounds};
 }
 function startProgramDayWorkout(){
-  if(!activeProgram)return;
+  if(!activeProgram||guardActiveWorkout())return;
   const tpl=getProgramTemplate(activeProgram.templateId);if(!tpl)return;
   const day=tpl.schedule[activeProgram.currentDayIndex];
   const built=buildProgramDayRoutine(tpl,activeProgram.currentDayIndex,activeProgram.currentWeek);
@@ -2942,13 +3386,14 @@ function homeRangeList(){
   return fitsetHistory.filter(h=>parseDateKey(h.date)>=cutoff);
 }
 
-const HM_WEEKS=26;
+function hmWeeks(){return window.matchMedia('(min-width:1024px)').matches?52:26;}
 function buildHeatmapHtml(){
   loadHistory();
   const byDay={};
   fitsetHistory.forEach(h=>{const d=byDay[h.date]||(byDay[h.date]={n:0,sec:0});d.n++;d.sec+=h.durationSec||0;});
   const today=new Date();today.setHours(0,0,0,0);
-  const start=new Date(today);start.setDate(today.getDate()-(today.getDay()+6)%7-(HM_WEEKS-1)*7); // Monday, 25 weeks back
+  const HM_WEEKS=hmWeeks();
+  const start=new Date(today);start.setDate(today.getDate()-(today.getDay()+6)%7-(HM_WEEKS-1)*7); // Monday, N-1 weeks back
   let cells='';
   for(let i=0;i<HM_WEEKS*7;i++){
     const d=new Date(start);d.setDate(start.getDate()+i);
@@ -3062,13 +3507,21 @@ function renderHomeRecent(){
   }
   el.innerHTML=`<div class="home-log">${recent.map(homeLogRow).join('')}</div>`;
 }
-function renderHomeNextBtn(){
-  const btn=document.getElementById('homeNextBtn');
-  loadActiveProgram();
-  const tpl=activeProgram&&getProgramTemplate(activeProgram.templateId);
-  const day=tpl&&tpl.schedule[activeProgram.currentDayIndex];
-  if(day){btn.textContent='Start today: '+day.label;btn.onclick=startProgramDayWorkout;}
-  else{btn.textContent='Choose a workout';btn.onclick=()=>showPage('routines');}
+function renderHomeHero(){
+  const now=new Date(),hr=now.getHours();
+  const part=hr<5?'Good night':hr<12?'Good morning':hr<18?'Good afternoon':'Good evening';
+  const first=(loadProfile().name||'').trim().split(/\s+/)[0];
+  document.getElementById('homeGreeting').textContent=first?`${part}, ${first}`:part;
+  loadHistory();
+  const today=localDateKey(now);
+  const doneToday=fitsetHistory.filter(h=>h.date===today).length;
+  const dateLabel=now.toLocaleDateString(undefined,{weekday:'long',day:'numeric',month:'long'});
+  document.getElementById('homeSub').textContent=dateLabel+(doneToday?` · ${doneToday===1?'Workout':doneToday+' workouts'} done today`:'');
+  const weeks=weeklyStreak();
+  const badge=document.getElementById('homeStreak');
+  badge.classList.toggle('on',weeks>0);
+  badge.innerHTML=`<span class="home-streak-ico"><svg viewBox="0 0 20 20" fill="currentColor" aria-hidden="true"><path d="M10.4 1.8c.9 3.9 5.6 6 5.6 10.6a6 6 0 01-12 0c0-2.7 1.3-4.5 3-6.2.3 2.1 1.2 3.3 2.4 3.6-.6-3.3-.3-6.1 1-8z"/></svg></span>
+    <span><span class="hs-val">${weeks?weeks+' week'+(weeks===1?'':'s'):'No streak yet'}</span><span class="hs-sub">${weeks?'in a row':'Train this week to start one'}</span></span>`;
 }
 function renderHomePage(){
   document.querySelectorAll('#homeTabSeg .home-seg-btn').forEach(b=>b.classList.toggle('active',b.dataset.tab===homeTab));
@@ -3076,7 +3529,7 @@ function renderHomePage(){
   const list=homeRangeList();
   document.getElementById('homeCardBody').innerHTML=homeTab==='overview'?renderHomeOverview(list):renderHomeExercises(list);
   renderWeeklyGoalCard();
-  renderHomeNextBtn();
+  renderHomeHero();
   renderHomeRecent();
 }
 
@@ -3211,7 +3664,8 @@ function renderProfileWeek(){
   const cur=weeks[11].list;
   const vals=weeks.map(w=>pfMetricVal(w.list,pfMetric));
   const max=pfNiceMax(Math.max(...vals),pfMetric);
-  const W=320,L=6,R=276,T=10,B=118;
+  // Wider drawing area on desktop so labels stay a normal size instead of scaling up with the card
+  const W=window.matchMedia('(min-width:1024px)').matches?660:320,L=6,R=W-44,T=10,B=118;
   const x=i=>L+i*(R-L)/11,y=v=>B-v/max*(B-T);
   const pts=vals.map((v,i)=>[x(i),y(v)]);
   const line=pts.map(p=>p.map(n=>n.toFixed(1)).join(',')).join(' ');
@@ -3686,6 +4140,7 @@ function confirmResetAll(){
 function renderProfilePage(){
   const p=loadProfile();
   renderProfileHeader(p);
+  syncSidebarProfile();
   document.querySelectorAll('.pf-tab').forEach(b=>{
     const on=b.dataset.tab===pfTab;
     b.classList.toggle('active',on);b.setAttribute('aria-selected',on);
@@ -3817,6 +4272,7 @@ function editPreviewRoutine(){
 }
 
 function startNewRoutine(){
+  if(guardActiveWorkout())return;
   editingRoutineId=null;
   routine=[];
   globalRest=loadDefaultRest();
@@ -3830,6 +4286,7 @@ function startNewRoutine(){
 }
 
 function editRoutine(id){
+  if(guardActiveWorkout())return;
   loadSavedRoutines();
   const r=savedRoutines.find(x=>x.id===id);
   if(!r)return;
@@ -3872,7 +4329,8 @@ function cleanEx(e){
 
 // Generic confirm modal — pass a title, message, and a callback to run on confirm
 let pendingConfirmCallback=null;
-function openConfirm(title,message,callback,actionLabel){
+function openConfirm(title,message,callback,actionLabel,tone){
+  document.getElementById('confirmActionBtn').classList.toggle('danger',tone!=='neutral');
   document.getElementById('confirmTitle').textContent=title;
   document.getElementById('confirmMsg').textContent=message;
   document.getElementById('confirmActionBtn').textContent=actionLabel||'Confirm';
@@ -3921,6 +4379,7 @@ function confirmRename(){
 }
 
 function launchRoutine(id){
+  if(guardActiveWorkout())return;
   loadSavedRoutines();
   const r=savedRoutines.find(x=>x.id===id);
   if(!r||!r.exercises.length)return;
@@ -4112,6 +4571,10 @@ window.addEventListener('resize',()=>{if(!isMobileBuilder()&&document.body.class
   head.addEventListener('pointerup',end);head.addEventListener('pointercancel',end);
 })();
 // Nav height drives the toolbar's sticky offset; the toolbar gets a divider once it's pinned
+window.matchMedia('(min-width:1024px)').addEventListener('change',()=>{
+  const home=document.getElementById('homePage');
+  if(home&&home.classList.contains('active'))renderHomePage();
+});
 function syncNavHeight(){
   const nav=document.querySelector('nav');
   if(nav)document.documentElement.style.setProperty('--nav-h',nav.offsetHeight+'px');
@@ -4359,6 +4822,7 @@ document.addEventListener('click',(e)=>{
 // ══════════════════════════════════════
 function startWorkout(){
   if(!routine.length)return;
+  setWorkoutLive(true);
   wIdx=0;wStartTime=Date.now();isPaused=false;totalRepsAll=0;
   totalRounds=curRounds;curRound=1;
   sessionExLogs=[];
@@ -4931,7 +5395,67 @@ function updateRestRing(sec,total){
   document.getElementById('rrRing').style.strokeDashoffset=c*(1-sec/Math.max(1,total));
 }
 function skipRest(){clearInterval(restTimer);document.getElementById('restOverlay').classList.add('hidden');advanceToNext();}
-function togglePause(){isPaused=!isPaused;document.getElementById('pauseBtn').textContent=isPaused?'Resume':'Pause';}
+function togglePause(){isPaused=!isPaused;document.getElementById('pauseBtn').textContent=isPaused?'Resume':'Pause';updateLiveBar();}
+
+// ── Live workout bar: the session keeps running when you leave the workout page ──
+let workoutActive=false,liveTimer=null;
+const LIVE_PAUSE='<svg viewBox="0 0 16 16" fill="currentColor"><rect x="4" y="3" width="3" height="10" rx="1"/><rect x="9" y="3" width="3" height="10" rx="1"/></svg>';
+const LIVE_PLAY='<svg viewBox="0 0 16 16" fill="currentColor"><path d="M5 3.2v9.6a.6.6 0 00.9.5l7.4-4.8a.6.6 0 000-1L5.9 2.7a.6.6 0 00-.9.5z"/></svg>';
+function setWorkoutLive(on){
+  workoutActive=on;
+  document.body.classList.toggle('workout-live',on);
+  clearInterval(liveTimer);liveTimer=null;
+  if(on)liveTimer=setInterval(updateLiveBar,500);
+}
+function fmtClock(sec){
+  const h=Math.floor(sec/3600),m=Math.floor(sec%3600/60),s=sec%60;
+  return(h?h+':'+String(m).padStart(2,'0'):m)+':'+String(s).padStart(2,'0');
+}
+function updateLiveBar(){
+  if(!workoutActive||document.body.classList.contains('on-workout'))return;
+  const bar=document.getElementById('liveBar'),ex=routine[wIdx];
+  if(!bar||!ex)return;
+  const n=routine.length;
+  const pos=`${wIdx+1} of ${n}`+(totalRounds>1?` · Round ${curRound}/${totalRounds}`:'');
+  let status='Exercise '+pos,name=ex.name,ringTxt,frac;
+  if(isResting){
+    const next=wIdx+1<n?routine[wIdx+1]:routine[0];
+    status='Resting · up next';name=next?next.name:'Rest';
+    ringTxt=restLeft;frac=restLeft/Math.max(1,globalRest);
+  }else if(ex.mode==='timed'){
+    ringTxt=timeLeft;frac=timeLeft/Math.max(1,totalTime);
+  }else{
+    ringTxt=curReps;frac=Math.min(1,curReps/Math.max(1,ex.reps));
+    status+=` · ${ex.reps} reps`;
+  }
+  if(isPaused)status='Paused · '+pos;
+  bar.classList.toggle('paused',isPaused);
+  document.getElementById('liveStatus').textContent=status;
+  document.getElementById('liveName').textContent=name;
+  document.getElementById('liveRingTxt').textContent=ringTxt;
+  document.getElementById('liveRing').style.strokeDashoffset=(119.38*(1-frac)).toFixed(2);
+  document.getElementById('liveTime').textContent=fmtClock(Math.max(0,Math.round((Date.now()-wStartTime)/1000)));
+  const done=(curRound-1)*n+wIdx+(isResting?1:0);
+  document.getElementById('liveProgress').style.width=Math.min(100,done/(n*totalRounds)*100)+'%';
+  const btn=document.getElementById('livePauseBtn');
+  btn.innerHTML=isPaused?LIVE_PLAY:LIVE_PAUSE;
+  btn.setAttribute('aria-label',isPaused?'Resume workout':'Pause workout');
+}
+function liveTogglePause(){togglePause();}
+function minimizeWorkout(){
+  showPage('home');
+  showToast('Workout still running. Tap the bar at the bottom to go back.');
+}
+function confirmEndLiveWorkout(){
+  openConfirm('End workout?','Your progress so far will be saved to your history.',()=>endWorkout(),'End workout');
+}
+// The workout and the builder share `routine`, so nothing may replace it mid-session
+function guardActiveWorkout(){
+  if(!workoutActive)return false;
+  openConfirm('Workout in progress',"You're in the middle of a workout. Finish or end it before starting or editing another routine.",
+    ()=>showPage('workout'),'Back to workout','neutral');
+  return true;
+}
 function prevEx(){clearInterval(wTimer);clearInterval(restTimer);stopCamera();if(wIdx>0){wIdx--;loadExercise(wIdx);}}
 function nextEx(){
   clearInterval(wTimer);clearInterval(restTimer);stopCamera();
@@ -4944,6 +5468,7 @@ function endWorkout(){
 }
 function finishWorkout(){
   clearInterval(wTimer);clearInterval(restTimer);stopCamera();
+  setWorkoutLive(false);
   document.getElementById('navWorkout').classList.add('hidden');
   const elapsed=Math.round((Date.now()-wStartTime)/1000);
   const mins=Math.floor(elapsed/60),secs=elapsed%60;
@@ -5036,6 +5561,7 @@ function showPage(name){
       (name==='workout'&&id==='navWorkout'));
   });
   syncSidebarActive(name);
+  syncSidebarProfile();
   syncFloatingDock(name);
   if(name==='home')renderHomePage();
   if(name==='routines')renderRoutinesPage();
@@ -5065,6 +5591,8 @@ function syncFloatingDock(name){
   setDockCompact(false);
   dockLastY=window.scrollY;
   document.body.classList.toggle('on-builder',name==='builder');
+  document.body.classList.toggle('on-workout',name==='workout');
+  if(name!=='workout')updateLiveBar();
   if(name!=='builder')closeRoutineSheet();
 }
 let dockLastY=0,dockTicking=false;
@@ -5123,6 +5651,9 @@ function updateNavHistoryButtons(){
   const fwdBtn=document.getElementById('navForwardBtn');
   if(backBtn)backBtn.disabled=navHistoryPos<=0;
   if(fwdBtn)fwdBtn.disabled=navHistoryPos>=navHistory.length-1;
+  const sbBack=document.getElementById('sbBackBtn'),sbFwd=document.getElementById('sbFwdBtn');
+  if(sbBack)sbBack.disabled=navHistoryPos<=0;
+  if(sbFwd)sbFwd.disabled=navHistoryPos>=navHistory.length-1;
 }
 
 // ══════════════════════════════════════
@@ -5451,7 +5982,7 @@ function rehabExToRoutineItem(e,phaseLabel){
   };
 }
 function startRehabSession(){
-  if(!rehabProgram)return;
+  if(!rehabProgram||guardActiveWorkout())return;
   const exList=getRehabExercises(rehabProgram.injuryType,rehabProgram.currentPhase);
   if(!exList.length){showToast('No exercises found for this phase yet.');return;}
   const phaseInfo=getRehabPhases(rehabProgram.injuryType).find(p=>p.id===rehabProgram.currentPhase);
@@ -5691,6 +6222,14 @@ function closeSidebar(){
   document.getElementById('sidebar').classList.remove('open');
   document.getElementById('sidebarOverlay').classList.remove('open');
   document.body.style.overflow='';
+}
+function syncSidebarProfile(){
+  const av=document.getElementById('sbAvatar');if(!av)return;
+  const name=(loadProfile().name||'').trim();
+  const initials=name.split(/\s+/).filter(Boolean).slice(0,2).map(w=>w[0].toUpperCase()).join('');
+  av.innerHTML=initials?escHtml(initials):'<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="10" cy="7" r="3.2"/><path d="M4 17c0-3.3 2.7-6 6-6s6 2.7 6 6"/></svg>';
+  document.getElementById('sbName').textContent=name||'Your profile';
+  document.getElementById('sbProfileCard').classList.toggle('active',document.getElementById('profilePage').classList.contains('active'));
 }
 function syncSidebarActive(name){
   ['sidebarIntro','sidebarHome','sidebarRoutines','sidebarBuilder','sidebarAi','sidebarRehab','sidebarPrograms','sidebarProfile'].forEach(id=>{
@@ -6101,6 +6640,26 @@ function requestIntroFocusUpdate(){
 window.addEventListener('scroll',requestIntroFocusUpdate,{passive:true});
 window.addEventListener('resize',requestIntroFocusUpdate,{passive:true});
 
+// Intro "Track" box: a sample heatmap that fills in as it scrolls into view.
+// Deterministic pattern that gets busier toward the right, like a habit forming.
+(function(){
+  const hm=document.getElementById('simHm');if(!hm)return;
+  const weeks=18;let html='';
+  let x=20260930;
+  const rnd=()=>{x=(x*1103515245+12345)&0x7fffffff;return x/0x7fffffff;};
+  for(let i=0;i<weeks*7;i++){
+    const w=Math.floor(i/7);
+    const busy=0.12+0.62*(w/(weeks-1));
+    const lvl=rnd()<busy?1+Math.floor(rnd()*4):0;
+    html+=`<i class="${lvl?'l'+lvl:''}" style="--d:${(w*0.035).toFixed(2)}s"></i>`;
+  }
+  hm.innerHTML=html;
+  document.querySelectorAll('.intro-reveal').forEach(box=>{
+    const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){box.classList.add('in-view');io.disconnect();}}),{threshold:.3});
+    io.observe(box);
+  });
+})();
+
 // ══════════════════════════════════════
 // INTRO PAGE SIMULATIONS (scroll-triggered)
 // Build box: CSS handles the staggered reveal once `.in-view` is added.
@@ -6183,6 +6742,7 @@ updateVoiceToggleUI();
 initProfile();
 renderRoutine();
 initAuth();
+showAuthReturnError();
 
 // First-time visitors land on the intro page; returning visitors land on Home.
 const isNewVisitor=!localStorage.getItem('fitsetVisited');
