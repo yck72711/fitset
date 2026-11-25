@@ -10,7 +10,7 @@ const reply = (res, text, status = 200) =>
 
 export default async function handler(req, res) {
   if (req.method !== "POST") return res.status(405).json({ error: "Method not allowed" });
-  const key = process.env.GEMINI_API_KEY;
+  const key = (process.env.GEMINI_API_KEY || "").trim();
   if (!key) return reply(res, "The AI Coach isn't set up yet (missing API key).", 500);
 
   const { system, messages } = req.body || {};
@@ -29,7 +29,7 @@ export default async function handler(req, res) {
       { method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": key }, body: JSON.stringify(body) }
     );
     if (r.status === 429) return reply(res, "The coach is busy right now. Try again in a minute.", 429);
-    if (!r.ok) return reply(res, "The coach hit a problem. Please try again.", 502);
+    if (!r.ok) return reply(res, "The coach hit a problem (Gemini " + r.status + "). Please try again.", 502);
     const data = await r.json();
     const cand = data.candidates && data.candidates[0];
     const text = cand && cand.content && cand.content.parts
@@ -37,6 +37,6 @@ export default async function handler(req, res) {
     if (!text) return reply(res, "Sorry, I can't help with that one. Try asking another way.");
     return reply(res, text);
   } catch (e) {
-    return reply(res, "The coach couldn't be reached. Please try again.", 500);
+    return reply(res, "The coach couldn't be reached (" + String(e && e.message || e).slice(0, 120) + ").", 500);
   }
 }
