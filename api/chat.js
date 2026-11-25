@@ -1,7 +1,7 @@
 // AI Coach backend: forwards the chat to Gemini and returns the reply.
 // Needs GEMINI_API_KEY set in Vercel → Project → Settings → Environment Variables.
 // Optional: GEMINI_MODEL to change the model without editing code.
-const MODEL = process.env.GEMINI_MODEL || "gemini-2.5-flash";
+let picked; async function pickModel(key) { if (process.env.GEMINI_MODEL) return process.env.GEMINI_MODEL; if (picked) return picked; try { const r = await fetch("https://generativelanguage.googleapis.com/v1beta/models?pageSize=200", { headers: { "x-goog-api-key": key } }); const d = await r.json(); const ver = m => parseFloat(m.name.match(/gemini-([\d.]+)/)[1]); const ok = (d.models || []).filter(m => (m.supportedGenerationMethods || []).includes("generateContent") && /gemini-[\d.]+-flash$/.test(m.name)).sort((a, b) => ver(b) - ver(a)); if (ok.length) picked = ok[0].name.replace("models/", ""); } catch (e) { console.error("Model lookup failed", e); } return picked || "gemini-2.5-flash"; }
 const MAX_MESSAGES = 40;
 const MAX_CHARS = 8000;
 
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
 
   try {
     const r = await fetch(
-      `https://generativelanguage.googleapis.com/v1beta/models/${MODEL}:generateContent`,
+      `https://generativelanguage.googleapis.com/v1beta/models/${await pickModel(key)}:generateContent`,
       { method: "POST", headers: { "Content-Type": "application/json", "x-goog-api-key": key }, body: JSON.stringify(body) }
     );
     if (r.status === 429) return reply(res, "The coach is busy right now. Try again in a minute.", 429);
